@@ -1,0 +1,27 @@
+\begin{abstract}
+\vb{I have made many small changes to the abstract. Please proof-read. Also we should update it on the AAAI submission website.}
+
+Crosswords puzzles continue to be a popular form of entertainment.
+In Artificial Intelligence (AI), crosswords can be represented as a constraint problem,
+and attacked with a combinatorial search algorithm.
+In combinatorial search,
+the branching factor can play a crucial role on the search space size
+and thus on the search effort.
+We introduce tiered state expansion, a completeness-preserving technique
+to reduce the branching factor.
+In problems where the successors of a state correspond to the 
+values in the domain of a state variable selected for instantiation,
+the domain is partitioned into two subsets called tiers.
+The instantiation of the two tiers is performed at different times,
+with tier 1 first and tier 2 
+in a subsequent state.
+Before a tier-2 instantiation occurs,
+its set of applicable values can shrink
+substantially due to constraint propagation,
+with a corresponding reduction of the branching factor.
+We apply tiered state expansion to a constraint optimization problem
+modeled on the Romanian Crosswords Competition, empirically demonstrating a substantial improvement.
+Tiered state expansion allows finding a full solution,
+with an average CPU time of up to $1.2$ minutes,
+to many puzzles that would otherwise time out after 4 hours.
+\end{abstract}

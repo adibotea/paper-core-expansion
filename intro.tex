@@ -1,0 +1,89 @@
+\section{Introduction}
+\label{sec::intro}
+
+\vb{I have made many changes through the section. Please proof-read.}
+
+Crosswords puzzles are a very popular form of entertainment.
+We address a problem
+inspired by the Romanian Crosswords Competition and introduced in the search literature by
+\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
+The task is to fill a crosswords grid with words and black cells.
+Some words, called thematic words, give points. The objective
+is to obtain as many points as possible.
+The application has a decades-long history of annual national-level competitions.
+The problem is challenging to AI, which lags 
+behind the performance of top human contestants.
+%
+The problem can be represented as a constraint optimization and tackled with a search algorithm. As usual in a search, the branching factor
+(i.e., the number of successor states to a parent state)
+can greatly impact the search space size and search time.
+
+We present {\em tiered state expansion}, an approach to reducing the branching factor.
+We adopt a few assumptions that characterize 
+an important and broad class of constraint optimization problems.
+Specifically our states are defined by a finite set of variables with a finite discrete domain each. A  state corresponds to an instantiation of zero or more variables. Successors of a state are defined by selecting an uninstantiated variable and instantiating it with some/every of its possible values.
+%Each such instantiation produces as a successor state.
+Legal states need to satisfy a set of constraints specified in the definition of the problem instance.
+An objective function maps states to a solution cost (lower is better) or score (higher is better).
+Constraint propagation can gradually shrink domains of uninstantiated variables based on  
+values of already instantiated variables.
+
+For example, in a crosswords application, variables can correspond to slots,
+where a slot is defined as a horizontal or vertical sequence of white cells bordered
+at each end by either the margin of the grid or by a black cell.
+The domain of such a variable is the set of words that fit into that slot.
+At a given point in time, a slot (variable) can be instantiated with a word (value) or uninstantiated.
+A state comprises all slots with their corresponding assignment at that time (i.e., either 
+filled with a word or uninstantiated).
+
+Tiered state expansion partitions the current domain of a variable selected for instantiation
+into two subsets called {\em tier 1} and {\em tier 2}.
+The two tiers are defined so that a tier-1 subset is likely to contain values that could
+lead to higher-quality solutions, and a tier-1 subset is preferably significantly smaller than the current domain before splitting.
+When the variable is selected for expansion for the first time,
+only tier-1 values are used to generate successor states.
+An additional, special successor state called a \emph{placeholder successor}
+leaves the variable uninstantiated but flags it so that any future instantiations
+(i.e., in a state down in the subtree of the placeholder successor)
+will use only tier-2 values.
+Thus, tier-1 and tier-2 instantiations 
+for a given variable are separated during the search
+and other variable instantiations can occur between those two.
+By the time tier-2 instantiations would be performed,
+the number of remaining tier-2 values can be much smaller
+due to constraint propagation.
+This can result in a significant reduction of the actual
+branching factor.
+%\footnote{\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}
+%mention the tiered expansion idea very briefly, in passing, whereas this paper
+%presents and evaluates the idea in depth.}
+
+Our algorithmic contributions are applicable to constraint optimization problems that match
+the assumptions outlined earlier in this section.
+We require only partitioning a variable domain into two tiers,
+with tier 1 preferably small, 
+and with 
+tier-1 likely to contain some values that would lead to high-quality solutions.
+
+Our ideas are easy to understand and implement.
+They can be implemented as extensions to a search algorithm,
+or as new constraints in a constraint satisfaction problem.
+For simplicity, we adopt the former approach.
+
+Tiered state expansion is implemented in {\sc Wombat}, an existing state-of-the-art crossword puzzle solver~\cite{DBLP:conf/socs/BoteaB21}.
+Experiments demonstrate substantial speed and memory gains. Consequently, tiered state expansion allows to fully solve puzzle instances that,
+with standard expansion, would fail after a four-hour search.
+We make our code and experiments available to
+accelerate progress
+% and exceeding human performance
+in this challenging problem.
+
+\begin{comment}
+The rest of the paper is organized as follows.
+First we review related work, followed by the problem formulation.
+Then we present the Romanian Crosswords Competition,
+followed by a background on constraint optimization as a search problem.
+We present the tiered state expansion in detail,
+and evaluate it on Romanian Crosswords puzzle instances.
+We end with future work and concluding remarks.
+\end{comment}

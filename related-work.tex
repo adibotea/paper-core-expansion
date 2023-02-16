@@ -1,0 +1,74 @@
+\section{Related Work}
+\label{sec::relwork}
+
+The literature distinguishes between solving crosswords puzzles
+and several variations of generating crosswords grids.
+In the former, a problem instance is defined by a grid with black cells but no letters
+and a list of clues.
+The task is then to fill the grid with words that match the 
+clues~\cite{DBLP:journals/ai/LittmanKS02,DBLP:conf/aaai/ErnandesAG05,DBLP:journals/jair/Ginsberg11,Chen-icaps22}.
+
+The problem of \emph{crosswords grid generation} takes as input
+a list of words and
+a grid with only black cells.
+The task is to fill the grid with words from the
+list~\cite{MAZLACK19761,10.5555/1865499.1865531,botea-modref07,anbulagan-botea-cp08}.
+%In other words, standard crosswords grid generation refers to finding a valid filling with %words for a grid
+%of a given size and configuration of black cells.
+The problem has recently been extended with a score function~\cite{DBLP:conf/socs/BoteaB21}
+and with the additional task to automatically generate black cell configurations as well~\cite{DBLP:conf/cig/BulitkoB21}.
+%
+Similarly to~\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21},
+we address a crosswords grid generation problem
+with a score function and with the black cells given as input.
+This is what we call the {\em optimization crosswords problem} in this paper.
+It is a stepping stone towards the full Romanian Crosswords Competition problem
+where black cells should be added as part of constructing a solution.
+
+Our work is complementary
+to the approach by \citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
+They perform multiple fast searches, grouped into two phases with the aim that
+such searches collectively are faster than a standard search.
+A phase-one search aims at
+quickly finding a promising partial solution.
+A phase-two search sets the initial state to the partial solution discovered in phase one,
+rather than starting from an empty initial state.
+In contrast, our contribution reduces the branching factor in a search.
+
+\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21} mentioned 
+tiered state expansion in passing, as a readily available feature turned on in their
+experiments. In this work, we describe and evaluate the idea in depth.
+
+
+%\vb{I do not think this is orthogonal at all. Their goal is to speed up finding full solutions. They do it via two-phase search. Our goal is the same: to speed up finding full solutions. Our method is different: a two-phase state expansion. However, since the goal is the same a reviewer can ask why do we not compare their speed-up technique to our speed-up technique. The way to address this is to say that we implement our tiered state expansion {\em on top} of their two-phase search to combine the speed-up}\ab{They are orthogonal in the sense that they can be combined or used in isolation. Two-phase search experiments include tiered state expansion. If they ask, we'll clarify that we have implemented our ideas to the Wombat code base, after which the authors of two-phase search used Wombat for their experiments. Tiered state expansion was there and they acknowledge in passing thaat the feature is turned on.}
+\citeauthor{DBLP:conf/cig/BulitkoB21}~\shortcite{DBLP:conf/cig/BulitkoB21}
+focus on finding high-score black cell configurations for an optimization crosswords problem.
+
+A simplified version of The Romanian Crosswords Competition problem was posed
+in the 2018 XCSP Competition~\cite{DBLP:journals/corr/abs-1901-01830}.
+Thirteen instances are featured in the competition, 
+with square grids whose sizes range $3 \times 3$ to $15 \times 15$.
+Eight instances remained unsolved \cite{DBLP:journals/corr/abs-1901-01830}.
+\citeauthor{DBLP:conf/ecai/AudemardLM20}~\shortcite{DBLP:conf/ecai/AudemardLM20}
+use the same representation
+as a testbed for using segmented tables
+to encode constraints.
+%
+% The relaxation used in such\vb{What specific work?} work allows word repetition and isolating parts of the grid from each other with black cells.
+%These are forbidden in the fully-fledged {Romanian Competition Crosswords} as we show in
+%Section~\ref{sec::roco}.
+%We use a different simplification requiring a configuration of black cells to be provided as an %input.
+%Eight instances remained unsolved \cite{DBLP:journals/corr/abs-1901-01830}.
+
+
+Domain-independent AI planning has seen the application of concepts such as helpful actions
+\cite{DBLP:journals/jair/HoffmannN01} and preferred operators~\cite{DBLP:journals/jair/Helmert06}.
+The idea is to partition the actions applicable in a state into two subsets,
+with one subset being heuristically considered likely to contain an action that would result
+in a (good-quality) solution. 
+In the Fast Forward system,
+unhelpful actions can be pruned away,
+at the cost of losing the search completeness \cite{DBLP:journals/jair/HoffmannN01}.
+In Fast Downward, preferred operators can get a higher priority at expansion, 
+compared to a non-preferred operator~\cite{DBLP:journals/jair/Helmert06}.
+A key difference from our work is that tier-2 successors never get generated as children of the original parent state. Instead, their instantiation is considered in another state, deeper in the search tree, at which point the number of tier-2 successors can greatly be reduced due to constraint propagation.

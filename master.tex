@@ -1,0 +1,164 @@
+\def\year{2022}\relax
+%File: formatting-instructions-latex-2022.tex
+%release 2022.1
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage{aaai22}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+
+
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in}  % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in}  % DO NOT CHANGE THIS
+
+% PDF Info Is REQUIRED.
+% For /Title, write your title in Mixed Case.
+% Don't use accents or commands. Retain the parentheses.
+% For /Author, add all authors within the parentheses,
+% separated by commas. No accents, special characters
+% or commands are allowed.
+% Keep the /TemplateVersion tag as is
+\pdfinfo{
+/Title (Tiered State Expansion in Optimization Crosswords)
+/Author (Adi Botea, Vadim Bulitko)
+/TemplateVersion (2022.1)
+}
+
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{tabularx,colortbl}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{cwpuzzle}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{nicefrac}
+
+\usepackage{color} % to be used only for comments
+%\usepackage[dvipsnames]{xcolor}
+
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{bm}
+\usepackage{comment}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+
+\newtheorem{theorem}{Theorem} %[section]
+\newtheorem{lemma}{Lemma} %[section]
+\newtheorem{cor}{Corollary} %[section]
+\newtheorem{prop}{Proposition} %[section]
+%{\theorembodyfont{\rmfamily}\newtheorem{example}{Example}} %[section]
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+%\newcommand{\proof}{\noindent\textbf{Proof:}}
+
+\newcommand{\ab}[1]{{\small\sf \color{red} [AB]: #1}}
+\newcommand{\vb}[1]{{\small\sf \color{blue} [VB]: #1}}
+% Uncomment the following to switch comments OFF
+\renewcommand{\ab}[1]{}
+\renewcommand{\vb}[1]{}
+
+\newcommand{\inlinecite}[1]{\citet{#1}}
+\newcommand{\egcite}[1]{\cite[e.g.,][]{#1}}
+
+\newcommand{\ptime}{\textup{P}}
+\newcommand{\np}{\textup{NP}}
+
+\newcommand{\pre}{\textit{pre}}
+\newcommand{\eff}{\textit{eff}}
+
+\newcommand{\bdf}{\begin{definition}\em}
+\newcommand{\edf}{\end{definition}}
+
+%%%%%%%% Vadim's macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\midb}{\pmb{\mid}}
+
+\newcommand{\bt}{\begin{theorem}\em}
+\newcommand{\et}{\end{theorem}}
+\newcommand{\bl}{\begin{lemma}\em}
+\newcommand{\el}{\end{lemma}}
+\newcommand{\bc}{\begin{col}\em}
+\newcommand{\ec}{\end{col}}
+
+\newcommand{\Qed}{$\blacksquare$}
+\newcommand{\nin}{\noindent}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+ 
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\ie}{\item}
+
+\newcommand{\avg}{\operatornamewithlimits{avg}\limits}
+\newcommand{\mean}{\operatornamewithlimits{mean}\limits}
+\renewcommand{\arg}{\operatornamewithlimiThe deadline for submissions is August 1, 2022.ts{arg}\limits}
+\newcommand{\round}{\operatorname{round}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}\limits}
+\renewcommand{\max}{\operatornamewithlimits{max}\limits}
+\newcommand{\median}{\operatornamewithlimits{median}\limits}
+\newcommand{\op}{\operatornamewithlimits{op}\limits}
+%\DeclareMathOperator\erf{erf}
+
+% simplify the use of \left\lceil and \right\rceil
+\def\lc{\left\lceil}   
+\def\rc{\right\rceil}
+
+\setcounter{secnumdepth}{2} %May be changed to 1 or 2 if section numbers are desired.
+
+\renewcommand*\ttdefault{lmvtt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\vb{This is still confusing to me. What exactly is a grid? We need to define the term at the beginning of this section. I think you understand the grid to mean word slots filled with actual words. As a more of an outsider to crosswords world I tent to think of the grid in the standard Computing Science sense. I bet many SoCS reviewers will not know what ``grid'' really means here... So we need to define it} 
+%\ab{I emphasized the definition earlier in this section.}
+
+%\nocopyright
+\sloppy
+
+
+\title{Tiered State Expansion in Optimization Crosswords}
+\author{
+Adi Botea,\textsuperscript{\rm 1}
+Vadim Bulitko\textsuperscript{\rm 2}\\
+}
+\affiliations{
+\textsuperscript{\rm 1}Eaton\\
+\textsuperscript{\rm 2}Department of Computing Science, University of Alberta, Edmonton, AB, Canada\\
+%adibotea@eaton.com, bulitko@ualberta.ca
+}
+
+
+
+\begin{document}
+
+\maketitle
+
+\input abstract
+\input intro
+\input related-work
+\input problem-def
+\input rom-comp-problem
+%\input bfs
+%\input approach
+%\input example
+%\input exp-setup
+%\input experiments
+%\input conclusion
+
+%\vb{I can work on the bibliography once we are done with everything else.}
+
+\bibliographystyle{aaai22}
+\bibliography{references}
+
+\end{document}
