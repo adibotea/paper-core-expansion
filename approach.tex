@@ -1,0 +1,126 @@
+\section{Approach}
+
+Algorithm \ref{algo:core-exp} summarizes the main steps of our approach.
+In this section we present these steps in detail, and give an end-to-end example.
+
+As seen in the pseudocode, the approach takes as input a \emph{pattern} $p$, besides
+the thematic dictionary and the regular dictionary.
+A {pattern} is a rectangular grid of a given size, with zero or more black cells and no letters.
+
+Figure \ref{} shows an example of a pattern. It is a $6 \times 4$ grid with two black cells, one in the top-left corner and one in the bottom-right corner.
+Observe that the pattern is significantly smaller than the $13 \times 13$ size of the full-size grid.
+The pattern will end up being integrated inside the full-size solutions generated with our approach,
+as we will show in this section.
+
+\begin{algorithm}[t]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Pattern $p$, thematic dictionary and regular dictionary}
+%\KwOut{Full solutions}
+%\tcc{Search for a full solution}
+$C \leftarrow \mbox{GenerateCores}(p)$\;
+$E \leftarrow \mbox{ExpandCores}(C)$\;
+$S \leftarrow \mbox{GenerateSeeds}(E)$\;
+Rank $S$ and put top $k$ elements into a list $S'$\;
+\For{$s \in S'$} {
+    $\mbox{Evolve}(s)$\;
+}
+\caption{{\sc Generating full solutions.}}
+\label{algo:core-exp}
+\end{algorithm}
+
+
+\subsection{Generating Cores}
+
+Step 1 in Algorithm \ref{algo:core-exp} generates a collection of so-called \emph{cores} from the pattern $p$.
+A core is a pattern filled with letters on the white cells.
+We require that, in a full solution returned with Algorithm \ref{algo:core-exp}, 
+the sub-area corresponding to the pattern will have a perfect score.
+In other words, each white cell in the pattern will contribute two points.
+
+To achieve this, we construct and solve a small crosswords puzzle instance.
+The grid is the pattern $p$. There is only one dictionary, which contains 
+substrings of the thematic words.
+It is sufficient to consider only substrings of the lengths that 
+correspond to the lengths of the word slots in the pattern.
+
+In our running example, word slot lengths are 3, 4, 5, and 6.
+For example, when generating substrings of length 4,
+if IONESCU and POPESCU are thematic words,
+the substrings generated are IONE, ONES, NESC, ESCU, POPE, OPES, PESC, and ESCU.
+Duplicates such as ESCU are kept only once.
+
+The small crosswords puzzle instance constructed in this way is 
+solved with the {\sc Wombat} solver.
+The solver enumerates all solutions, which are precisely the 
+cores computed at step 1 in Algorithm \ref{algo:core-exp}.
+Figure \ref{} shows an example of a core.
+
+
+
+\subsection{Expanding Cores}
+
+At step 2, each core is expanded by placing full thematic words on top of the substrings present in the core at hand. Figure \ref{} shows an example of an expanded core. More than one expansion can exist for a given core (e.g., a substring such as ESCU can be expanded into multiple thematic words, such as IONESCU and POPESCU).
+We generate expanded cores with a depth-first search.
+
+\subsection{Generating Seeds}
+
+Define the width $w(e)$ of an expanded core $e$ as the number of columns in the expanded core that contain at least one letter each.
+Define the height $h(e)$ as the number of rows that contain at least one letter each.
+Define the size of $e$ as $h(e) \times w(e)$.
+
+When the size of an extended core $e$ is $13 \times 13$, $e$ fits inside a full $13 \times 13$ grid in a unique way. However,
+if the height and/or width are smaller than 13, $e$ can fit inside a full grid in multiple positions,
+obtained by shifting $e$ inside the full grid vertically and/or horizontally.
+Figure \ref{} shows how an extended core fits inside a full grid in multiple positions.
+
+Each fitting of an extended inside a full grid is called a \emph{seed}.
+A seed is post processed with two objectives: to detect dead seeds 
+(e.g., seeds that cannot be possibly expanded into a valid full solution); 
+and, for seeds that are still alive, to detect, if possible, 
+forced black cells and forced letters can could be added to the seed.
+Given a position (cell) in a seed,
+we say that a black cell or a letter is forced onto a 
+given position if 
+every possible full solution based on that seed must contain 
+the black cell or letter at hand on the corresponding position.
+
+Algorithm \ref{algo:fixpoint} shows seed post-processing in pseudocode.
+Deadend detection includes checking for closures and semi-closures;
+adjacent black cells; 
+word repetitions; and
+sequences of letters that do not match with any word from the dictionaries.
+
+Forced black cells are detected when all dictionary words matching 
+a given sequence of letters in the seed would start in the same cell,
+forcing the placement of a black cell on the cell before.
+Similarly, forced black cells can be detected when 
+all matching words finish on the same cell, forcing a black cell 
+on the cell after.
+Forced letters are detected when all matching words have the same 
+letter on a given position.
+
+
+\begin{algorithm}[t]
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{Seed $s$ labelled alive}
+%\KwOut{Full solutions}
+%\tcc{Search for a full solution}
+\Repeat{ until reaching fixpoint} {
+    \If {deadend detected} {
+        Label $s$ as dead\;
+        Break\;
+    }
+    Add forced moves (black cells and words) to $s$\;
+}
+\Return $s$ and label (dead/alive)
+\caption{{\sc Fixpoint computation.}}
+\label{algo:fixpoint}
+\end{algorithm}
+
+\subsection{Ranking Seeds}
+
+VADIM
+
+\subsection{Evolving Seeds}
+
+VADIM
