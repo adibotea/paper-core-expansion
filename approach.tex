@@ -59,21 +59,53 @@ Figure \ref{} shows an example of a core.
 
 \subsection{Expanding Cores}
 
-At step 2, each core is expanded by placing full thematic words on top of the substrings present in the core at hand. Figure \ref{} shows an example of an expanded core. More than one expansion can exist for a given core (e.g., a substring such as ESCU can be expanded into multiple thematic words, such as IONESCU and POPESCU).
+At step 2, each core is expanded by placing full thematic words on top of the substrings present in the core at hand.
+For each thematic word added to an expanded core, we add two black cells at its corresponding endpoints.
+Figure \ref{} shows an example of an expanded core. 
+The cells on the top row, bottom row, leftmost column and rightmost column form the \emph{border} of the expanded core. The rest of the cells are the \emph{inner part} of the expanded core.
+We define the \emph{inner size} as $h \times w$, where $h$ is the number of rows
+of the inner part and $w$ is the number of columns.
+In Figure \ref{}, the inner size is $10 \times 11$.
+Observe that the border can only contain black cells and empty cells.
+The inner part can contain letters, black cells and empty cells.
+
+As shown later in this section, the inner part of an extended core will be fit inside a full solution.
+All or part of the border may or may not be included in a full solution, as explained later on.
+
+More than one expanded core can exist for a given core (e.g., a substring such as ESCU can be expanded into multiple thematic words, such as IONESCU and POPESCU).
 We generate expanded cores with a depth-first search.
+
+We say that an extended core is a deadend (or, equivalently, it is dead) if no full valid solution can contain the extended core at hand. We label an extended core as dead, and filter it away, if any of the
+following conditions is met:
+it contains a word repetition; it contains a sequence of letters that cannot
+possibly be expanded into a full word; or it contains adjacent black cells within the inner part.
+Note that, at this stage, we don't check for adjacent black cells on the border.
+Such a test will be performed later, after it is decided which part of the
+border, if any, will be kept in a full-size solution, as shown later in this section.
+
 
 \subsection{Generating Seeds}
 
-Define the width $w(e)$ of an expanded core $e$ as the number of columns in the expanded core that contain at least one letter each.
-Define the height $h(e)$ as the number of rows that contain at least one letter each.
-Define the size of $e$ as $h(e) \times w(e)$.
 
-When the size of an extended core $e$ is $13 \times 13$, $e$ fits inside a full $13 \times 13$ grid in a unique way. However,
-if the height and/or width are smaller than 13, $e$ can fit inside a full grid in multiple positions,
-obtained by shifting $e$ inside the full grid vertically and/or horizontally.
-Figure \ref{} shows how an extended core fits inside a full grid in multiple positions.
+When the inner size of an extended core $e$ is $13 \times 13$, it fits inside a full $13 \times 13$ grid in a unique way. However,
+if the inner height and/or width are smaller than 13, $e$ can fit inside a full grid in multiple positions,
+obtained by shifting it inside the full grid vertically and/or horizontally.
 
-Each fitting of an extended inside a full grid is called a \emph{seed}.
+Each fitting of an extended seed inside a full grid is called a \emph{seed}.
+As such, a seed is a full-size $13 \times 13$ grid, with 
+letters, black cells and empty cells.
+Figure \ref{} shows a few seeds generated from an extended core.
+
+When the first column of the inner part of $e$ coincides 
+with the first column of the seed, the leftmost column of $e$'s border
+is left out from the seed. 
+Otherwise, it is kept within the seed.
+In Figure \ref{} (a), the leftmost border column is left out,
+and it is kept in the seed in Figure \ref{} (b).
+Other parts of the border (top row, bottom row, rightmost column)
+are left out or kept inside in a similar way.
+
+
 A seed is post processed with two objectives: to detect dead seeds 
 (e.g., seeds that cannot be possibly expanded into a valid full solution); 
 and, for seeds that are still alive, to detect, if possible, 
@@ -86,7 +118,9 @@ the black cell or letter at hand on the corresponding position.
 
 Algorithm \ref{algo:fixpoint} shows seed post-processing in pseudocode.
 Deadend detection includes checking for closures and semi-closures;
-adjacent black cells; 
+adjacent black cells\footnote{As this test is applied to the full
+grid, it covers the part of the extended seed border, if any, that was
+kept in the seed.}; 
 word repetitions; and
 sequences of letters that do not match with any word from the dictionaries.
 
