@@ -1,6 +1,8 @@
 \section{Romanian Crosswords Competition}
 \label{sec::roco}
 
+\ab{Still an almost verbatim copy of the last paper. Todo: edit.}
+
 In this work we apply our ideas to the Romanian Crosswords Competition, a problem introduced in search literature by~\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
 We describe it below to make the paper more self-contained.
 
@@ -49,13 +51,3 @@ The score of a grid is the sum of the lengths of all thematic words included in 
 %Using a word from the thematic dictionary gives a point for every letter.
 %Thus, every cell in the grid can give at most two points, when it lies at the
 %intersection of two thematic words.
-
-Constructing a competition grid requires both adding black cells and words.
-Similarly to~\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21},
-we assume that the black cells are given as input
-and address only the task of filling in the words.
-With the black cells given the remaining problem of filling in the words can be modelled as
-an optimization CSP. Apart from the optimization component (score function),
-this is a standard example of a CSP.
-Word slots are variables and their initial domains are all words
-of the corresponding length.
