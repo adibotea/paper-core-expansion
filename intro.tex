@@ -1,89 +1,113 @@
 \section{Introduction}
 \label{sec::intro}
 
-\vb{I have made many changes through the section. Please proof-read.}
+\ab{Started editing the introduction.
+Vadim, please don't proofread yet, as it's not a finished draft yet.}
 
-Crosswords puzzles are a very popular form of entertainment.
-We address a problem
-inspired by the Romanian Crosswords Competition and introduced in the search literature by
-\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
-The task is to fill a crosswords grid with words and black cells.
-Some words, called thematic words, give points. The objective
-is to obtain as many points as possible.
-The application has a decades-long history of annual national-level competitions.
-The problem is challenging to AI, which lags 
-behind the performance of top human contestants.
-%
-The problem can be represented as a constraint optimization and tackled with a search algorithm. As usual in a search, the branching factor
-(i.e., the number of successor states to a parent state)
-can greatly impact the search space size and search time.
-
-We present {\em tiered state expansion}, an approach to reducing the branching factor.
-We adopt a few assumptions that characterize 
-an important and broad class of constraint optimization problems.
-Specifically our states are defined by a finite set of variables with a finite discrete domain each. A  state corresponds to an instantiation of zero or more variables. Successors of a state are defined by selecting an uninstantiated variable and instantiating it with some/every of its possible values.
+Constraint optimization 
+is a challenging combinatorial search problem.
+A broad class of constraint optimization problems can be modelled utilizing
+a finite set of variables with a finite discrete domain each. 
+A state corresponds to an instantiation of zero or more variables. 
+%Successors of a state are defined by selecting an 
+%uninstantiated variable and instantiating it with some/every of its possible values.
 %Each such instantiation produces as a successor state.
 Legal states need to satisfy a set of constraints specified in the definition of the problem instance.
 An objective function maps states to a solution cost (lower is better) or score (higher is better).
-Constraint propagation can gradually shrink domains of uninstantiated variables based on  
-values of already instantiated variables.
+Without loss of generality, in this work with focus on maximizing a score.
 
-For example, in a crosswords application, variables can correspond to slots,
-where a slot is defined as a horizontal or vertical sequence of white cells bordered
-at each end by either the margin of the grid or by a black cell.
-The domain of such a variable is the set of words that fit into that slot.
-At a given point in time, a slot (variable) can be instantiated with a word (value) or uninstantiated.
-A state comprises all slots with their corresponding assignment at that time (i.e., either 
-filled with a word or uninstantiated).
+We present an approach that first builds a \emph{core} of a solution,
+an instantiation to a subset of variables that have a strong contribution
+to the score function.
+A promising core is then extended into a full solution.
 
-Tiered state expansion partitions the current domain of a variable selected for instantiation
-into two subsets called {\em tier 1} and {\em tier 2}.
-The two tiers are defined so that a tier-1 subset is likely to contain values that could
-lead to higher-quality solutions, and a tier-1 subset is preferably significantly smaller than the current domain before splitting.
-When the variable is selected for expansion for the first time,
-only tier-1 values are used to generate successor states.
-An additional, special successor state called a \emph{placeholder successor}
-leaves the variable uninstantiated but flags it so that any future instantiations
-(i.e., in a state down in the subtree of the placeholder successor)
-will use only tier-2 values.
-Thus, tier-1 and tier-2 instantiations 
-for a given variable are separated during the search
-and other variable instantiations can occur between those two.
-By the time tier-2 instantiations would be performed,
-the number of remaining tier-2 values can be much smaller
-due to constraint propagation.
-This can result in a significant reduction of the actual
-branching factor.
-%\footnote{\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}
-%mention the tiered expansion idea very briefly, in passing, whereas this paper
-%presents and evaluates the idea in depth.}
+We apply our ideas to the Romanian Crosswords Competition Problem (shorter, {\sc Roco}),
+introduced in the search literature by
+\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
+The application has a decades-long history of annual national-level competitions.
+The problem is challenging to AI, which has been lagging significantly
+behind the performance of top human contestants.
 
-Our algorithmic contributions are applicable to constraint optimization problems that match
-the assumptions outlined earlier in this section.
-We require only partitioning a variable domain into two tiers,
-with tier 1 preferably small, 
-and with 
-tier-1 likely to contain some values that would lead to high-quality solutions.
+In {\sc Roco}, the input includes two lists of words (the thematic list and the regular list),
+and a $13 \times 13$ grid with white cells.
+The task is to fill the grid with words and no more than 26 black cells.
+Each thematic word gives a number of points equal to its length. The objective
+is to obtain as many points as possible.
 
-Our ideas are easy to understand and implement.
-They can be implemented as extensions to a search algorithm,
-or as new constraints in a constraint satisfaction problem.
-For simplicity, we adopt the former approach.
+{\sc Roco} generalizes a well-known problem that we
+call the \emph{standard crosswords grid generation}.
+The latter is a textbook example of a constraint satisfaction problem.
+The input is a list of words, and a grid with black cells and white cells.
+A contiguous sequence of white cells (either horizontal or vertical), bordered at 
+each end by either a black cell or the grid border, forms a so-called word slot.
+The task is to fill each word slot with a word from the dictionary, so that
+intersecting words match (i.e., have the same letter) on their common position.
+Additional constraints might be imposed, such as avoiding word repetition in a solution.
 
-Tiered state expansion is implemented in {\sc Wombat}, an existing state-of-the-art crossword puzzle solver~\cite{DBLP:conf/socs/BoteaB21}.
-Experiments demonstrate substantial speed and memory gains. Consequently, tiered state expansion allows to fully solve puzzle instances that,
-with standard expansion, would fail after a four-hour search.
-We make our code and experiments available to
-accelerate progress
-% and exceeding human performance
-in this challenging problem.
+{\sc Roco} generalizes the standard crosswords grid generation in two ways.
+First off, in {\sc Roco}, solutions are ranked by their score,
+whereas in the standard problem any correct solution will do.
 
-\begin{comment}
-The rest of the paper is organized as follows.
-First we review related work, followed by the problem formulation.
-Then we present the Romanian Crosswords Competition,
-followed by a background on constraint optimization as a search problem.
-We present the tiered state expansion in detail,
-and evaluate it on Romanian Crosswords puzzle instances.
-We end with future work and concluding remarks.
-\end{comment}
+Second off, in 
+standard crosswords grid generation, black cells are given apriori as part of the input.
+In contrast, in the {\sc Roco} problem,
+black cells need to be placed as part of the solution generation process.
+
+This difference has two important implications.
+The first implication is that the state space blows up in {\sc Roco}. 
+For example, on a $13 \time 13$ grid with $26$ black cells,
+the number of combinations is in the order of $169 \choose 26$.
+
+The second implication is that placing black cells dynamically significantly impacts 
+the formulation of the problem as a constraint optimization problem, making 
+{\sc Roco} different from typical constraint optimization problem formulations.
+Typically, constraint optimization problems have their set of variables fixed
+and defined from the beginning.
+In particular, this is the case with the standard grid generation problem,
+where the placement of black cells is given from the beginning:
+all word slots are defined at the beginning and each word slot defines one variable.
+
+On the other hand, in {\sc Roco}, word slots are defined gradually, 
+as more and more black cells are being added on the grid.
+This implies that the formulation as a constraint optimization problem
+starts with an empty set of variables, and the set of variables grows gradually.
+
+
+Recent work in {\sc Roco} showed that state-of-the-art AI significantly lags behind
+top human performance, despite a significant recent progress.
+
+Part of recent efforts focus on an easier subproblem, assuming that
+a good placement of black cells is given apriori as part of the input
+~\cite{DBLP:conf/socs/BoteaB21}.\ab{Also cite aiide 22}
+By decomposing the problem in such a way, researchers have been capable
+to bring the word-placing component to a strong level,
+where the scores of human champions can effectively be reproduced (and in some
+cases even exceeded) if the black cell configuration of human-champion grids
+is given as input.
+However, requiring the black cell configuration as input remains a major limitation
+of such previous work. Different black cell configurations vary greatly in quality
+(defined as the maximum score that can be achieved
+starting from a given black cell configuration),
+and good-quality black cell configurations are very difficult to find.
+
+Other recent work has focused on generating black cell configurations
+automatically. The performance remained significantly beyond
+the top human performance.
+
+In this work we generate black cells automatically.
+We require as input a so-called pattern, which is a
+rectangular area with zero or a few black cells (e.g., two black cells).
+We reach full solutions with scores that would place us among the top 12
+results.\footnote{The top 12 results are considered as distinguished
+results in the competition, with the corresponding solutions published.
+All other competitors get their score published, but not the full solution.}
+
+Compared to Blah, our work requires only a pattern as additional input,
+as compared to the entire configuration of black cells.
+Compared to Blah, we achieve top scores (e.g., 190 vs 182), and in a much shorter time
+than Blah required to reach 182 points.
+
+We believe that our results are a breakthrough on the journey to eventually
+exceeding best human performance with fully automated solutions.
+Reaching such a point further requires: an automated selection of the input pattern,
+and further pushing scores up from a top-12 level to higher than the best human score.
