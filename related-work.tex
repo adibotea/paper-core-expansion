@@ -1,6 +1,9 @@
 \section{Related Work}
 \label{sec::relwork}
 
+\ab{Still an almost verbatim copy of the last paper. Todo: edit.}
+
+
 The literature distinguishes between solving crosswords puzzles
 and several variations of generating crosswords grids.
 In the former, a problem instance is defined by a grid with black cells but no letters
@@ -59,16 +62,3 @@ to encode constraints.
 %Section~\ref{sec::roco}.
 %We use a different simplification requiring a configuration of black cells to be provided as an %input.
 %Eight instances remained unsolved \cite{DBLP:journals/corr/abs-1901-01830}.
-
-
-Domain-independent AI planning has seen the application of concepts such as helpful actions
-\cite{DBLP:journals/jair/HoffmannN01} and preferred operators~\cite{DBLP:journals/jair/Helmert06}.
-The idea is to partition the actions applicable in a state into two subsets,
-with one subset being heuristically considered likely to contain an action that would result
-in a (good-quality) solution. 
-In the Fast Forward system,
-unhelpful actions can be pruned away,
-at the cost of losing the search completeness \cite{DBLP:journals/jair/HoffmannN01}.
-In Fast Downward, preferred operators can get a higher priority at expansion, 
-compared to a non-preferred operator~\cite{DBLP:journals/jair/Helmert06}.
-A key difference from our work is that tier-2 successors never get generated as children of the original parent state. Instead, their instantiation is considered in another state, deeper in the search tree, at which point the number of tier-2 successors can greatly be reduced due to constraint propagation.
