@@ -1,0 +1,96 @@
+
+
+\section{Background}
+\label{sec::problem}
+
+In this section we discuss how standard crosswords grid generation and a few important generalizations
+can be mapped into constraint satisfaction and constraint optimization problems.
+
+\subsection{Constraint Satisfaction and Constraint Optimization}
+
+%We address the same problem as~\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
+We consider constraint optimization problems
+obtained from
+constraint satisfaction problems (CSPs) by adding a score function on partial
+or full solutions.
+
+\bdf
+A \emph{constraint satisfaction problem (CSP)} is a tuple ${\cal P} = \langle X, D, C \rangle$,
+where:
+\begin{itemize} 
+\item $X = \{v_1, \dots, v_n\}$ is a collection of variables;
+\item $D = \{D_1, \dots, D_n\}$ is a collection of finite domains with $D_i$ corresponding to variable $v_i$;
+\item $C = \{C_1, \dots, C_m\}$ is a collection of constraints. Each constraint $C_j$ is a pair $\langle t_j, R_j \rangle$, where $t_j \subset X$ is a subset of $p$ variables and $R_j$ is a $p$-ary relation on the corresponding subset of domains.
+\end{itemize}
+\edf
+
+\noindent We define $D^*$ as an extension of $D$ that contains a special symbol $\bot$ in each domain for variables with no actual value assigned yet. $D^*$ can be used to represent partial assignments.
+
+\bdf
+An \emph{optimization CSP} is a tuple $\langle {\cal P}, f \rangle$, 
+where ${\cal P}$ is a CSP and 
+$f : D^* \rightarrow \mathbb{R}^+$ is a score function.
+\edf
+
+An assignment $s \in D^*$ is {\em consistent} if 
+it violates no constraint.
+A consistent partial assignment is called a {\em partial solution}.
+A consistent full assignment is a {\em full solution} (shorter, solution).
+A solution is optimal if no solution has a higher score.
+
+\subsection{Crosswords Grid Generation}
+
+Crosswords grid generation is a well-known, textbook example of a CSP.
+In a crosswords grid generation instance, the input is a list of words, and 
+a grid with black cells and white cells.
+Define a word slot as a sequence of contiguous cells, either on a row or a column,
+bordered at each end of the sequence with either a black cell or the border of the grid.
+A popular way to model crosswords grid generation as a CSP is to 
+define one CSP variable for each word slot.
+Its domain is the list of words of the corresponding length.
+The problem is NP-complete \cite{}.
+
+\subsection{Optimization Crosswords}
+
+Optimization crosswords introduce a scoring function on top of the 
+standard crosswords grid generation.
+Similarly to crosswords grid generation, the problem is NP-complete \cite{}.
+However, in practice, optimization crosswords instances often are much more
+challenging compared to standard grid generation.
+Intuitively, this is because in standard grid generation any correct solution will do,
+whereas in optimization crosswords we are interested in solutions with a high score.
+
+\subsection{Crosswords with Dynamic Black Cells}
+
+In standard grid generation problems, the placement of black cells is
+given as input.
+In contrast, in crosswords with dynamic black cells, the initial grid contains 
+only white cells. 
+The task is to fill the grid with a combination of black cells
+and words from the input list.
+Black cells added to the grid need to satisfy a number of constraints,
+depending on the exact problem formulation.
+A maximum number of black cells (as a percentage of the total number of cells)
+is a typical example of such a constraint.
+The next section shows in detail the constraints related to black cells 
+that we consider in this work.
+
+The need to add black cells as part of the solving process has two 
+major implications.
+Firstly, the state space blows up combinatorially.
+For instance, on a $13 \times 13$ grid that accepts at most $26$
+black cells, the total number of combinations is $169 \choose 26$.
+
+Seconly, adding black cells dynamically has the important consequence that
+word slots are introduced gradually.
+The number of word slots is initially zero, and it grows
+as more and more black cells are placed on the grid.
+In other words, the CSP variables of the problem instance are introduced gradually,
+rather than being all defined from the beginning.
+Before all black cells are placed on the grid, 
+the constraint problem modelling has only a \emph{partial} problem definition,
+making the solving approach more challenging.
+
+As seen in the next section, the {\sc Roco} problem features both 
+an optimization component and dynamic black cells, on top of the
+standard crosswords grid generation problem.
