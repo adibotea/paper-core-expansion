@@ -14,10 +14,10 @@ npw = numParWorkers;
 fn = '../source/extcore-alive-0-puzzle-72-2975-1488--1--1.pzl';
 
 %% Load
-cg = loadPZL2(fn);
+cg = loadPZL2(fn)
 
 % create the boolean grid
-g = (cg == '#');
+g = (cg == '#')
 
 
 %% Visualize
