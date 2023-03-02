@@ -19,11 +19,16 @@ if (fid ~= -1)
     opts.DataLines = [1 1];
     tmp = readcell(gFN,opts);
     tmp2 = tmp(:,1);
-    gridSize = tmp2{1};
+    numLines = tmp2{1};
+
+    opts.DataLines = [2 2];
+    tmp = readcell(gFN,opts);
+    tmp2 = tmp(:,1);
+    numColumns = tmp2{1};
 
     % read the right part of the file
     opts = detectImportOptions(gFN,'FileType','text');
-    opts.DataLines = [6 6+gridSize-1];
+    opts.DataLines = [6 6+numLines-1];
     opts.Whitespace = '';
     opts.EmptyLineRule = 'read';
     opts.Delimiter = {};
@@ -31,12 +36,11 @@ if (fid ~= -1)
     tmp2 = tmp(:,1);
 
     % convert it to a matrix
-    numLines = size(tmp2,1);
-    g = char(zeros(numLines,numLines));
+    g = char(zeros(numLines,numColumns));
 
     for i = 1:numLines
         tmp3 = cell2mat(tmp2(i));
-        g(i,:) = tmp3(1:2:numLines*2);
+        g(i,:) = tmp3(1:2:numColumns*2);
     end
 
     % replace walls and empty spaces
