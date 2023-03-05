@@ -7,7 +7,17 @@ As seen in the pseudocode, the approach takes as input a \emph{pattern} $p$, bes
 the thematic dictionary and the regular dictionary.
 A {pattern} is a rectangular grid of a given size, with zero or more black cells and no letters.
 
-Figure \ref{} shows an example of a pattern. It is a $6 \times 4$ grid with two black cells, one in the top-left corner and one in the bottom-right corner.
+\begin{figure}
+\centering
+\begin{tabular}{ccc}
+\includegraphics[width=.15\textwidth]{_plots/6x4-puzzle.pdf} & &
+\includegraphics[width=.15\textwidth]{_plots/core-6x4-puzzle.pdf}
+\end{tabular}
+\caption{Left: A pattern defined as a $6 \times 4$ grid with two black cells, in the top-left corner and the bottom-right corner. Right: A core based on the pattern at hand.}
+\label{fig:pattern}
+\end{figure}
+
+Figure \ref{fig:pattern} (left) shows an example of a pattern. It is a $6 \times 4$ grid with two black cells, one in the top-left corner and one in the bottom-right corner.
 Observe that the pattern is significantly smaller than the $13 \times 13$ size of the full-size grid.
 The pattern will end up being integrated inside the full-size solutions generated with our approach,
 as we will show in this section.
@@ -53,19 +63,27 @@ The small crosswords puzzle instance constructed in this way is
 solved with the {\sc Wombat} solver.
 The solver enumerates all solutions, which are precisely the 
 cores computed at step 1 in Algorithm \ref{algo:core-exp}.
-Figure \ref{} shows an example of a core.
+Figure \ref{fig:pattern} (right) shows an example of a core.
 
 
 
 \subsection{Expanding Cores}
 
+\begin{figure}
+\centering
+\includegraphics[width=.45\textwidth]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
+\caption{An expanded core based on the core shown in Figure \ref{fig:pattern} (right).}
+\label{fig:exp-core}
+\end{figure}
+
+
 At step 2, each core is expanded by placing full thematic words on top of the substrings present in the core at hand.
 For each thematic word added to an expanded core, we add two black cells at its corresponding endpoints.
-Figure \ref{} shows an example of an expanded core. 
+Figure \ref{fig:exp-core} shows an example of an expanded core. 
 The cells on the top row, bottom row, leftmost column and rightmost column form the \emph{border} of the expanded core. The rest of the cells are the \emph{inner part} of the expanded core.
 We define the \emph{inner size} as $h \times w$, where $h$ is the number of rows
 of the inner part and $w$ is the number of columns.
-In Figure \ref{}, the inner size is $10 \times 11$.
+In Figure \ref{fig:exp-core}, the inner size is $10 \times 11$.
 Observe that the border can only contain black cells and empty cells.
 The inner part can contain letters, black cells and empty cells.
 
@@ -86,6 +104,16 @@ border, if any, will be kept in a full-size solution, as shown later in this sec
 
 \subsection{Generating Seeds}
 
+\begin{figure*}
+\centering
+\begin{tabular}{ccc}
+\includegraphics[width=.32\textwidth]{_plots/alive-0-puzzle-72-2975-1488--1--1.pdf} &
+\includegraphics[width=.32\textwidth]{_plots/alive-0-puzzle-72-2975-1488--1-1.pdf} & 
+\includegraphics[width=.32\textwidth]{_plots/alive-0-puzzle-72-2975-1488--1-2.pdf}
+\end{tabular}
+\caption{A few seeds generated from the extended core shown in Figure \ref{fig:exp-core}.}
+\label{fig:seeds}
+\end{figure*}
 
 When the inner size of an extended core $e$ is $13 \times 13$, it fits inside a full $13 \times 13$ grid in a unique way. However,
 if the inner height and/or width are smaller than 13, $e$ can fit inside a full grid in multiple positions,
@@ -94,16 +122,20 @@ obtained by shifting it inside the full grid vertically and/or horizontally.
 Each fitting of an extended seed inside a full grid is called a \emph{seed}.
 As such, a seed is a full-size $13 \times 13$ grid, with 
 letters, black cells and empty cells.
-Figure \ref{} shows a few seeds generated from an extended core.
+Figure \ref{fig:seeds} shows a few seeds generated from an extended core.
 
 When the first column of the inner part of $e$ coincides 
 with the first column of the seed, the leftmost column of $e$'s border
 is left out from the seed. 
 Otherwise, it is kept within the seed.
-In Figure \ref{} (a), the leftmost border column is left out,
-and it is kept in the seed in Figure \ref{} (b).
 Other parts of the border (top row, bottom row, rightmost column)
 are left out or kept inside in a similar way.
+For example, in Figure \ref{fig:seeds} (left), the leftmost border column 
+and the top border row are left out.
+The seed in Figure \ref{fig:seeds} (middle) leaves out the
+leftmost border column.
+The seed at the right of Figure \ref{fig:seeds} leaves out
+the leftmost border column and the bottom border row.
 
 
 A seed is post processed with two objectives: to detect dead seeds 
