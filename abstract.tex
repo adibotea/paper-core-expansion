@@ -1,27 +1,18 @@
 \begin{abstract}
-\ab{Still a verbatim copy of the last paper. Todo: rewrite from scratch.}
 
-Crosswords puzzles continue to be a popular form of entertainment.
-In Artificial Intelligence (AI), crosswords can be represented as a constraint problem,
-and attacked with a combinatorial search algorithm.
-In combinatorial search,
-the branching factor can play a crucial role on the search space size
-and thus on the search effort.
-We introduce tiered state expansion, a completeness-preserving technique
-to reduce the branching factor.
-In problems where the successors of a state correspond to the 
-values in the domain of a state variable selected for instantiation,
-the domain is partitioned into two subsets called tiers.
-The instantiation of the two tiers is performed at different times,
-with tier 1 first and tier 2 
-in a subsequent state.
-Before a tier-2 instantiation occurs,
-its set of applicable values can shrink
-substantially due to constraint propagation,
-with a corresponding reduction of the branching factor.
-We apply tiered state expansion to a constraint optimization problem
-modeled on the Romanian Crosswords Competition, empirically demonstrating a substantial improvement.
-Tiered state expansion allows finding a full solution,
-with an average CPU time of up to $1.2$ minutes,
-to many puzzles that would otherwise time out after 4 hours.
+In combinatorial optimization,
+many problem instances
+remain challenging to current technology.
+We present an approach that first builds a core, a portion of the problem that will 
+have a high contribution to the objective function.
+A core is expanded into a seed, a partial solution with
+a subset of variables defined and instantiated.
+Seeds are further extended into full solutions.
+We demonstrate our ideas in the Romanian Crosswords Competition problem.
+It is a challenging, NP-hard constraint optimization problem
+where state-of-the-art AI has been lagging significantly behind top human performance.
+Our approach takes as input the size of a rectangular core to consider.
+The results advance state-of-the-art substantially.
+We report a boost in the scores obtained, bringing our solutions
+in the vicinity of top human entries.
 \end{abstract}
