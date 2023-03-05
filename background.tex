@@ -48,13 +48,13 @@ bordered at each end of the sequence with either a black cell or the border of t
 A popular way to model crosswords grid generation as a CSP is to 
 define one CSP variable for each word slot.
 Its domain is the list of words of the corresponding length.
-The problem is NP-complete \cite{}.
+The problem is NP-complete \cite{garey1979computers,10.1007/978-3-642-30347-0_15}.
 
 \subsection{Optimization Crosswords}
 
 Optimization crosswords introduce a scoring function on top of the 
 standard crosswords grid generation.
-Similarly to crosswords grid generation, the problem is NP-complete \cite{}.
+Similarly to crosswords grid generation, the problem is NP-complete \cite{DBLP:conf/socs/BoteaB21}.
 However, in practice, optimization crosswords instances often are much more
 challenging compared to standard grid generation.
 Intuitively, this is because in standard grid generation any correct solution will do,
@@ -93,4 +93,6 @@ making the solving approach more challenging.
 
 As seen in the next section, the {\sc Roco} problem features both 
 an optimization component and dynamic black cells, on top of the
-standard crosswords grid generation problem.
+standard crosswords grid generation problem,
+inheriting a combination of 
+the computational challenges outlined earlier in this section.
