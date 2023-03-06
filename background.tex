@@ -79,7 +79,9 @@ The need to add black cells as part of the solving process has two
 major implications.
 Firstly, the state space blows up combinatorially.
 For instance, on a $13 \times 13$ grid that accepts at most $26$
-black cells, the total number of combinations is $169 \choose 26$.
+black cells, the total number of combinations is $169 \choose 26$,
+not all of which are legal, according to the constraints
+specified in the next section.
 
 Seconly, adding black cells dynamically has the important consequence that
 word slots are introduced gradually.
@@ -91,7 +93,7 @@ Before all black cells are placed on the grid,
 the constraint problem modelling has only a \emph{partial} problem definition,
 making the solving approach more challenging.
 
-As seen in the next section, the {\sc Roco} problem features both 
+As mentioned in the introduction, and also seen in the next section, the {\sc Roco} problem features both 
 an optimization component and dynamic black cells, on top of the
 standard crosswords grid generation problem,
 inheriting a combination of 

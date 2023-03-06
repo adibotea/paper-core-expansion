@@ -13,7 +13,8 @@ A {pattern} is a rectangular grid of a given size, with zero or more black cells
 \includegraphics[width=.15\textwidth]{_plots/6x4-puzzle.pdf} & &
 \includegraphics[width=.15\textwidth]{_plots/core-6x4-puzzle.pdf}
 \end{tabular}
-\caption{Left: A pattern defined as a $6 \times 4$ grid with two black cells, in the top-left corner and the bottom-right corner. Right: A core based on the pattern at hand.}
+\caption{Left: A pattern defined as a $6 \times 4$ grid with two black cells, in the top-left corner and the bottom-right corner. Right: A core based on the pattern at hand.
+\ab{Vadim, please enlarge the fonts in the core (this figure, right half).}}
 \label{fig:pattern}
 \end{figure}
 
@@ -150,9 +151,9 @@ the black cell or letter at hand on the corresponding position.
 
 Algorithm \ref{algo:fixpoint} shows seed post-processing in pseudocode.
 Deadend detection includes checking for closures and semi-closures;
-adjacent black cells\footnote{As this test is applied to the full
+adjacent black cells;\footnote{As this test is applied to the full
 grid, it covers the part of the extended seed border, if any, that was
-kept in the seed.}; 
+kept in the seed.}
 word repetitions; and
 sequences of letters that do not match with any word from the dictionaries.
 
