@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec::intro}
 
-Many instances of NP-hard constraint optimization problems
+Many instances of constraint optimization problems
 remain challenging to current technology.
 In such problems, the task is to find a solution
 (e.g., assignment to variables that define a state) 
@@ -33,13 +33,13 @@ Each thematic word gives a number of points equal to its length. The objective
 is to obtain as many points as possible.
 
 {\sc Roco} generalizes a well-known problem that we
-call the \emph{standard crosswords grid generation}.
+call the {standard crosswords grid generation}.
 The latter is a textbook example of a constraint satisfaction problem.
 The input is a list of words, and a grid with black cells and white cells.
 The task is to fill the white-cell area with criss-crossing words.
 
 {\sc Roco} generalizes the standard crosswords grid generation in two ways,
-and the resulting differences amplify the computational difficulty of {\sc Roco}.
+and the resulting differences amplify the computational difficulty of {\sc Roco} in practice.
 Firstly, in {\sc Roco}, solutions are ranked by their score,
 whereas in the standard problem any correct solution will do.
 Often, finding a high-quality solution is much more challenging than finding any solution.
@@ -56,7 +56,7 @@ blows up the search space combinatorially, and good configurations
 Our approach takes as input the size of a rectangular core,
 and the locations of zero or more black cells inside the core.
 We report a substantial improvement of the scores achieved compared
-to previous work, in a computational time that is orders of magnitude shorter.
+to previous work.
 Our system is capable of generating scores in the vicinity of human champion scores.
 We believe that our work is a breakthrough on the journey to exceeding
 human performance in this challenging domain.
