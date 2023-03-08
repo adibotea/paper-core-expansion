@@ -13,8 +13,7 @@ A {pattern} is a rectangular grid of a given size, with zero or more black cells
 \includegraphics[width=.15\textwidth]{_plots/6x4-puzzle.pdf} & &
 \includegraphics[width=.15\textwidth]{_plots/core-6x4-puzzle.pdf}
 \end{tabular}
-\caption{Left: A pattern defined as a $6 \times 4$ grid with two black cells, in the top-left corner and the bottom-right corner. Right: A core based on the pattern at hand.
-\ab{Vadim, please enlarge the fonts in the core (this figure, right half).}}
+\caption{Left: A pattern defined as a $6 \times 4$ grid with two black cells, in the top-left corner and the bottom-right corner. Right: A core based on the pattern at hand.}
 \label{fig:pattern}
 \end{figure}
 
@@ -184,10 +183,24 @@ letter on a given position.
 \label{algo:fixpoint}
 \end{algorithm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Ranking Seeds}
 
-VADIM
+Given a seed (i.e., a $13 \times 13$ with some letters and $n$ black cells) we need to complete it to a full grid by placing additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} in the empty space of the seed. We want to do it in such a way that {\sc Wombat} can fill the resulting word slots with dictionary words to achieve a high score. 
+
+There are two principally different ways of placing the remaining $26-n$ black cells: one-shot and incremental modifications. Indeed, one can place all $26-n$ black cells in one shot and then submit the resulting grid to {\sc Wombat} to fill in the words and compute the score. Alternatively, one can take an existing grid with $26$ black cells and move its black cells around (protecting the letters and black cells from the original seed) in an attempt to improve the score. A grid modified (or mutated) in such a way is then submitted to {\sc Wombat} again to compute its new score and the process repeats. One can view this process as an evolution of grids with {\sc Wombat} being the (slow) fitness function.
+
+The first way of completing a seed to a full grid is faster since {\sc Wombat} is invoked only once. The second way is slower but can result in higher-score grids since the placement of the additional black cells is incremental and guided by multiple {\sc Wombat} score computations.
+
+After extensive experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed and then evolve only the most promising seeds.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Evolving Seeds}
+\label{sec:evolution}
 
 VADIM

@@ -40,6 +40,7 @@ if (~isempty(l))
         for yI = 1:size(l,1)
             if (l(yI,xI) ~= ' ')
                 text(xI+0.25,yI+0.5,l(yI,xI),'Color','black');
+                %text(xI+0.4,yI+0.5,l(yI,xI),'Color','black','FontSize',18);
             end
         end
     end
