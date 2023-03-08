@@ -186,21 +186,80 @@ letter on a given position.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Ranking Seeds}
+\label{sec:ranking}
 
-Given a seed (i.e., a $13 \times 13$ with some letters and $n$ black cells) we need to complete it to a full grid by placing additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} in the empty space of the seed. We want to do it in such a way that {\sc Wombat} can fill the resulting word slots with dictionary words to achieve a high score. 
+Given a seed (i.e., a $13 \times 13$ grid with some letters and $n$ black cells) we need to complete it to a full grid by placing additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} in the empty space of the seed. We want to do it in such a way that {\sc Wombat} can fill the resulting word slots with dictionary words to achieve a high score. 
 
 There are two principally different ways of placing the remaining $26-n$ black cells: one-shot and incremental modifications. Indeed, one can place all $26-n$ black cells in one shot and then submit the resulting grid to {\sc Wombat} to fill in the words and compute the score. Alternatively, one can take an existing grid with $26$ black cells and move its black cells around (protecting the letters and black cells from the original seed) in an attempt to improve the score. A grid modified (or mutated) in such a way is then submitted to {\sc Wombat} again to compute its new score and the process repeats. One can view this process as an evolution of grids with {\sc Wombat} being the (slow) fitness function.
 
 The first way of completing a seed to a full grid is faster since {\sc Wombat} is invoked only once. The second way is slower but can result in higher-score grids since the placement of the additional black cells is incremental and guided by multiple {\sc Wombat} score computations.
 
-After extensive experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed and then evolve only the most promising seeds.
+After some experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed and then evolve only the most promising seeds.
 
+The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (its hyperparameters found in Table~\ref{tab:hyperparameters}. The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
 
-
+\begin{table}[htbp]
+\caption{Hyperparameters used for ranking/evolving seeds.}
+\label{tab:hyperparameters}
+\centering
+{\small \begin{tabular}{l|r|r}
+\toprule
+{\bf Hyperparameter} & {\bf Ranking} & {\bf Evolving} \\
+\midrule
+{\sc Wombat} target score & $0$ & $0$ \\
+{\sc Wombat} time limit & $1$ minute & $3$ seconds to $3$ minutes \\
+{\sc Wombat} weight & $0.64$ & $0.5$ to $0.7$ \\
+Time limit per seed & $1$ minute & $4$ hours \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Evolving Seeds}
 \label{sec:evolution}
 
-VADIM
+Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$ of them with the top score estimates. We then evolved each of the $K$ seeds with a time limit listed in Table~\ref{tab:hyperparameters}. The number $K$ was chosen in a such a way that the total time of the ranking plus evolving would be around two days (Table~\ref{tab:rankingEvolving}). All $K$ evolutions runs were in parallel on a $32$-core CPU.
+
+\begin{table}[htbp]
+\caption{Ranking and evolving seeds.}
+\label{tab:rankingEvolving}
+{\scriptsize
+\centering
+\begin{tabular}{c|r|r|r|r}
+\toprule
+{\bf year} & {\bf seeds ranked ($N$)} & {\bf ranking time} & {\bf seeds evolved ($K$)} & {\bf evolving time}\\
+\midrule
+2013 & $932$ & $30$ minutes & $352$ & $1.9$ days \\ 
+2021 & $38035$ & $21$ hours & $224$ & $1.2$ days \\ 
+2023 & $446$ & $16$ minutes & $352$ & $2.0$ days \\ 
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+After experimenting with plain evolution in the spirit of published work~\cite{} we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the chances of leaving the local maximum are low. 
+
+Thus we adapted the recent MAP Elites algorithm~\cite{} that explicitly maintain diversity of the population. We picked the two features to be the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP Elites with three maps, each with different feature values (Table~\ref{tab:mrme}).
+
+\begin{table}[htbp]
+\caption{Feature values used for our multi-resolution MAP Elites algorithm.}
+\label{tab:mrme}
+\centering
+{\small
+\begin{tabular}{c|c|c|c}
+\toprule
+{\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map size} \\
+\midrule
+$1$ & $\{6,9.5,13\}$ & $\{0,13,26\}$ & $3 \times 3$ \\
+$2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
+$3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Given a grid we compute its $f_1$ and $f_2$ features and place it in the appropriate cell on each map. For instance a grid with the maximum word slot length of eight and three walls ($f_1 = 8, f_2 = 3$) will place in the cell with coordinates $(2,2)$ on map 2. Indeed the value of $f_1 = 8$ is closest to the second $f_1$ value for that map (i.e., $8.3333$). Similarly, the value of $f_2 = 3$ is equally close to the second and third $f_2$ values for that map (i.e., $2$ and $4$). We break ties towards lower values. 
+
+Algorithm~\ref{alg:mrme} provides the details. 
+
+\vb{To complete :)}
