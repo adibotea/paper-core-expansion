@@ -41,8 +41,12 @@ So-called families of words are forbidden (e.g.,
 WRITER and WRITING cannot both be placed on the same grid).\footnote{We do not observe the family-of-words constraint as no mapping of words into their families is available to us.}
 All cells in a (full) solution must contain a letter or a black cell.
 %Two intersecting slots must agree on the letter placed in the common cell.
+
 The score of a grid is the sum of the lengths of all thematic words included in the solution. 
-%Note that if two thematic words share a cell then that cell contributes two points to the score.\vb{correct?}
+This is equivalent to saying that, in a solution, each cell at the intersection of two
+thematic words contributes two points. A cell at the intersection of one thematic word
+and one regular word contributes one point. A cell at the intersection of two 
+regular points contributes zero points, and so does every black cell.
 
 %For example, in the nine-year dataset that we use in our study in this work,
 %the thematic dictionary varies from $278$ to $481$ words,
