@@ -27,12 +27,12 @@ as we will show in this section.
 \KwIn{Pattern $p$, thematic dictionary and regular dictionary}
 %\KwOut{Full solutions}
 %\tcc{Search for a full solution}
-$C \leftarrow \mbox{GenerateCores}(p)$\;
-$E \leftarrow \mbox{ExpandCores}(C)$\;
-$S \leftarrow \mbox{GenerateSeeds}(E)$\;
-Rank $S$ and put top $k$ elements into a list $S'$\;
+$C \leftarrow \mbox{GenerateCores}(p)$\; \label{algl:generateCores}
+$E \leftarrow \mbox{ExpandCores}(C)$\; \label{algl:expandCores}
+$S \leftarrow \mbox{GenerateSeeds}(E)$\; \label{algl:generateSeeds}
+Rank $S$ and put top $k$ elements into a list $S'$\; \label{algl:rankSeeds}
 \For{$s \in S'$} {
-    $\mbox{Evolve}(s)$\;
+    $\mbox{Evolve}(s)$\; \label{algl:evolveSeeds}
 }
 \caption{{\sc Generating full solutions.}}
 \label{algo:core-exp}
