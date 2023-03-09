@@ -59,7 +59,7 @@ a freely available C++  solver for crosswords optimization.
 {\sc Wombat} takes as input up to two dictionaries (one thematic and one regular),
 and a grid with the black cells in place, and zero or more letters.
 The program is very effective at computing high scores when such input 
-is provided (including the black cells)~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}.
+is provided, including the black cells~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}.
 
 In the small instance we build,
 the grid is the pattern $p$. There is only one dictionary, which contains 
@@ -74,7 +74,7 @@ if IONESCU and POPESCU are thematic words,
 the substrings generated are IONE, ONES, NESC, ESCU, POPE, OPES, PESC, and ESCU.
 Duplicates such as ESCU are kept only once.
 
-At this step, we set {\sc Wombat} to enumerate all solutions, which are precisely the 
+We set {\sc Wombat} to enumerate all solutions to the small instance, which are precisely the 
 cores computed at step 1 in Algorithm \ref{algo:core-exp}.
 
 
@@ -178,7 +178,6 @@ Forced letters are detected when all matching words have the same
 letter on a given position, and it is not possible to insert
 a black cell between the sequence of letters and the cell where
 the forced letter is being added. 
-
 This includes the case
 where exactly one word matches the sequence of letters at hand,
 forcing the addition of the entire word, and its corresponding
@@ -208,7 +207,10 @@ is adjacent to the border of the grid at that endpoint.}
 \subsection{Ranking Seeds}
 \label{sec:ranking}
 
-Given a seed (i.e., a $13 \times 13$ grid with some letters and $n$ black cells) we need to complete it to a full grid by placing additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} in the empty space of the seed. We want to do it in such a way that {\sc Wombat} can fill the resulting word slots with dictionary words to achieve a high score. 
+Given a seed (i.e., a $13 \times 13$ grid with some letters and $n$ black cells) we need to complete with an additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} 
+so that {\sc Wombat} can 
+subsequently attack the instance and fill the remaining white area with words.
+The placement of the black cells should allow {\sc Wombat} to obtain a high score on the resulting instance.
 
 There are two principally different ways of placing the remaining $26-n$ black cells: one-shot and incremental modifications. Indeed, one can place all $26-n$ black cells in one shot and then submit the resulting grid to {\sc Wombat} to fill in the words and compute the score. Alternatively, one can take an existing grid with $26$ black cells and move its black cells around (protecting the letters and black cells from the original seed) in an attempt to improve the score. A grid modified (or mutated) in such a way is then submitted to {\sc Wombat} again to compute its new score and the process repeats. One can view this process as an evolution of grids with {\sc Wombat} being the (slow) fitness function.
 
@@ -216,13 +218,14 @@ The first way of completing a seed to a full grid is faster since {\sc Wombat} i
 
 After some experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed and then evolve only the most promising seeds.
 
-The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (its hyperparameters found in Table~\ref{tab:hyperparameters}. The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
+The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (with the hyperparameters found in Table~\ref{tab:hyperparameters}). The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \caption{Hyperparameters used for ranking/evolving seeds.}
 \label{tab:hyperparameters}
 \centering
-{\scriptsize \begin{tabular}{l|r|r}
+%{\scriptsize
+{ \begin{tabular}{l|r|r}
 \toprule
 {\bf Hyperparameter} & {\bf Ranking} & {\bf Evolving} \\
 \midrule
@@ -234,7 +237,7 @@ Number of maps $m$ & & $3$ \\
 Number of parent elites per map $B$ & & $256$ \\
 \bottomrule
 \end{tabular}}
-\end{table}
+\end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -246,11 +249,14 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 \begin{table}[htbp]
 \caption{Ranking and evolving seeds.}
 \label{tab:rankingEvolving}
-{\scriptsize
+%{\scriptsize
+{
 \centering
 \begin{tabular}{c|r|r|r|r}
 \toprule
-{\bf year} & {\bf seeds ranked ($N$)} & {\bf ranking time} & {\bf seeds evolved ($K$)} & {\bf evolving time}\\
+{\bf year} & {\bf seeds} & {\bf ranking} & {\bf seeds} & {\bf evolving}\\
+           & {\bf ranked} & {\bf time} & {\bf evolved} & {\bf time}\\
+           & {\bf ($N$)} & {\bf time} & {\bf ($K$)} & {\bf time}\\
 \midrule
 2013 & $932$ & $30$ minutes & $352$ & $1.9$ days \\ 
 2021 & $38035$ & $21$ hours & $224$ & $1.2$ days \\ 
@@ -266,7 +272,7 @@ Thus we adapted the recent MAP-Elites algorithm~\cite{mapElites} that explicitly
 
 \begin{algorithm}[htbp]
 \DontPrintSemicolon 
-{\small
+{
 \KwIn{seed grid $s$}
 \KwOut{champion grid $c$, its score $\score(c)$}
 

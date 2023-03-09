@@ -91,7 +91,9 @@ In other words, the CSP variables of the problem instance are introduced gradual
 rather than being all defined from the beginning.
 Before all black cells are placed on the grid, 
 the constraint problem modelling has only a \emph{partial} problem definition,
-making the solving approach more challenging.
+making the solving more challenging.
+For example, constraint propagation can be less effective
+at detecting unfeasible values in the domains of state variables.
 
 As mentioned in the introduction, and also seen in the next section, the {\sc Roco} problem features both 
 an optimization component and dynamic black cells, on top of the
