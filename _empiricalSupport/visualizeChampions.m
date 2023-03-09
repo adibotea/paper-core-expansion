@@ -31,6 +31,8 @@ load(fn,'champion');
 
 fprintf('\nMax champion score %d | i = %d\n',maxScore,maxScoreI);
 
+% load the puzzle
+
 %% Visualize
 % the overall champion
 nexttile(1)
