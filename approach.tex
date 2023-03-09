@@ -30,12 +30,12 @@ as we will show in this section.
 \KwIn{Pattern $p$, thematic dictionary and regular dictionary}
 %\KwOut{Full solutions}
 %\tcc{Search for a full solution}
-$C \leftarrow \mbox{GenerateCores}(p)$\;
-$E \leftarrow \mbox{ExpandCores}(C)$\;
-$S \leftarrow \mbox{GenerateSeeds}(E)$\;
-Rank $S$ and put top $k$ elements into a list $S'$\;
+$C \leftarrow \mbox{GenerateCores}(p)$\; \label{algl:generateCores}
+$E \leftarrow \mbox{ExpandCores}(C)$\; \label{algl:expandCores}
+$S \leftarrow \mbox{GenerateSeeds}(E)$\; \label{algl:generateSeeds}
+Rank $S$ and put top $k$ elements into a list $S'$\; \label{algl:rankSeeds}
 \For{$s \in S'$} {
-    $\mbox{Evolve}(s)$\;
+    $\mbox{Evolve}(s)$\; \label{algl:evolveSeeds}
 }
 \caption{{\sc Generating full solutions.}}
 \label{algo:core-exp}
@@ -262,7 +262,7 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 
 After experimenting with plain evolution in the spirit of published work~\cite{} we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the chances of leaving the local maximum are low. 
 
-Thus we adapted the recent MAP Elites algorithm~\cite{} that explicitly maintain diversity of the population. We picked the two features to be the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP Elites with $m$ maps, each with different feature values. Algorithm~\ref{alg:mrme} provides the details. 
+Thus we adapted the recent MAP-Elites algorithm~\cite{mapElites} that explicitly maintain diversity of the population. We picked the two features to be the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP-Elites with $m$ maps, each with different feature values. Algorithm~\ref{alg:mrme} provides the details. 
 
 \begin{algorithm}[htbp]
 \DontPrintSemicolon 
@@ -310,7 +310,7 @@ $\score(c) = -\infty$ \;
 
 } \label{algl:mainLoopE}
 }
-\caption{\sc Multi-resolution MAP Elites.}
+\caption{\sc Multi-map MAP-Elites.}
 \label{alg:mrme}
 \end{algorithm}
 
@@ -319,7 +319,7 @@ We start by creating $m$ maps in line~\ref{algl:createMaps}. Each map is a two-d
 Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this point. So its $\score(s)$ is computed merely from the letters already in the seed.
 
 \begin{table}[htbp]
-\caption{Feature values used for our multi-resolution MAP Elites algorithm.}
+\caption{Feature values used for our multi-map MAP-Elites algorithm.}
 \label{tab:mrme}
 \centering
 {\small
