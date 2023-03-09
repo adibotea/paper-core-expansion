@@ -2,8 +2,11 @@
 
 Algorithm \ref{algo:core-exp} summarizes the main steps of our approach.
 In this section we present these steps in detail, and give an end-to-end example.
+We build an area with a high density of points, decide where to place it on the grid,
+and then build the rest of the solution around it.
+Human experts too sometimes take such a strategy.
 
-As seen in the pseudocode, the approach takes as input a \emph{pattern} $p$, besides
+As seen in the pseudocode, our approach takes as input a \emph{pattern} $p$, besides
 the thematic dictionary and the regular dictionary.
 A {pattern} is a rectangular grid of a given size, with zero or more black cells and no letters.
 
@@ -43,27 +46,36 @@ Rank $S$ and put top $k$ elements into a list $S'$\;
 
 Step 1 in Algorithm \ref{algo:core-exp} generates a collection of so-called \emph{cores} from the pattern $p$.
 A core is a pattern filled with letters on the white cells.
+Figure \ref{fig:pattern} (right) shows an example of a core.
+
 We require that, in a full solution returned with Algorithm \ref{algo:core-exp}, 
 the sub-area corresponding to the pattern will have a perfect score.
 In other words, each white cell in the pattern will contribute two points.
 
-To achieve this, we construct and solve a small crosswords puzzle instance.
-The grid is the pattern $p$. There is only one dictionary, which contains 
-substrings of the thematic words.
+To achieve this, we construct a small crosswords puzzle instance
+and solve it with 
+{\sc Wombat},
+a freely available C++  solver for crosswords optimization.
+{\sc Wombat} takes as input up to two dictionaries (one thematic and one regular),
+and a grid with the black cells in place, and zero or more letters.
+The program is very effective at computing high scores when such input 
+is provided (including the black cells)~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}.
+
+In the small instance we build,
+the grid is the pattern $p$. There is only one dictionary, which contains 
+substrings of the thematic words.\footnote{No regular dictionary is
+needed here, as we seek a perfect score for this instance.}
 It is sufficient to consider only substrings of the lengths that 
 correspond to the lengths of the word slots in the pattern.
 
-In our running example, word slot lengths are 3, 4, 5, and 6.
+In our running example, the lengths of the pattern word slots are 3, 4, 5, and 6.
 For example, when generating substrings of length 4,
 if IONESCU and POPESCU are thematic words,
 the substrings generated are IONE, ONES, NESC, ESCU, POPE, OPES, PESC, and ESCU.
 Duplicates such as ESCU are kept only once.
 
-The small crosswords puzzle instance constructed in this way is 
-solved with the {\sc Wombat} solver.
-The solver enumerates all solutions, which are precisely the 
+At this step, we set {\sc Wombat} to enumerate all solutions, which are precisely the 
 cores computed at step 1 in Algorithm \ref{algo:core-exp}.
-Figure \ref{fig:pattern} (right) shows an example of a core.
 
 
 
@@ -138,10 +150,10 @@ The seed at the right of Figure \ref{fig:seeds} leaves out
 the leftmost border column and the bottom border row.
 
 
-A seed is post processed with two objectives: to detect dead seeds 
+A seed is post processed with two objectives: to detect, if possible, dead seeds 
 (e.g., seeds that cannot be possibly expanded into a valid full solution); 
 and, for seeds that are still alive, to detect, if possible, 
-forced black cells and forced letters can could be added to the seed.
+forced black cells and forced letters that could be added to the seed.
 Given a position (cell) in a seed,
 we say that a black cell or a letter is forced onto a 
 given position if 
@@ -163,8 +175,16 @@ Similarly, forced black cells can be detected when
 all matching words finish on the same cell, forcing a black cell 
 on the cell after.
 Forced letters are detected when all matching words have the same 
-letter on a given position.
+letter on a given position, and it is not possible to insert
+a black cell between the sequence of letters and the cell where
+the forced letter is being added. 
 
+This includes the case
+where exactly one word matches the sequence of letters at hand,
+forcing the addition of the entire word, and its corresponding
+black cells to border the word.\footnote{No black cell needs to be added
+at a given end of the forced word if the word 
+is adjacent to the border of the grid at that endpoint.}
 
 \begin{algorithm}[t]
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
