@@ -14,7 +14,7 @@
 \includegraphics[width=0.56\textwidth]{_empiricalSupport/y-2023/results/_runWombat/mrmeGrids_y2023-60x446-14400x352-14179462-paper.pdf}
 
 \caption{Top results for years 2013 (top row), 2021 (middle) and 2023 (bottom). Left: seeds after
-placing additional black cells. Right: {\sc Wombat} solutions.}
+placing additional black cells. Right: {\sc Wombat} solutions,.}
 \label{fig:results}
 \end{figure*}
 
@@ -23,7 +23,8 @@ We applied the approach presented above to synthesize grids for three years of t
 For each of the three years we generated and expanded cores (lines~\ref{algl:generateCores} and \ref{algl:expandCores} in Algorithm~\ref{algo:core-exp}), generated seeds (line~\ref{algl:generateSeeds}) that were then ranked (line~\ref{algl:rankSeeds}). Top-ranked seeds were then evolved (line~\ref{algl:evolveSeeds}). The number of seeds ranked and top-ranked seeds evolved are listed in Table~\ref{tab:rankingEvolving}.
 
 
-The ranking and evolution steps were repeated four times for the same seed set for each year. Each run used a different random-number generator initialization. As per Section~\ref{sec:evolution}, each ranking + evolution run took about two days on a $32$-core CPU. We used four $32$-core CPU nodes on a grid and thus were able to execute all four runs in parallel. The highest score grids synthesized for each year are shown in Figure~\ref{fig:results}. 
+The ranking and evolution steps were repeated four times for the same seed set for each year. Each run used a different random-number generator initialization. As per Section~\ref{sec:evolution}, each ranking + evolution run took about two days on a $32$-core CPU. We used four $32$-core CPU nodes on a grid and thus were able to execute all four runs in parallel. The highest score grids synthesized for each year are shown in Figure~\ref{fig:results}. At the left, we show evolved seeds, with the contents of the original seed
+shown in tinted background, and new black cells added during the evolution as solid black cells.
 
 The human competition publishes the top 12 entries every year.
 Years 2013 and 2021 feature in their top-12 entries at least one entry that contains the $6 \times 4$ pattern
