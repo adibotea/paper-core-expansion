@@ -69,6 +69,5 @@ visualizeGrid(champion(maxScoreI).g,false(size(sg)),sg);
 exportgraphics(figMain,sprintf('%s/_runWombat/%s-paper.pdf',fnp,fns));
 
 %% Extract the grid
-
-savePZL2(sprintf('%s/_runWombat/%s.pzl',fnp,fns),putInWallsFromGrid(champion(maxScoreI).cg,champion(maxScoreI).g));
+%savePZL2(sprintf('%s/_runWombat/%s.pzl',fnp,fns),putInWallsFromGrid(champion(maxScoreI).cg,champion(maxScoreI).g));
 
