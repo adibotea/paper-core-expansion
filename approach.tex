@@ -324,20 +324,21 @@ We start by creating $m$ maps in line~\ref{algl:createMaps}. Each map is a two-d
 
 Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this point. So its $\score(s)$ is computed merely from the letters already in the seed.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \caption{Feature values used for our multi-map MAP-Elites algorithm.}
 \label{tab:mrme}
 \centering
 \begin{tabular}{c|c|c|c}
 \toprule
-{\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map size} \\
+{\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map} \\
+          &                    &                    & {\bf size} \\
 \midrule
 $1$ & $\{6,9.5,13\}$ & $\{0,13,26\}$ & $3 \times 3$ \\
 $2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
 $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 In lines~\ref{algl:updateChampionB} -- \ref{algl:updateChampionE} we update the global champion $c$: the grid with the highest $\score(c)$ seen so far by comparing its score to that of the highest-score elite $e^{\max}$ from each map. Lines~\ref{algl:pickParentsB} -- \ref{algl:pickParentsE} pick $B$ random elites from each map (with replacement) and add it to the set of all parents $P$. We then mutate each parent $\left.P\right|_j$ by adding, removing or moving around its black cells in lines~\ref{algl:mutateB} -- \ref{algl:mutateE}. We make sure that the initial seed's black cells and letters are unaffected and that the total number of black cells is $26$. The resulting mutated grids, offspring, are put in the set $C$ with duplicates removed.
 
