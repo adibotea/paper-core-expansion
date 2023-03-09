@@ -255,8 +255,8 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 \begin{tabular}{c|r|r|r|r}
 \toprule
 {\bf year} & {\bf seeds} & {\bf ranking} & {\bf seeds} & {\bf evolving}\\
-           & {\bf ranked} & {\bf time} & {\bf evolved} & {\bf time}\\
-           & {\bf ($N$)} & {\bf time} & {\bf ($K$)} & {\bf time}\\
+           & {\bf ranked} & {\bf time} & {\bf evolved} & {\bf time} \\
+           & {\bf ($N$)} & & {\bf ($K$)} & \\
 \midrule
 2013 & $932$ & $30$ minutes & $352$ & $1.9$ days \\ 
 2021 & $38035$ & $21$ hours & $224$ & $1.2$ days \\ 
@@ -270,7 +270,7 @@ After experimenting with plain evolution in the spirit of published work~\cite{}
 
 Thus we adapted the recent MAP-Elites algorithm~\cite{mapElites} that explicitly maintain diversity of the population. We picked the two features to be the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP-Elites with $m$ maps, each with different feature values. Algorithm~\ref{alg:mrme} provides the details. 
 
-\begin{algorithm}[htbp]
+\begin{algorithm}[t]
 \DontPrintSemicolon 
 {
 \KwIn{seed grid $s$}
@@ -324,11 +324,10 @@ We start by creating $m$ maps in line~\ref{algl:createMaps}. Each map is a two-d
 
 Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this point. So its $\score(s)$ is computed merely from the letters already in the seed.
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \caption{Feature values used for our multi-map MAP-Elites algorithm.}
 \label{tab:mrme}
 \centering
-{\small
 \begin{tabular}{c|c|c|c}
 \toprule
 {\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map size} \\
@@ -337,8 +336,8 @@ $1$ & $\{6,9.5,13\}$ & $\{0,13,26\}$ & $3 \times 3$ \\
 $2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
 $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 \bottomrule
-\end{tabular}}
-\end{table}
+\end{tabular}
+\end{table*}
 
 In lines~\ref{algl:updateChampionB} -- \ref{algl:updateChampionE} we update the global champion $c$: the grid with the highest $\score(c)$ seen so far by comparing its score to that of the highest-score elite $e^{\max}$ from each map. Lines~\ref{algl:pickParentsB} -- \ref{algl:pickParentsE} pick $B$ random elites from each map (with replacement) and add it to the set of all parents $P$. We then mutate each parent $\left.P\right|_j$ by adding, removing or moving around its black cells in lines~\ref{algl:mutateB} -- \ref{algl:mutateE}. We make sure that the initial seed's black cells and letters are unaffected and that the total number of black cells is $26$. The resulting mutated grids, offspring, are put in the set $C$ with duplicates removed.
 
