@@ -10,9 +10,9 @@ format short g
 rng('shuffle');
 
 %% Control parameters
-%fn = 'y-2013/results/mrmeGrids_y2013-60x932-14400x352-14113466.mat';
+fn = 'y-2013/results/mrmeGrids_y2013-60x932-14400x352-14113466.mat';
 %fn = 'y-2021/results/mrmeGrids_feb3-60x38035-14400x224-13741779.mat';
-fn = 'y-2023/results/mrmeGrids_y2023-60x446-14400x352-14179462.mat';
+%fn = 'y-2023/results/mrmeGrids_y2023-60x446-14400x352-14179462.mat';
 
 [fnp,fns,~] = fileparts(fn);
 
