@@ -7,25 +7,25 @@ In such problems, the task is to find a solution
 (e.g., assignment to variables that define a state) 
 that satisfies a number of constraints specified in the definition
 of the problem, while optimizing an objective function
-(such as maximizing a score or minimizing a cost).
+(e.g., maximizing a score or minimizing a cost).
 
 We present an approach that first builds a \emph{core},
 a part of the problem that will have a strong contribution
 to the score (objective function) of the solution.
-A core is utilized to build a partial solution called a seed.
+A core is utilized to build a partial solution called a {\em seed}.
 %A seed has part of the state variables specified and instantiated.
-A seed is further evolved into a full solution, in a way that aims
+A seed is further evolved into a {\em full solution}, in a way that aims
 at maximizing the overall score.
 
-We apply our ideas to the Romanian Crosswords Competition Problem (shorter, {\sc Roco}),
+We apply our ideas to the Romanian Crosswords Competition Problem ({\sc Roco} for short),
 introduced in the search literature by
 \citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
-The application has a decades-long history of annual national-level competitions.
-The problem is challenging to AI, which has been lagging significantly
+The application has a decades-long history of annual national-level competitions among humans\vb{added ``among humans''}.
+The problem is challenging to Artificial Intelligence (AI) which has been lagging significantly
 behind the performance of top human contestants,
 despite recent progress~\cite{DBLP:conf/socs/BoteaB21,DBLP:conf/cig/BulitkoB21,Botea_Bulitko_2022}.
 
-In {\sc Roco}, the input includes two lists of words (the thematic list and the regular list),
+In {\sc Roco} the input includes two lists of words (the thematic list and the regular list)
 and a $13 \times 13$ grid with white cells.
 The task is to fill the grid with criss-crossing words and no more than 26 black cells.
 Each thematic word gives a number of points equal to its length. The objective
@@ -37,25 +37,24 @@ The latter is a textbook example of a constraint satisfaction problem.
 The input is a list of words, and a grid with black cells and white cells.
 The task is to fill the white-cell area with criss-crossing words.
 
-{\sc Roco} generalizes the standard crosswords grid generation in two ways,
+{\sc Roco} generalizes the standard crosswords grid generation in two ways
 and the resulting differences amplify the computational difficulty of {\sc Roco} in practice.
 Firstly, in {\sc Roco}, solutions are ranked by their score,
 whereas in the standard problem any correct solution will do.
-Often, finding a high-quality solution is much more challenging than finding any solution.
+Often finding a high-quality solution is much more challenging than finding any solution.
 Secondly, the task in {\sc Roco} includes finding a configuration of black cells
-(that will allow achieving a high score), whereas in standard grid
+(that will allow achieving a high score) whereas in standard grid
 generation the configuration of black cells is given as input.
 The absence of a pre-existing black cell configuration
-blows up the search space combinatorially, and good configurations
+combinatorially increases the search space and good configurations
 (i.e., that allow achieving a high score) are difficult to find.
 
 %Recent work in {\sc Roco} showed that state-of-the-art AI significantly lags behind
 %top human performance, despite a significant recent progress.
 
-Our approach takes as input the size of a rectangular core,
+Our approach takes as input the size of a rectangular core
 and the locations of zero or more black cells inside the core.
 We report a substantial improvement of the scores achieved compared
 to previous work.
 Our system is capable of generating scores in the vicinity of human champion scores.
-We believe that our work could be a breakthrough on the journey to exceeding
-human performance in this challenging domain.
+We feel that the approach presented in this paper may be a breakthrough towards achieving the long-standing goal of outperforming human champions in this challenging domain.\vb{reworded}

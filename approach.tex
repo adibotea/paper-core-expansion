@@ -1,10 +1,10 @@
 \section{Approach}
 
 Algorithm \ref{algo:core-exp} summarizes the main steps of our approach.
-In this section we present these steps in detail, and give an end-to-end example.
+In this section we present these steps in detail and give an end-to-end example.
 We build an area with a high density of points, decide where to place it on the grid,
 and then build the rest of the solution around it.
-Human experts too sometimes take such a strategy.
+Human experts are known to sometimes take such a strategy as well.
 
 As seen in the pseudocode, our approach takes as input a \emph{pattern} $p$, besides
 the thematic dictionary and the regular dictionary.
@@ -22,7 +22,7 @@ A {pattern} is a rectangular grid of a given size, with zero or more black cells
 
 Figure \ref{fig:pattern} (left) shows an example of a pattern. It is a $6 \times 4$ grid with two black cells, one in the top-left corner and one in the bottom-right corner.
 Observe that the pattern is significantly smaller than the $13 \times 13$ size of the full-size grid.
-The pattern will end up being integrated inside the full-size solutions generated with our approach,
+The pattern will end up being integrated inside the full-size solutions generated with our approach
 as we will show in this section.
 
 \begin{algorithm}[t]
@@ -48,18 +48,18 @@ Step 1 in Algorithm \ref{algo:core-exp} generates a collection of so-called \emp
 A core is a pattern filled with letters on the white cells.
 Figure \ref{fig:pattern} (right) shows an example of a core.
 
-We require that, in a full solution returned with Algorithm \ref{algo:core-exp}, 
+We require that in a full solution returned by Algorithm~\ref{algo:core-exp}, 
 the sub-area corresponding to the pattern will have a perfect score.
-In other words, each white cell in the pattern will contribute two points.
+That is each white cell in the pattern must contribute two points.\vb{reworded}
 
-To achieve this, we construct a small crosswords puzzle instance
+To achieve this we construct a small crosswords puzzle instance
 and solve it with 
 {\sc Wombat},
 a freely available C++  solver for crosswords optimization.
 {\sc Wombat} takes as input up to two dictionaries (one thematic and one regular),
 and a grid with the black cells in place, and zero or more letters.
 The program is very effective at computing high scores when such input 
-is provided, including the black cells~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}.
+is provided, including all black cells~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}. \vb{added ``all black cells''}
 
 In the small instance we build,
 the grid is the pattern $p$. There is only one dictionary, which contains 
@@ -68,14 +68,14 @@ needed here, as we seek a perfect score for this instance.}
 It is sufficient to consider only substrings of the lengths that 
 correspond to the lengths of the word slots in the pattern.
 
-In our running example, the lengths of the pattern word slots are 3, 4, 5, and 6.
+In our running example, the lengths of the pattern word slots are 3, 4, 5 and 6.
 For example, when generating substrings of length 4,
-if IONESCU and POPESCU are thematic words,
-the substrings generated are IONE, ONES, NESC, ESCU, POPE, OPES, PESC, and ESCU.
-Duplicates such as ESCU are kept only once.
+if {\sf\small IONESCU} and {\sf\small POPESCU} are thematic words,
+the substrings generated are {\sf\small IONE}, {\sf\small ONES}, {\sf\small NESC}, {\sf\small ESCU}, {\sf\small POPE}, {\sf\small OPES}, {\sf\small PESC} and {\sf\small ESCU}.
+Duplicates such as {\sf\small ESCU} are kept only once.
 
-We set {\sc Wombat} to enumerate all solutions to the small instance, which are precisely the 
-cores computed at step 1 in Algorithm \ref{algo:core-exp}.
+We then run {\sc Wombat} to enumerate all solutions to the small instance, which are precisely the 
+cores computed at step 1 in Algorithm \ref{algo:core-exp}.\vb{Changed ``set'' to ``run''. Should we mention that it is possible to run Wombat to find {\em all} solutions instead of just one?}
 
 
 
@@ -89,7 +89,7 @@ cores computed at step 1 in Algorithm \ref{algo:core-exp}.
 \end{figure}
 
 
-At step 2, each core is expanded by placing full thematic words on top of the substrings present in the core at hand.
+At step 2 each core is expanded by placing full thematic words on top of the substrings present in the core at hand.
 For each thematic word added to an expanded core, we add two black cells at its corresponding endpoints.
 Figure \ref{fig:exp-core} shows an example of an expanded core. 
 The cells on the top row, bottom row, leftmost column and rightmost column form the \emph{border} of the expanded core. The rest of the cells are the \emph{inner part} of the expanded core.
@@ -102,16 +102,16 @@ The inner part can contain letters, black cells and empty cells.
 As shown later in this section, the inner part of an extended core will be fit inside a full solution.
 All or part of the border may or may not be included in a full solution, as explained later on.
 
-More than one expanded core can exist for a given core (e.g., a substring such as ESCU can be expanded into multiple thematic words, such as IONESCU and POPESCU).
+More than one expanded core can exist for a given core (e.g., a substring such as {\sf\small ESCU} can be expanded into multiple thematic words such as {\sf\small IONESCU} and {\sf\small POPESCU}).
 We generate expanded cores with a depth-first search.
 
 We say that an extended core is a deadend (or, equivalently, it is dead) if no full valid solution can contain the extended core at hand. We label an extended core as dead, and filter it away, if any of the
 following conditions is met:
 it contains a word repetition; it contains a sequence of letters that cannot
 possibly be expanded into a full word; or it contains adjacent black cells within the inner part.
-Note that, at this stage, we don't check for adjacent black cells on the border.
+Note that, at this stage, we do not check for adjacent black cells on the border.
 Such a test will be performed later, after it is decided which part of the
-border, if any, will be kept in a full-size solution, as shown later in this section.
+border, if any, will be kept in a full-size solution. We detail this later in this section.\vb{reworded}
 
 
 \subsection{Generating Seeds}
@@ -128,13 +128,13 @@ border, if any, will be kept in a full-size solution, as shown later in this sec
 \end{figure*}
 
 When the inner size of an extended core $e$ is $13 \times 13$, it fits inside a full $13 \times 13$ grid in a unique way. However,
-if the inner height and/or width are smaller than 13, $e$ can fit inside a full grid in multiple positions,
+if the inner height and/or width are below $13$, $e$ can fit inside a full grid in multiple positions,
 obtained by shifting it inside the full grid vertically and/or horizontally.
 
 Each fitting of an extended seed inside a full grid is called a \emph{seed}.
 As such, a seed is a full-size $13 \times 13$ grid, with 
 letters, black cells and empty cells.
-Figure \ref{fig:seeds} shows a few seeds generated from an extended core.
+Figure \ref{fig:seeds} shows three seeds generated from an extended core.
 
 When the first column of the inner part of $e$ coincides 
 with the first column of the seed, the leftmost column of $e$'s border
@@ -207,7 +207,7 @@ is adjacent to the border of the grid at that endpoint.}
 \subsection{Ranking Seeds}
 \label{sec:ranking}
 
-Given a seed (i.e., a $13 \times 13$ grid with some letters and $n$ black cells) we need to complete with an additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} 
+Given a seed (i.e., a $13 \times 13$ grid with some letters and $n$ black cells) we need to complete it with an additional $26-n$ black cells\footnote{While having $26$ black cells is not a requirement for a legal crossword puzzle, having all allowed black cells ($26$ for a $13 \times 13$ grid) tends to maximize the score once the words are placed onto the grid.} 
 so that {\sc Wombat} can 
 subsequently attack the instance and fill the remaining white area with words.
 The placement of the black cells should allow {\sc Wombat} to obtain a high score on the resulting instance.
@@ -216,7 +216,7 @@ There are two principally different ways of placing the remaining $26-n$ black c
 
 The first way of completing a seed to a full grid is faster since {\sc Wombat} is invoked only once. The second way is slower but can result in higher-score grids since the placement of the additional black cells is incremental and guided by multiple {\sc Wombat} score computations.
 
-After some experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed and then evolve only the most promising seeds.
+After some experimentation we adopted the second approach, as detailed in Section~\ref{sec:evolution}. However, given the computational cost of evolving each seed into a full grid and the large number of seeds produced in the previous steps, we cannot afford to evolve every single seed. So instead we estimate the score potential of each seed with one-shot competitions and then evolve only the most promising seeds.
 
 The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (with the hyperparameters found in Table~\ref{tab:hyperparameters}). The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
 
@@ -266,9 +266,9 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 }
 \end{table}
 
-After experimenting with plain evolution in the spirit of published work~\cite{} we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the chances of leaving the local maximum are low. 
+After experimenting with plain evolution we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the chances of leaving the local maximum are low. 
 
-Thus we adapted the recent MAP-Elites algorithm~\cite{mapElites} that explicitly maintain diversity of the population. We picked the two features to be the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP-Elites with $m$ maps, each with different feature values. Algorithm~\ref{alg:mrme} provides the details. 
+Thus we adapted the recent MAP-Elites algorithm~\cite{mapElites} that explicitly maintains diversity of the population. We used the two features to define a map: the maximum word slot length ($f_1$) and the number of walls ($f_2$). A wall is a group of (diagonally) adjacent black cells. An interesting question is setting the resolution of each feature. For instance, one can create a map cell for each possible value of each feature. This creates the least amount of competition since grids do not compete across cells. On the other hand, by not distinguishing between several different values of each feature (i.e., value abstraction via aggregation) there are fewer cells which increases the competition. We did not {\em a priori} know the optimal degree of feature value aggregation. Instead we ran MAP-Elites with $m$ maps, each with different feature values. Algorithm~\ref{alg:mrme} provides the details. 
 
 \begin{algorithm}[t]
 \DontPrintSemicolon 
@@ -327,7 +327,7 @@ Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this
 \begin{table}[htbp]
 \caption{Feature values used for our multi-map MAP-Elites algorithm.}
 \label{tab:mrme}
-\centering
+{\small\centering
 \begin{tabular}{c|c|c|c}
 \toprule
 {\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map} \\
@@ -337,7 +337,7 @@ $1$ & $\{6,9.5,13\}$ & $\{0,13,26\}$ & $3 \times 3$ \\
 $2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
 $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 In lines~\ref{algl:updateChampionB} -- \ref{algl:updateChampionE} we update the global champion $c$: the grid with the highest $\score(c)$ seen so far by comparing its score to that of the highest-score elite $e^{\max}$ from each map. Lines~\ref{algl:pickParentsB} -- \ref{algl:pickParentsE} pick $B$ random elites from each map (with replacement) and add it to the set of all parents $P$. We then mutate each parent $\left.P\right|_j$ by adding, removing or moving around its black cells in lines~\ref{algl:mutateB} -- \ref{algl:mutateE}. We make sure that the initial seed's black cells and letters are unaffected and that the total number of black cells is $26$. The resulting mutated grids, offspring, are put in the set $C$ with duplicates removed.

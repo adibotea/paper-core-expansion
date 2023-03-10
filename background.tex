@@ -3,19 +3,19 @@
 \section{Background}
 \label{sec::background}
 
-In this section we discuss how standard crosswords grid generation and a few important generalizations
-can be mapped into constraint satisfaction and constraint optimization problems.
+We present how standard crosswords grid generation and its important generalizations
+can be mapped to constraint-satisfaction and constraint-optimization problems.
 
 \subsection{Constraint Satisfaction and Constraint Optimization}
 
 %We address the same problem as~\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21}.
-We consider constraint optimization problems
+We consider constraint-optimization problems
 obtained from
 constraint satisfaction problems (CSPs) by adding a score function on partial
 or full solutions.
 
 \bdf
-A \emph{constraint satisfaction problem (CSP)} is a tuple ${\cal P} = \langle X, D, C \rangle$,
+A \emph{constraint-satisfaction problem (CSP)} is a tuple ${\cal P} = \langle X, D, C \rangle$,
 where:
 \begin{itemize} 
 \item $X = \{v_1, \dots, v_n\}$ is a collection of variables;
@@ -35,7 +35,7 @@ $f : D^* \rightarrow \mathbb{R}^+$ is a score function.
 An assignment $s \in D^*$ is {\em consistent} if 
 it violates no constraint.
 A consistent partial assignment is called a {\em partial solution}.
-A consistent full assignment is a {\em full solution} (shorter, solution).
+A consistent full assignment is a {\em full solution} (or {\em solution} for short).
 A solution is optimal if no solution has a higher score.
 
 \subsection{Crosswords Grid Generation}
@@ -62,12 +62,12 @@ whereas in optimization crosswords we are interested in solutions with a high sc
 
 \subsection{Crosswords with Dynamic Black Cells}
 
-In standard grid generation problems, the placement of black cells is
-given as input.
-In contrast, in crosswords with dynamic black cells, the initial grid contains 
+In standard grid generation problems the placement of black cells is
+given as an input.
+In contrast, in crosswords with dynamic black cells the initial grid contains 
 only white cells. 
 The task is to fill the grid with a combination of black cells
-and criss-crossing words from the input list.
+and crisscrossing words from the input list.
 Black cells added to the grid need to satisfy a number of constraints,
 depending on the exact problem formulation.
 A maximum number of black cells (as a percentage of the total number of cells)
@@ -77,15 +77,15 @@ that we consider in this work.
 
 The need to add black cells as part of the solving process has two 
 major implications.
-Firstly, the state space blows up combinatorially.
+Firstly, the state space becomes much larger due to the combinatorics.\vb{reworded to avoid the colloquialism ``blows up''}
 For instance, on a $13 \times 13$ grid with $26$
-black cells, the total number of combinations is $169 \choose 26$,
-not all of which are legal, according to the constraints
-specified in the next section.
+black cells, the total number of combinations is $169 \choose 26$ though
+not all of which are legal due to the constraints
+specified in the next section.\vb{reworded}
 
 Secondly, adding black cells dynamically has the important consequence that
 word slots are introduced gradually.
-The number of word slots is initially zero, and it grows
+The number of word slots is initially zero and it grows
 as more and more black cells are placed on the grid.
 In other words, the CSP variables of the problem instance are introduced gradually,
 rather than being all defined from the beginning.
@@ -93,10 +93,10 @@ Before all black cells are placed on the grid,
 the constraint problem modelling has only a \emph{partial} problem definition,
 making the solving more challenging.
 For example, constraint propagation can be less effective
-at detecting unfeasible values in the domains of state variables.
+at detecting infeasible values in the domains of state variables.
 
-As mentioned in the introduction, and also seen in the next section, the {\sc Roco} problem features both 
+As mentioned in the introduction and also seen in the next section, the {\sc Roco} problem features both 
 an optimization component and dynamic black cells, on top of the
 standard crosswords grid generation problem,
 inheriting a combination of 
-the computational challenges outlined earlier in this section.
+the computational challenges outlined earlier.
