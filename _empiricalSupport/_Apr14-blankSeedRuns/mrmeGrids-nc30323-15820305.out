@@ -1,0 +1,982 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx2g
+Opening log file:  /tmp/java.log.40118
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+             R2022b Update 2 (9.13.0.2105380) 64-bit (glnxa64)
+                              October 26, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+Starting parallel pool (parpool) using the 'local' profile ...
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/home/bulitko/.matlab/local_cluster_jobs/R2022b/Job459.in.mat", the error
+returned was: Unable to find file or directory
+'/home/bulitko/.matlab/local_cluster_jobs/R2022b/Job459.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In createPWpool (line 19)
+In mrmeGrids (line 104)] 
+Preserving jobs with IDs: 303 317 318 323 324 336 339 340 341 343 344 because they contain crash dump files.
+You can use 'delete(myCluster.Jobs)' to remove all jobs created with profile Processes. To create 'myCluster' use 'myCluster = parcluster('Processes')'.
+Connected to the parallel pool (number of workers: 32).
+Loaded 1 seeds from grids/seeds/individual/blankSeed.mat
+	we have a single blank seed, no need to run it through MC
+
+	MCS total time 0.0 s + evolution total time 12.0 h = 12.0 h
+	MCS runs 0 (1.0 m each) --> evolution runs 96 (4.0 h each)
+
+seed  1 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  2 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  3 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  4 | gen    0 (0 grids scored in 1.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  5 | gen    0 (0 grids scored in 1.2 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  6 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  7 | gen    0 (0 grids scored in 1.2 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  8 | gen    0 (0 grids scored in 1.2 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed  9 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 10 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 11 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 12 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 13 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 14 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 15 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 16 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 17 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 18 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 19 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 20 | gen    0 (0 grids scored in 1.3 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 21 | gen    0 (0 grids scored in 1.2 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 22 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 23 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 24 | gen    0 (0 grids scored in 1.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 25 | gen    0 (0 grids scored in 1.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 26 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 27 | gen    0 (0 grids scored in 1.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 28 | gen    0 (0 grids scored in 1.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 29 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 30 | gen    0 (0 grids scored in 1.2 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 31 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 32 | gen    0 (0 grids scored in 1.1 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 30 | gen    9 (1 grids scored in 1.6 m) | maps{1} | new champion: max wsl 13, nw 17, score 79
+seed 12 | gen   21 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 11, nw 17, score 71
+seed  1 | gen   23 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 13, nw 20, score 50
+seed 18 | gen   24 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 13, nw 17, score 52
+seed 23 | gen   27 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 10, nw 11, score 82
+seed 25 | gen   25 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 76
+seed  8 | gen   32 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 9, nw 15, score 56
+seed 20 | gen   44 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 75
+seed 11 | gen   44 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 12, nw 16, score 65
+seed 22 | gen   51 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 11, nw 13, score 72
+seed 17 | gen   55 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 10, nw 15, score 52
+seed 31 | gen   62 (1 grids scored in 3.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 61
+seed 13 | gen   81 (1 grids scored in 3.9 m) | maps{1} | new champion: max wsl 13, nw 13, score 70
+seed 21 | gen   82 (1 grids scored in 3.9 m) | maps{1} | new champion: max wsl 13, nw 11, score 67
+seed 26 | gen   89 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 47
+seed 24 | gen   95 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 21, score 51
+seed  6 | gen   99 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 16, score 59
+seed  3 | gen  116 (1 grids scored in 4.3 m) | maps{1} | new champion: max wsl 13, nw 18, score 46
+seed  2 | gen  124 (1 grids scored in 4.3 m) | maps{1} | new champion: max wsl 12, nw 20, score 57
+seed  9 | gen  117 (1 grids scored in 4.4 m) | maps{1} | new champion: max wsl 13, nw 19, score 43
+seed 27 | gen  134 (1 grids scored in 4.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 37
+seed 19 | gen  137 (1 grids scored in 4.5 m) | maps{1} | new champion: max wsl 13, nw 22, score 54
+seed  5 | gen  140 (1 grids scored in 4.5 m) | maps{1} | new champion: max wsl 13, nw 16, score 43
+seed 13 | gen   82 (16 grids scored in 4.7 m) | maps{1} | new champion: max wsl 13, nw 13, score 73
+seed 28 | gen  148 (1 grids scored in 4.7 m) | maps{1} | new champion: max wsl 13, nw 18, score 52
+seed 14 | gen  158 (1 grids scored in 4.7 m) | maps{1} | new champion: max wsl 10, nw 9, score 81
+seed 10 | gen  173 (1 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 15, score 67
+seed  7 | gen  180 (1 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 18, score 40
+seed  9 | gen  118 (12 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 19, score 44
+seed 26 | gen   90 (18 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 18, score 58
+seed 29 | gen  184 (1 grids scored in 5.0 m) | maps{1} | new champion: max wsl 13, nw 21, score 74
+seed  4 | gen  198 (1 grids scored in 5.1 m) | maps{1} | new champion: max wsl 9, nw 11, score 74
+seed 32 | gen  200 (1 grids scored in 5.2 m) | maps{1} | new champion: max wsl 13, nw 19, score 48
+seed  3 | gen  117 (19 grids scored in 5.2 m) | maps{1} | new champion: max wsl 13, nw 16, score 80
+seed 10 | gen  174 (13 grids scored in 5.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 71
+seed 27 | gen  135 (21 grids scored in 5.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 60
+seed 15 | gen  240 (1 grids scored in 5.6 m) | maps{1} | new champion: max wsl 13, nw 21, score 54
+seed 13 | gen   83 (35 grids scored in 5.6 m) | maps{1} | new champion: max wsl 13, nw 13, score 75
+seed 26 | gen   91 (34 grids scored in 5.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 65
+seed  3 | gen  118 (37 grids scored in 6.1 m) | maps{1} | new champion: max wsl 13, nw 16, score 85
+seed 10 | gen  175 (30 grids scored in 6.3 m) | maps{1} | new champion: max wsl 13, nw 17, score 74
+seed  9 | gen  119 (41 grids scored in 6.4 m) | maps{1} | new champion: max wsl 13, nw 18, score 63
+seed 16 | gen  355 (1 grids scored in 6.8 m) | maps{1} | new champion: max wsl 13, nw 22, score 44
+seed 21 | gen   84 (23 grids scored in 7.0 m) | maps{1} | new champion: max wsl 13, nw 11, score 87
+seed 10 | gen  176 (47 grids scored in 7.2 m) | maps{1} | new champion: max wsl 13, nw 17, score 75
+seed 31 | gen   64 (28 grids scored in 7.2 m) | maps{1} | new champion: max wsl 13, nw 17, score 66
+seed 16 | gen  356 (15 grids scored in 7.5 m) | maps{1} | new champion: max wsl 13, nw 21, score 48
+seed  3 | gen  119 (75 grids scored in 8.0 m) | maps{1} | new champion: max wsl 13, nw 15, score 93
+seed  5 | gen  142 (25 grids scored in 8.2 m) | maps{1} | new champion: max wsl 13, nw 17, score 50
+seed 16 | gen  357 (37 grids scored in 8.6 m) | maps{1} | new champion: max wsl 13, nw 21, score 59
+seed 10 | gen  177 (76 grids scored in 8.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 77
+seed  6 | gen  101 (33 grids scored in 8.7 m) | maps{1} | new champion: max wsl 13, nw 16, score 72
+seed  5 | gen  143 (50 grids scored in 9.5 m) | maps{1} | new champion: max wsl 13, nw 18, score 58
+seed 13 | gen   85 (68 grids scored in 9.8 m) | maps{1} | new champion: max wsl 13, nw 13, score 79
+seed  7 | gen  182 (35 grids scored in 9.8 m) | maps{1} | new champion: max wsl 13, nw 19, score 63
+seed 28 | gen  150 (39 grids scored in 10.1 m) | maps{1} | new champion: max wsl 13, nw 16, score 62
+seed 11 | gen   46 (46 grids scored in 10.3 m) | maps{1} | new champion: max wsl 13, nw 15, score 84
+seed 20 | gen   46 (43 grids scored in 10.3 m) | maps{1} | new champion: max wsl 13, nw 17, score 78
+seed 16 | gen  358 (73 grids scored in 10.4 m) | maps{1} | new champion: max wsl 13, nw 21, score 60
+seed  5 | gen  144 (76 grids scored in 10.8 m) | maps{1} | new champion: max wsl 13, nw 15, score 68
+seed 13 | gen   86 (91 grids scored in 10.9 m) | maps{1} | new champion: max wsl 13, nw 13, score 85
+seed  5 | gen  145 (96 grids scored in 11.8 m) | maps{1} | new champion: max wsl 13, nw 14, score 79
+seed 17 | gen   57 (49 grids scored in 11.9 m) | maps{1} | new champion: max wsl 13, nw 17, score 60
+seed  1 | gen   25 (58 grids scored in 12.9 m) | maps{1} | new champion: max wsl 12, nw 19, score 51
+seed 29 | gen  186 (50 grids scored in 12.9 m) | maps{1} | new champion: max wsl 13, nw 21, score 89
+seed  4 | gen  200 (44 grids scored in 13.0 m) | maps{1} | new champion: max wsl 13, nw 13, score 102
+seed 32 | gen  202 (53 grids scored in 13.4 m) | maps{1} | new champion: max wsl 13, nw 19, score 57
+seed 30 | gen   12 (47 grids scored in 13.5 m) | maps{1} | new champion: max wsl 13, nw 18, score 82
+seed 26 | gen   93 (90 grids scored in 13.9 m) | maps{1} | new champion: max wsl 13, nw 19, score 75
+seed 22 | gen   53 (64 grids scored in 14.3 m) | maps{1} | new champion: max wsl 11, nw 14, score 84
+seed 27 | gen  137 (80 grids scored in 14.4 m) | maps{1} | new champion: max wsl 13, nw 18, score 71
+seed 12 | gen   23 (70 grids scored in 14.6 m) | maps{1} | new champion: max wsl 12, nw 20, score 86
+seed  8 | gen   34 (60 grids scored in 14.8 m) | maps{1} | new champion: max wsl 9, nw 16, score 63
+seed  9 | gen  121 (106 grids scored in 16.0 m) | maps{1} | new champion: max wsl 13, nw 19, score 69
+seed 19 | gen  140 (49 grids scored in 16.1 m) | maps{1} | new champion: max wsl 13, nw 21, score 81
+seed 21 | gen   86 (96 grids scored in 16.2 m) | maps{1} | new champion: max wsl 13, nw 11, score 110
+seed 28 | gen  152 (83 grids scored in 16.3 m) | maps{1} | new champion: max wsl 13, nw 17, score 68
+seed  2 | gen  126 (70 grids scored in 16.5 m) | maps{1} | new champion: max wsl 12, nw 20, score 70
+seed 31 | gen   66 (107 grids scored in 17.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 82
+seed 12 | gen   24 (136 grids scored in 17.9 m) | maps{1} | new champion: max wsl 12, nw 20, score 91
+seed  9 | gen  122 (152 grids scored in 18.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 75
+seed  3 | gen  121 (152 grids scored in 18.7 m) | maps{1} | new champion: max wsl 13, nw 16, score 102
+seed  5 | gen  147 (149 grids scored in 19.1 m) | maps{1} | new champion: max wsl 13, nw 14, score 87
+seed  7 | gen  184 (104 grids scored in 19.3 m) | maps{1} | new champion: max wsl 13, nw 23, score 72
+seed 18 | gen   27 (62 grids scored in 19.4 m) | maps{1} | new champion: max wsl 12, nw 17, score 56
+seed 20 | gen   48 (103 grids scored in 19.5 m) | maps{1} | new champion: max wsl 12, nw 19, score 86
+seed  5 | gen  148 (179 grids scored in 20.6 m) | maps{1} | new champion: max wsl 13, nw 14, score 90
+seed  7 | gen  185 (136 grids scored in 20.9 m) | maps{1} | new champion: max wsl 13, nw 22, score 75
+seed  6 | gen  103 (117 grids scored in 20.9 m) | maps{1} | new champion: max wsl 11, nw 15, score 105
+seed 12 | gen   25 (212 grids scored in 21.7 m) | maps{1} | new champion: max wsl 12, nw 20, score 99
+seed 16 | gen  360 (153 grids scored in 22.4 m) | maps{1} | new champion: max wsl 13, nw 20, score 68
+seed 13 | gen   88 (169 grids scored in 23.0 m) | maps{1} | new champion: max wsl 11, nw 11, score 103
+seed  7 | gen  186 (189 grids scored in 23.5 m) | maps{1} | new champion: max wsl 13, nw 22, score 88
+seed 30 | gen   14 (119 grids scored in 24.0 m) | maps{1} | new champion: max wsl 13, nw 17, score 92
+seed 10 | gen  179 (192 grids scored in 24.6 m) | maps{1} | new champion: max wsl 11, nw 16, score 87
+seed 16 | gen  361 (200 grids scored in 24.8 m) | maps{1} | new champion: max wsl 13, nw 20, score 70
+seed 32 | gen  204 (132 grids scored in 25.0 m) | maps{1} | new champion: max wsl 13, nw 19, score 60
+seed 10 | gen  180 (245 grids scored in 27.3 m) | maps{1} | new champion: max wsl 13, nw 22, score 88
+seed 26 | gen   95 (178 grids scored in 27.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 88
+seed 14 | gen  161 (84 grids scored in 27.4 m) | maps{1} | new champion: max wsl 13, nw 13, score 92
+seed 17 | gen   59 (166 grids scored in 27.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 81
+seed 22 | gen   55 (155 grids scored in 27.7 m) | maps{1} | new champion: max wsl 13, nw 11, score 96
+seed 29 | gen  188 (161 grids scored in 28.5 m) | maps{1} | new champion: max wsl 12, nw 16, score 90
+seed 18 | gen   29 (123 grids scored in 28.8 m) | maps{1} | new champion: max wsl 13, nw 19, score 57
+seed 11 | gen   48 (167 grids scored in 29.5 m) | maps{1} | new champion: max wsl 12, nw 17, score 93
+seed  5 | gen  150 (242 grids scored in 29.8 m) | maps{1} | new champion: max wsl 13, nw 14, score 96
+seed  3 | gen  123 (233 grids scored in 29.9 m) | maps{1} | new champion: max wsl 13, nw 16, score 110
+seed 24 | gen   98 (98 grids scored in 30.4 m) | maps{1} | new champion: max wsl 12, nw 19, score 67
+seed 20 | gen   50 (194 grids scored in 30.9 m) | maps{1} | new champion: max wsl 13, nw 18, score 91
+seed  8 | gen   36 (185 grids scored in 31.5 m) | maps{1} | new champion: max wsl 8, nw 19, score 69
+seed 31 | gen   68 (213 grids scored in 31.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 86
+seed  1 | gen   27 (181 grids scored in 32.2 m) | maps{1} | new champion: max wsl 11, nw 18, score 55
+seed  2 | gen  128 (201 grids scored in 34.1 m) | maps{1} | new champion: max wsl 12, nw 19, score 79
+seed 32 | gen  206 (214 grids scored in 36.2 m) | maps{1} | new champion: max wsl 13, nw 20, score 68
+seed  6 | gen  105 (231 grids scored in 37.8 m) | maps{1} | new champion: max wsl 10, nw 12, score 108
+seed 25 | gen   28 (126 grids scored in 38.4 m) | maps{1} | new champion: max wsl 10, nw 19, score 77
+seed 15 | gen  243 (119 grids scored in 40.0 m) | maps{1} | new champion: max wsl 11, nw 21, score 69
+seed 18 | gen   31 (204 grids scored in 40.8 m) | maps{1} | new champion: max wsl 13, nw 19, score 62
+seed 14 | gen  163 (183 grids scored in 41.2 m) | maps{1} | new champion: max wsl 10, nw 11, score 95
+seed 15 | gen  244 (193 grids scored in 43.7 m) | maps{1} | new champion: max wsl 12, nw 21, score 74
+seed 20 | gen   52 (291 grids scored in 44.0 m) | maps{1} | new champion: max wsl 13, nw 18, score 99
+seed 18 | gen   32 (272 grids scored in 44.2 m) | maps{1} | new champion: max wsl 13, nw 18, score 66
+seed  7 | gen  188 (329 grids scored in 44.4 m) | maps{1} | new champion: max wsl 13, nw 22, score 90
+seed 22 | gen   57 (282 grids scored in 44.4 m) | maps{1} | new champion: max wsl 11, nw 12, score 108
+seed 21 | gen   89 (222 grids scored in 44.9 m) | maps{1} | new champion: max wsl 11, nw 12, score 115
+seed 16 | gen  363 (356 grids scored in 45.8 m) | maps{1} | new champion: max wsl 13, nw 17, score 77
+seed 10 | gen  182 (399 grids scored in 46.2 m) | maps{1} | new champion: max wsl 13, nw 13, score 95
+seed 26 | gen   97 (332 grids scored in 47.0 m) | maps{1} | new champion: max wsl 13, nw 20, score 89
+seed 18 | gen   33 (333 grids scored in 47.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 69
+seed 12 | gen   27 (400 grids scored in 47.5 m) | maps{1} | new champion: max wsl 11, nw 19, score 127
+seed 32 | gen  208 (302 grids scored in 48.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 74
+seed  9 | gen  125 (295 grids scored in 50.1 m) | maps{1} | new champion: max wsl 13, nw 19, score 83
+seed 18 | gen   34 (398 grids scored in 50.5 m) | maps{1} | new champion: max wsl 13, nw 19, score 70
+seed 13 | gen   91 (300 grids scored in 51.1 m) | maps{1} | new champion: max wsl 11, nw 12, score 109
+seed  4 | gen  203 (212 grids scored in 51.2 m) | maps{1} | new champion: max wsl 11, nw 14, score 117
+seed 19 | gen  143 (189 grids scored in 51.7 m) | maps{1} | new champion: max wsl 13, nw 22, score 85
+seed 11 | gen   50 (350 grids scored in 53.5 m) | maps{1} | new champion: max wsl 12, nw 18, score 105
+seed  1 | gen   29 (335 grids scored in 53.6 m) | maps{1} | new champion: max wsl 11, nw 18, score 63
+seed 18 | gen   35 (462 grids scored in 53.7 m) | maps{1} | new champion: max wsl 13, nw 19, score 71
+seed 17 | gen   61 (352 grids scored in 54.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 90
+seed 18 | gen   36 (515 grids scored in 56.4 m) | maps{1} | new champion: max wsl 13, nw 21, score 76
+seed 29 | gen  190 (369 grids scored in 56.7 m) | maps{1} | new champion: max wsl 13, nw 21, score 116
+seed  2 | gen  130 (388 grids scored in 57.6 m) | maps{1} | new champion: max wsl 11, nw 18, score 90
+seed 18 | gen   37 (572 grids scored in 59.2 m) | maps{1} | new champion: max wsl 13, nw 21, score 82
+seed 20 | gen   54 (410 grids scored in 59.5 m) | maps{1} | new champion: max wsl 13, nw 18, score 110
+seed 27 | gen  140 (263 grids scored in 1.0 h) | maps{1} | new champion: max wsl 12, nw 18, score 76
+seed  8 | gen   38 (402 grids scored in 1.0 h) | maps{1} | new champion: max wsl 12, nw 20, score 77
+seed 32 | gen  210 (407 grids scored in 1.0 h) | maps{1} | new champion: max wsl 13, nw 20, score 75
+seed 25 | gen   30 (296 grids scored in 1.0 h) | maps{1} | new champion: max wsl 10, nw 20, score 80
+seed  9 | gen  127 (398 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 89
+seed 22 | gen   59 (424 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 12, score 110
+seed 13 | gen   93 (395 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 12, score 112
+seed  6 | gen  107 (446 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 15, score 110
+seed 10 | gen  184 (559 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 21, score 96
+seed 28 | gen  156 (240 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 17, score 89
+seed  4 | gen  205 (342 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 15, score 125
+seed 26 | gen   99 (499 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 19, score 92
+seed 15 | gen  246 (371 grids scored in 1.2 h) | maps{1} | new champion: max wsl 12, nw 22, score 93
+seed 16 | gen  365 (543 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 19, score 78
+seed  3 | gen  126 (408 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 17, score 113
+seed 31 | gen   71 (402 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 15, score 90
+seed 16 | gen  366 (651 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 88
+seed 32 | gen  212 (512 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 80
+seed 18 | gen   39 (708 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 20, score 88
+seed 24 | gen  101 (284 grids scored in 1.3 h) | maps{1} | new champion: max wsl 12, nw 18, score 74
+seed 12 | gen   29 (641 grids scored in 1.3 h) | maps{1} | new champion: max wsl 11, nw 19, score 140
+seed  2 | gen  132 (576 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 17, score 95
+seed 11 | gen   52 (579 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 18, score 113
+seed 14 | gen  166 (374 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 11, score 116
+seed 17 | gen   63 (571 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 18, score 94
+seed 22 | gen   61 (602 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 17, score 114
+seed  3 | gen  128 (534 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 15, score 115
+seed 32 | gen  214 (617 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 19, score 81
+seed  5 | gen  154 (439 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 14, score 102
+seed 25 | gen   32 (523 grids scored in 1.5 h) | maps{1} | new champion: max wsl 11, nw 16, score 108
+seed  4 | gen  207 (521 grids scored in 1.6 h) | maps{1} | new champion: max wsl 11, nw 14, score 131
+seed 26 | gen  101 (674 grids scored in 1.6 h) | maps{1} | new champion: max wsl 13, nw 21, score 97
+seed 25 | gen   33 (645 grids scored in 1.6 h) | maps{1} | new champion: max wsl 11, nw 17, score 119
+seed  6 | gen  109 (687 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 15, score 114
+seed  9 | gen  130 (558 grids scored in 1.7 h) | maps{1} | new champion: max wsl 12, nw 19, score 92
+seed  8 | gen   40 (687 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 15, score 99
+seed 26 | gen  102 (780 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 20, score 100
+seed  7 | gen  191 (586 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 16, score 93
+seed 20 | gen   57 (603 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 20, score 113
+seed 16 | gen  368 (862 grids scored in 1.7 h) | maps{1} | new champion: max wsl 12, nw 17, score 96
+seed 19 | gen  146 (423 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 20, score 94
+seed  8 | gen   41 (823 grids scored in 1.8 h) | maps{1} | new champion: max wsl 13, nw 15, score 104
+seed  3 | gen  130 (673 grids scored in 1.8 h) | maps{1} | new champion: max wsl 11, nw 15, score 131
+seed 23 | gen   32 (215 grids scored in 1.8 h) | maps{1} | new champion: max wsl 13, nw 12, score 85
+seed 14 | gen  168 (561 grids scored in 1.9 h) | maps{1} | new champion: max wsl 10, nw 11, score 126
+seed  2 | gen  134 (784 grids scored in 1.9 h) | maps{1} | new champion: max wsl 12, nw 17, score 105
+seed  8 | gen   42 (967 grids scored in 1.9 h) | maps{1} | new champion: max wsl 12, nw 17, score 114
+seed  5 | gen  156 (601 grids scored in 1.9 h) | maps{1} | new champion: max wsl 12, nw 13, score 112
+seed 11 | gen   54 (816 grids scored in 2.0 h) | maps{1} | new champion: max wsl 11, nw 18, score 118
+seed 17 | gen   65 (806 grids scored in 2.0 h) | maps{1} | new champion: max wsl 12, nw 17, score 97
+seed 21 | gen   93 (472 grids scored in 2.0 h) | maps{1} | new champion: max wsl 11, nw 14, score 117
+seed 32 | gen  217 (779 grids scored in 2.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 83
+seed 26 | gen  104 (954 grids scored in 2.1 h) | maps{1} | new champion: max wsl 13, nw 18, score 121
+seed  9 | gen  132 (716 grids scored in 2.1 h) | maps{1} | new champion: max wsl 12, nw 17, score 95
+seed 27 | gen  143 (567 grids scored in 2.1 h) | maps{1} | new champion: max wsl 11, nw 20, score 79
+seed 18 | gen   42 (921 grids scored in 2.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 89
+seed 19 | gen  148 (605 grids scored in 2.1 h) | maps{1} | new champion: max wsl 11, nw 19, score 99
+seed  1 | gen   32 (661 grids scored in 2.2 h) | maps{1} | new champion: max wsl 11, nw 17, score 66
+seed 25 | gen   35 (892 grids scored in 2.2 h) | maps{1} | new champion: max wsl 11, nw 17, score 131
+seed  6 | gen  111 (917 grids scored in 2.2 h) | maps{1} | new champion: max wsl 13, nw 10, score 121
+seed 16 | gen  370 (1.1K grids scored in 2.2 h) | maps{1} | new champion: max wsl 12, nw 17, score 106
+seed  1 | gen   33 (776 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 17, score 67
+seed  7 | gen  193 (825 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 15, score 96
+seed  2 | gen  136 (990 grids scored in 2.3 h) | maps{1} | new champion: max wsl 12, nw 16, score 106
+seed  1 | gen   34 (891 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 17, score 76
+seed 14 | gen  170 (778 grids scored in 2.4 h) | maps{1} | new champion: max wsl 10, nw 11, score 135
+seed  1 | gen   35 (1.0K grids scored in 2.4 h) | maps{1} | new champion: max wsl 11, nw 17, score 84
+seed 18 | gen   44 (1.1K grids scored in 2.4 h) | maps{1} | new champion: max wsl 13, nw 18, score 93
+seed 20 | gen   60 (824 grids scored in 2.5 h) | maps{1} | new champion: max wsl 13, nw 19, score 116
+seed  8 | gen   44 (1.2K grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 18, score 128
+seed  5 | gen  158 (861 grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 12, score 113
+seed 27 | gen  145 (773 grids scored in 2.6 h) | maps{1} | new champion: max wsl 11, nw 18, score 85
+seed 32 | gen  220 (959 grids scored in 2.7 h) | maps{1} | new champion: max wsl 12, nw 19, score 92
+seed 30 | gen   19 (418 grids scored in 2.7 h) | maps{1} | new champion: max wsl 13, nw 19, score 101
+seed  7 | gen  195 (1.0K grids scored in 2.7 h) | maps{1} | new champion: max wsl 13, nw 17, score 112
+seed 16 | gen  372 (1.3K grids scored in 2.7 h) | maps{1} | new champion: max wsl 11, nw 15, score 134
+seed 28 | gen  160 (533 grids scored in 2.8 h) | maps{1} | new champion: max wsl 13, nw 20, score 94
+seed 18 | gen   46 (1.3K grids scored in 2.9 h) | maps{1} | new champion: max wsl 12, nw 17, score 94
+seed 10 | gen  188 (912 grids scored in 2.9 h) | maps{1} | new champion: max wsl 13, nw 14, score 99
+seed 26 | gen  107 (1.2K grids scored in 3.0 h) | maps{1} | new champion: max wsl 13, nw 19, score 133
+seed 32 | gen  222 (1.1K grids scored in 3.0 h) | maps{1} | new champion: max wsl 13, nw 21, score 95
+seed  1 | gen   37 (1.2K grids scored in 3.0 h) | maps{1} | new champion: max wsl 11, nw 16, score 86
+seed 31 | gen   75 (728 grids scored in 3.0 h) | maps{1} | new champion: max wsl 11, nw 21, score 95
+seed 27 | gen  147 (1.0K grids scored in 3.1 h) | maps{1} | new champion: max wsl 11, nw 16, score 94
+seed 15 | gen  250 (750 grids scored in 3.1 h) | maps{1} | new champion: max wsl 12, nw 21, score 96
+seed  8 | gen   46 (1.6K grids scored in 3.2 h) | maps{1} | new champion: max wsl 11, nw 20, score 132
+seed 28 | gen  162 (747 grids scored in 3.3 h) | maps{1} | new champion: max wsl 13, nw 20, score 98
+seed 19 | gen  151 (918 grids scored in 3.3 h) | maps{1} | new champion: max wsl 11, nw 19, score 114
+seed  9 | gen  135 (1.1K grids scored in 3.3 h) | maps{1} | new champion: max wsl 12, nw 17, score 102
+seed 13 | gen   98 (726 grids scored in 3.4 h) | maps{1} | new champion: max wsl 11, nw 16, score 115
+seed 17 | gen   68 (1.2K grids scored in 3.4 h) | maps{1} | new champion: max wsl 11, nw 17, score 98
+seed 10 | gen  190 (1.1K grids scored in 3.4 h) | maps{1} | new champion: max wsl 13, nw 20, score 101
+seed 23 | gen   36 (519 grids scored in 3.4 h) | maps{1} | new champion: max wsl 11, nw 12, score 92
+seed 26 | gen  109 (1.4K grids scored in 3.5 h) | maps{1} | new champion: max wsl 13, nw 19, score 134
+seed  2 | gen  139 (1.3K grids scored in 3.5 h) | maps{1} | new champion: max wsl 12, nw 14, score 107
+seed  3 | gen  134 (994 grids scored in 3.5 h) | maps{1} | new champion: max wsl 11, nw 16, score 132
+seed 25 | gen   38 (1.3K grids scored in 3.5 h) | maps{1} | new champion: max wsl 11, nw 17, score 136
+seed 11 | gen   57 (1.2K grids scored in 3.6 h) | maps{1} | new champion: max wsl 11, nw 17, score 126
+seed  1 | gen   39 (1.5K grids scored in 3.6 h) | maps{1} | new champion: max wsl 13, nw 18, score 87
+seed 27 | gen  149 (1.2K grids scored in 3.6 h) | maps{1} | new champion: max wsl 11, nw 16, score 97
+seed 31 | gen   77 (974 grids scored in 3.6 h) | maps{1} | new champion: max wsl 11, nw 20, score 99
+seed 15 | gen  252 (975 grids scored in 3.7 h) | maps{1} | new champion: max wsl 12, nw 21, score 98
+seed 32 | gen  225 (1.3K grids scored in 3.7 h) | maps{1} | new champion: max wsl 12, nw 19, score 100
+seed 24 | gen  105 (745 grids scored in 3.7 h) | maps{1} | new champion: max wsl 9, nw 18, score 83
+seed  5 | gen  161 (1.2K grids scored in 3.9 h) | maps{1} | new champion: max wsl 12, nw 13, score 117
+seed 20 | gen   64 (1.1K grids scored in 4.0 h) | maps{1} | new champion: max wsl 12, nw 17, score 121
+seed 17 | gen   70 (1.5K grids scored in 4.0 h) | maps{1} | new champion: max wsl 11, nw 19, score 101
+seed  2 | gen  141 (1.6K grids scored in 4.0 h) | maps{1} | new champion: max wsl 11, nw 15, score 110
+seed 52 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 37 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 49 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 49 | gen   20 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 11, nw 13, score 67
+seed 32 | gen  227 (1.4K grids scored in 4.1 h) | maps{1} | new champion: max wsl 13, nw 18, score 105
+seed 44 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 47 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 34 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 34 | gen  270 (1 grids scored in 5.8 m) | maps{1} | new champion: max wsl 13, nw 16, score 37
+seed 37 | gen   39 (1 grids scored in 3.4 m) | maps{1} | new champion: max wsl 9, nw 12, score 58
+seed 34 | gen  271 (10 grids scored in 6.2 m) | maps{1} | new champion: max wsl 13, nw 15, score 58
+seed 27 | gen  151 (1.5K grids scored in 4.1 h) | maps{1} | new champion: max wsl 11, nw 16, score 102
+seed 57 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 52 | gen  176 (1 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 18, score 43
+seed 34 | gen  272 (28 grids scored in 7.1 m) | maps{1} | new champion: max wsl 13, nw 15, score 67
+seed 52 | gen  177 (16 grids scored in 5.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 47
+seed 52 | gen  178 (28 grids scored in 6.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 53
+seed 48 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 44 | gen  140 (1 grids scored in 4.4 m) | maps{1} | new champion: max wsl 12, nw 15, score 47
+seed 59 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 59 | gen   24 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 13, nw 8, score 65
+seed 64 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 64 | gen  292 (1 grids scored in 6.0 m) | maps{1} | new champion: max wsl 13, nw 18, score 55
+seed 47 | gen  109 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 14, score 46
+seed 52 | gen  179 (60 grids scored in 7.9 m) | maps{1} | new champion: max wsl 13, nw 20, score 73
+seed 43 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 57 | gen   71 (1 grids scored in 3.7 m) | maps{1} | new champion: max wsl 13, nw 18, score 38
+seed 47 | gen  110 (19 grids scored in 5.1 m) | maps{1} | new champion: max wsl 13, nw 14, score 68
+seed 33 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 57 | gen   72 (15 grids scored in 4.5 m) | maps{1} | new champion: max wsl 13, nw 18, score 40
+seed 57 | gen   73 (46 grids scored in 6.0 m) | maps{1} | new champion: max wsl 13, nw 21, score 60
+seed 48 | gen  125 (1 grids scored in 4.3 m) | maps{1} | new champion: max wsl 11, nw 19, score 54
+seed 31 | gen   79 (1.3K grids scored in 4.2 h) | maps{1} | new champion: max wsl 11, nw 19, score 110
+seed 34 | gen  274 (73 grids scored in 13.4 m) | maps{1} | new champion: max wsl 13, nw 14, score 71
+seed 49 | gen   22 (62 grids scored in 13.5 m) | maps{1} | new champion: max wsl 13, nw 13, score 108
+seed  7 | gen  198 (1.4K grids scored in 4.2 h) | maps{1} | new champion: max wsl 13, nw 15, score 123
+seed 53 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 18 | gen   49 (1.6K grids scored in 4.2 h) | maps{1} | new champion: max wsl 11, nw 16, score 102
+seed 45 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 59 | gen   26 (33 grids scored in 8.2 m) | maps{1} | new champion: max wsl 13, nw 9, score 72
+seed 43 | gen  216 (1 grids scored in 5.2 m) | maps{1} | new champion: max wsl 12, nw 19, score 53
+seed 57 | gen   74 (103 grids scored in 8.9 m) | maps{1} | new champion: max wsl 13, nw 20, score 67
+seed 59 | gen   27 (58 grids scored in 9.4 m) | maps{1} | new champion: max wsl 13, nw 10, score 73
+seed 22 | gen   65 (1.1K grids scored in 4.3 h) | maps{1} | new champion: max wsl 11, nw 12, score 128
+seed 64 | gen  294 (45 grids scored in 12.8 m) | maps{1} | new champion: max wsl 13, nw 21, score 63
+seed 39 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 39 | gen   17 (1 grids scored in 2.9 m) | maps{1} | new champion: max wsl 13, nw 14, score 87
+seed 33 | gen  257 (1 grids scored in 5.7 m) | maps{1} | new champion: max wsl 13, nw 20, score 55
+seed 37 | gen   41 (66 grids scored in 14.7 m) | maps{1} | new champion: max wsl 12, nw 13, score 85
+seed 63 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 63 | gen   97 (1 grids scored in 4.0 m) | maps{1} | new champion: max wsl 13, nw 20, score 64
+seed 59 | gen   28 (88 grids scored in 11.0 m) | maps{1} | new champion: max wsl 13, nw 10, score 77
+seed 50 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 50 | gen   20 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 13, nw 14, score 55
+seed 45 | gen   23 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 11, nw 10, score 67
+seed  4 | gen  212 (975 grids scored in 4.3 h) | maps{1} | new champion: max wsl 11, nw 15, score 133
+seed 44 | gen  142 (47 grids scored in 13.1 m) | maps{1} | new champion: max wsl 12, nw 13, score 57
+seed 64 | gen  295 (80 grids scored in 14.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 69
+seed 53 | gen  149 (1 grids scored in 4.5 m) | maps{1} | new champion: max wsl 13, nw 14, score 60
+seed 48 | gen  127 (35 grids scored in 10.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 60
+seed 57 | gen   75 (176 grids scored in 12.5 m) | maps{1} | new champion: max wsl 13, nw 20, score 76
+seed 52 | gen  181 (134 grids scored in 17.9 m) | maps{1} | new champion: max wsl 13, nw 17, score 95
+seed 37 | gen   42 (118 grids scored in 17.3 m) | maps{1} | new champion: max wsl 12, nw 13, score 98
+seed 59 | gen   29 (139 grids scored in 13.5 m) | maps{1} | new champion: max wsl 13, nw 11, score 85
+seed 54 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 54 | gen  104 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 17, score 59
+seed 64 | gen  296 (121 grids scored in 16.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 70
+seed 44 | gen  143 (96 grids scored in 15.6 m) | maps{1} | new champion: max wsl 12, nw 15, score 61
+seed 56 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 34 | gen  276 (125 grids scored in 20.7 m) | maps{1} | new champion: max wsl 13, nw 14, score 76
+seed 53 | gen  151 (21 grids scored in 7.7 m) | maps{1} | new champion: max wsl 13, nw 15, score 75
+seed 36 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 36 | gen  181 (1 grids scored in 4.9 m) | maps{1} | new champion: max wsl 13, nw 20, score 54
+seed 57 | gen   76 (248 grids scored in 16.2 m) | maps{1} | new champion: max wsl 13, nw 20, score 81
+seed 37 | gen   43 (192 grids scored in 21.0 m) | maps{1} | new champion: max wsl 12, nw 13, score 105
+seed 33 | gen  259 (44 grids scored in 12.8 m) | maps{1} | new champion: max wsl 13, nw 20, score 56
+seed 44 | gen  144 (162 grids scored in 18.9 m) | maps{1} | new champion: max wsl 12, nw 15, score 72
+seed 56 | gen   45 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 13, nw 10, score 52
+seed 50 | gen   22 (47 grids scored in 10.5 m) | maps{1} | new champion: max wsl 13, nw 14, score 67
+seed 54 | gen  106 (31 grids scored in 8.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 72
+seed 45 | gen   25 (46 grids scored in 10.8 m) | maps{1} | new champion: max wsl 13, nw 11, score 83
+seed 37 | gen   44 (272 grids scored in 25.0 m) | maps{1} | new champion: max wsl 12, nw 14, score 111
+seed 44 | gen  145 (239 grids scored in 22.8 m) | maps{1} | new champion: max wsl 11, nw 15, score 87
+seed 43 | gen  218 (75 grids scored in 17.9 m) | maps{1} | new champion: max wsl 13, nw 21, score 58
+seed 36 | gen  183 (37 grids scored in 10.7 m) | maps{1} | new champion: max wsl 13, nw 19, score 55
+seed 28 | gen  165 (1.1K grids scored in 4.5 h) | maps{1} | new champion: max wsl 13, nw 20, score 101
+seed 35 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 49 | gen   24 (177 grids scored in 30.3 m) | maps{1} | new champion: max wsl 13, nw 13, score 109
+seed 56 | gen   47 (43 grids scored in 9.7 m) | maps{1} | new champion: max wsl 13, nw 9, score 82
+seed 44 | gen  146 (300 grids scored in 25.8 m) | maps{1} | new champion: max wsl 12, nw 15, score 100
+seed 53 | gen  154 (73 grids scored in 19.2 m) | maps{1} | new champion: max wsl 12, nw 16, score 91
+seed 34 | gen  278 (211 grids scored in 33.6 m) | maps{1} | new champion: max wsl 13, nw 14, score 83
+seed 44 | gen  147 (384 grids scored in 30.0 m) | maps{1} | new champion: max wsl 11, nw 14, score 103
+seed 60 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 60 | gen  372 (1 grids scored in 6.8 m) | maps{1} | new champion: max wsl 13, nw 12, score 62
+seed 51 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 63 | gen  100 (83 grids scored in 22.4 m) | maps{1} | new champion: max wsl 13, nw 19, score 69
+seed 36 | gen  185 (97 grids scored in 18.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 57
+seed 62 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 35 | gen  327 (1 grids scored in 6.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 64
+seed 58 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 64 | gen  298 (250 grids scored in 34.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 89
+seed 48 | gen  129 (168 grids scored in 29.9 m) | maps{1} | new champion: max wsl 11, nw 18, score 68
+seed 47 | gen  114 (105 grids scored in 33.6 m) | maps{1} | new champion: max wsl 13, nw 12, score 83
+seed 45 | gen   27 (143 grids scored in 24.9 m) | maps{1} | new champion: max wsl 13, nw 12, score 98
+seed 51 | gen   77 (1 grids scored in 3.8 m) | maps{1} | new champion: max wsl 12, nw 15, score 95
+seed 41 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 62 | gen   20 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 13, nw 14, score 47
+seed 59 | gen   31 (278 grids scored in 33.3 m) | maps{1} | new champion: max wsl 13, nw 12, score 91
+seed 10 | gen  193 (1.5K grids scored in 4.7 h) | maps{1} | new champion: max wsl 12, nw 15, score 105
+seed 35 | gen  329 (23 grids scored in 10.0 m) | maps{1} | new champion: max wsl 13, nw 19, score 70
+seed 44 | gen  148 (491 grids scored in 35.4 m) | maps{1} | new champion: max wsl 12, nw 14, score 105
+seed 33 | gen  261 (184 grids scored in 30.5 m) | maps{1} | new champion: max wsl 11, nw 19, score 108
+seed 57 | gen   78 (406 grids scored in 35.9 m) | maps{1} | new champion: max wsl 11, nw 19, score 105
+seed 41 | gen   23 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 13, nw 20, score 82
+seed 42 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 42 | gen   47 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 13, nw 21, score 54
+seed 62 | gen   22 (29 grids scored in 7.1 m) | maps{1} | new champion: max wsl 13, nw 15, score 56
+seed 56 | gen   49 (147 grids scored in 22.8 m) | maps{1} | new champion: max wsl 13, nw 10, score 84
+seed 61 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 60 | gen  375 (39 grids scored in 15.2 m) | maps{1} | new champion: max wsl 13, nw 11, score 84
+seed 58 | gen   89 (2 grids scored in 6.9 m) | maps{1} | new champion: max wsl 13, nw 19, score 55
+seed 54 | gen  109 (111 grids scored in 28.8 m) | maps{1} | new champion: max wsl 13, nw 18, score 89
+seed 23 | gen   39 (851 grids scored in 4.8 h) | maps{1} | new champion: max wsl 13, nw 12, score 101
+seed 47 | gen  116 (156 grids scored in 40.3 m) | maps{1} | new champion: max wsl 13, nw 16, score 85
+seed 52 | gen  184 (259 grids scored in 44.2 m) | maps{1} | new champion: max wsl 13, nw 20, score 101
+seed 61 | gen  183 (1 grids scored in 4.8 m) | maps{1} | new champion: max wsl 11, nw 18, score 67
+seed 35 | gen  331 (86 grids scored in 18.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 79
+seed 60 | gen  377 (74 grids scored in 20.3 m) | maps{1} | new champion: max wsl 13, nw 10, score 108
+seed 55 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 55 | gen  143 (1 grids scored in 4.5 m) | maps{1} | new champion: max wsl 12, nw 10, score 68
+seed 42 | gen   49 (43 grids scored in 10.9 m) | maps{1} | new champion: max wsl 13, nw 20, score 58
+seed 36 | gen  187 (191 grids scored in 33.3 m) | maps{1} | new champion: max wsl 11, nw 22, score 69
+seed 43 | gen  220 (238 grids scored in 41.0 m) | maps{1} | new champion: max wsl 13, nw 20, score 67
+seed 58 | gen   91 (44 grids scored in 14.4 m) | maps{1} | new champion: max wsl 12, nw 18, score 83
+seed 48 | gen  131 (297 grids scored in 45.5 m) | maps{1} | new champion: max wsl 13, nw 21, score 77
+seed 58 | gen   92 (92 grids scored in 16.8 m) | maps{1} | new champion: max wsl 11, nw 19, score 85
+seed 60 | gen  379 (118 grids scored in 26.0 m) | maps{1} | new champion: max wsl 13, nw 11, score 110
+seed 43 | gen  221 (322 grids scored in 45.2 m) | maps{1} | new champion: max wsl 13, nw 19, score 68
+seed 49 | gen   26 (357 grids scored in 55.3 m) | maps{1} | new champion: max wsl 13, nw 14, score 114
+seed 41 | gen   25 (81 grids scored in 16.7 m) | maps{1} | new champion: max wsl 13, nw 20, score 98
+seed 55 | gen  145 (39 grids scored in 10.9 m) | maps{1} | new champion: max wsl 11, nw 11, score 89
+seed 61 | gen  185 (57 grids scored in 14.0 m) | maps{1} | new champion: max wsl 13, nw 19, score 81
+seed 58 | gen   93 (156 grids scored in 20.0 m) | maps{1} | new champion: max wsl 11, nw 19, score 90
+seed 52 | gen  186 (351 grids scored in 56.0 m) | maps{1} | new champion: max wsl 13, nw 17, score 102
+seed 62 | gen   24 (129 grids scored in 22.1 m) | maps{1} | new champion: max wsl 12, nw 15, score 74
+seed 63 | gen  103 (187 grids scored in 46.5 m) | maps{1} | new champion: max wsl 12, nw 19, score 70
+seed 33 | gen  263 (344 grids scored in 51.0 m) | maps{1} | new champion: max wsl 13, nw 19, score 122
+seed 56 | gen   51 (294 grids scored in 43.1 m) | maps{1} | new champion: max wsl 13, nw 10, score 86
+seed 64 | gen  300 (432 grids scored in 1.0 h) | maps{1} | new champion: max wsl 13, nw 17, score 90
+seed 53 | gen  157 (183 grids scored in 50.4 m) | maps{1} | new champion: max wsl 11, nw 17, score 101
+seed 34 | gen  281 (351 grids scored in 1.1 h) | maps{1} | new champion: max wsl 12, nw 17, score 100
+seed  6 | gen  115 (1.5K grids scored in 5.1 h) | maps{1} | new champion: max wsl 13, nw 11, score 125
+seed  8 | gen   49 (2.1K grids scored in 5.1 h) | maps{1} | new champion: max wsl 12, nw 17, score 134
+seed 51 | gen   80 (102 grids scored in 29.9 m) | maps{1} | new champion: max wsl 12, nw 14, score 114
+seed 42 | gen   51 (146 grids scored in 26.6 m) | maps{1} | new champion: max wsl 12, nw 20, score 67
+seed 46 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 39 | gen   21 (141 grids scored in 54.4 m) | maps{1} | new champion: max wsl 13, nw 13, score 92
+seed 38 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 38 | gen   38 (1 grids scored in 3.4 m) | maps{1} | new champion: max wsl 13, nw 16, score 69
+seed 40 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 40 | gen   19 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 13, nw 13, score 61
+seed 52 | gen  188 (430 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 20, score 105
+seed 59 | gen   33 (492 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 13, score 95
+seed 46 | gen  121 (1 grids scored in 4.3 m) | maps{1} | new champion: max wsl 13, nw 12, score 61
+seed 47 | gen  119 (273 grids scored in 1.1 h) | maps{1} | new champion: max wsl 12, nw 12, score 110
+seed 58 | gen   95 (280 grids scored in 35.0 m) | maps{1} | new champion: max wsl 11, nw 20, score 94
+seed 61 | gen  187 (181 grids scored in 30.9 m) | maps{1} | new champion: max wsl 13, nw 20, score 89
+seed 44 | gen  150 (745 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 15, score 124
+seed 46 | gen  123 (30 grids scored in 8.9 m) | maps{1} | new champion: max wsl 13, nw 13, score 82
+seed 63 | gen  105 (298 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 19, score 80
+seed 62 | gen   26 (248 grids scored in 40.2 m) | maps{1} | new champion: max wsl 12, nw 15, score 93
+seed 48 | gen  133 (468 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 21, score 84
+seed 40 | gen   21 (56 grids scored in 12.1 m) | maps{1} | new champion: max wsl 13, nw 14, score 64
+seed 38 | gen   40 (69 grids scored in 14.7 m) | maps{1} | new champion: max wsl 9, nw 15, score 118
+seed 54 | gen  112 (239 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 18, score 94
+seed 60 | gen  383 (208 grids scored in 52.0 m) | maps{1} | new champion: max wsl 13, nw 12, score 115
+seed 43 | gen  223 (502 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 19, score 72
+seed 51 | gen   82 (214 grids scored in 45.4 m) | maps{1} | new champion: max wsl 12, nw 14, score 125
+seed 51 | gen   83 (278 grids scored in 48.6 m) | maps{1} | new champion: max wsl 12, nw 16, score 126
+seed 34 | gen  283 (480 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 17, score 103
+seed 43 | gen  224 (607 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 77
+seed 51 | gen   84 (344 grids scored in 51.9 m) | maps{1} | new champion: max wsl 12, nw 16, score 129
+seed 45 | gen   30 (355 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 12, score 101
+seed 55 | gen  148 (167 grids scored in 42.2 m) | maps{1} | new champion: max wsl 13, nw 10, score 94
+seed 33 | gen  265 (523 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 18, score 126
+seed 40 | gen   23 (135 grids scored in 23.8 m) | maps{1} | new champion: max wsl 13, nw 15, score 70
+seed 37 | gen   47 (544 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 14, score 125
+seed 42 | gen   53 (313 grids scored in 50.0 m) | maps{1} | new champion: max wsl 12, nw 18, score 79
+seed 46 | gen  126 (94 grids scored in 23.8 m) | maps{1} | new champion: max wsl 13, nw 16, score 90
+seed 35 | gen  334 (263 grids scored in 1.0 h) | maps{1} | new champion: max wsl 11, nw 18, score 96
+seed 43 | gen  225 (732 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 18, score 84
+seed 58 | gen   97 (418 grids scored in 55.1 m) | maps{1} | new champion: max wsl 13, nw 22, score 104
+seed 61 | gen  189 (328 grids scored in 53.1 m) | maps{1} | new champion: max wsl 13, nw 18, score 116
+seed 39 | gen   24 (284 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 14, score 94
+seed 38 | gen   42 (210 grids scored in 34.1 m) | maps{1} | new champion: max wsl 13, nw 16, score 125
+seed 60 | gen  386 (291 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 12, score 122
+seed 50 | gen   26 (282 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 14, score 72
+seed 36 | gen  190 (400 grids scored in 1.4 h) | maps{1} | new champion: max wsl 11, nw 21, score 70
+seed 52 | gen  191 (573 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 17, score 113
+seed 48 | gen  135 (652 grids scored in 1.6 h) | maps{1} | new champion: max wsl 13, nw 21, score 93
+seed 40 | gen   25 (242 grids scored in 39.0 m) | maps{1} | new champion: max wsl 13, nw 17, score 78
+seed 47 | gen  122 (414 grids scored in 1.6 h) | maps{1} | new champion: max wsl 12, nw 12, score 111
+seed 34 | gen  285 (618 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 14, score 106
+seed 59 | gen   35 (741 grids scored in 1.6 h) | maps{1} | new champion: max wsl 13, nw 13, score 97
+seed 46 | gen  129 (180 grids scored in 45.6 m) | maps{1} | new champion: max wsl 13, nw 16, score 102
+seed 57 | gen   81 (718 grids scored in 1.8 h) | maps{1} | new champion: max wsl 11, nw 19, score 106
+seed 42 | gen   55 (496 grids scored in 1.2 h) | maps{1} | new champion: max wsl 12, nw 17, score 86
+seed 53 | gen  160 (407 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 17, score 120
+seed 58 | gen   99 (608 grids scored in 1.3 h) | maps{1} | new champion: max wsl 13, nw 22, score 106
+seed 37 | gen   49 (750 grids scored in 1.9 h) | maps{1} | new champion: max wsl 11, nw 15, score 128
+seed 43 | gen  227 (961 grids scored in 1.9 h) | maps{1} | new champion: max wsl 13, nw 18, score 87
+seed 50 | gen   28 (444 grids scored in 1.8 h) | maps{1} | new champion: max wsl 13, nw 14, score 79
+seed 58 | gen  100 (716 grids scored in 1.4 h) | maps{1} | new champion: max wsl 11, nw 18, score 107
+seed 47 | gen  124 (568 grids scored in 2.0 h) | maps{1} | new champion: max wsl 12, nw 12, score 114
+seed 48 | gen  137 (824 grids scored in 2.0 h) | maps{1} | new champion: max wsl 13, nw 20, score 98
+seed 46 | gen  131 (284 grids scored in 1.0 h) | maps{1} | new champion: max wsl 13, nw 16, score 107
+seed 64 | gen  303 (710 grids scored in 2.1 h) | maps{1} | new champion: max wsl 13, nw 17, score 92
+seed 56 | gen   54 (560 grids scored in 1.8 h) | maps{1} | new champion: max wsl 13, nw 11, score 89
+seed 55 | gen  151 (345 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 9, score 101
+seed 38 | gen   44 (433 grids scored in 1.1 h) | maps{1} | new champion: max wsl 10, nw 15, score 127
+seed 49 | gen   29 (692 grids scored in 2.2 h) | maps{1} | new champion: max wsl 13, nw 14, score 117
+seed 41 | gen   28 (404 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 20, score 103
+seed 34 | gen  287 (818 grids scored in 2.2 h) | maps{1} | new champion: max wsl 12, nw 15, score 116
+seed 63 | gen  108 (551 grids scored in 2.0 h) | maps{1} | new champion: max wsl 13, nw 21, score 90
+seed 54 | gen  115 (487 grids scored in 2.0 h) | maps{1} | new champion: max wsl 12, nw 18, score 102
+seed 59 | gen   37 (1.0K grids scored in 2.2 h) | maps{1} | new champion: max wsl 13, nw 14, score 98
+seed 57 | gen   83 (939 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 19, score 113
+seed 52 | gen  194 (760 grids scored in 2.4 h) | maps{1} | new champion: max wsl 13, nw 18, score 116
+seed 55 | gen  153 (465 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 10, score 104
+seed 59 | gen   38 (1.2K grids scored in 2.3 h) | maps{1} | new champion: max wsl 13, nw 15, score 109
+seed 35 | gen  337 (525 grids scored in 1.9 h) | maps{1} | new champion: max wsl 11, nw 18, score 97
+seed 62 | gen   29 (565 grids scored in 1.8 h) | maps{1} | new champion: max wsl 12, nw 15, score 100
+seed 55 | gen  154 (530 grids scored in 1.7 h) | maps{1} | new champion: max wsl 12, nw 9, score 109
+seed 37 | gen   51 (983 grids scored in 2.4 h) | maps{1} | new champion: max wsl 10, nw 11, score 133
+seed 55 | gen  155 (597 grids scored in 1.8 h) | maps{1} | new champion: max wsl 12, nw 9, score 111
+seed 45 | gen   33 (631 grids scored in 2.3 h) | maps{1} | new champion: max wsl 10, nw 14, score 117
+seed 40 | gen   28 (462 grids scored in 1.5 h) | maps{1} | new champion: max wsl 11, nw 16, score 91
+seed 61 | gen  192 (610 grids scored in 1.9 h) | maps{1} | new champion: max wsl 13, nw 18, score 117
+seed 56 | gen   56 (799 grids scored in 2.3 h) | maps{1} | new champion: max wsl 13, nw 10, score 111
+seed 36 | gen  193 (661 grids scored in 2.4 h) | maps{1} | new champion: max wsl 11, nw 19, score 92
+seed 41 | gen   30 (632 grids scored in 2.1 h) | maps{1} | new champion: max wsl 13, nw 18, score 123
+seed 54 | gen  117 (708 grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 20, score 108
+seed 38 | gen   46 (714 grids scored in 1.7 h) | maps{1} | new champion: max wsl 10, nw 14, score 132
+seed 55 | gen  157 (753 grids scored in 2.1 h) | maps{1} | new champion: max wsl 12, nw 10, score 122
+seed 53 | gen  163 (674 grids scored in 2.7 h) | maps{1} | new champion: max wsl 12, nw 19, score 121
+seed 36 | gen  195 (856 grids scored in 2.8 h) | maps{1} | new champion: max wsl 11, nw 19, score 101
+seed 45 | gen   35 (893 grids scored in 2.9 h) | maps{1} | new champion: max wsl 13, nw 15, score 121
+seed 58 | gen  103 (1.0K grids scored in 2.5 h) | maps{1} | new champion: max wsl 13, nw 16, score 109
+seed 47 | gen  127 (863 grids scored in 3.1 h) | maps{1} | new champion: max wsl 11, nw 17, score 120
+seed 50 | gen   31 (748 grids scored in 3.0 h) | maps{1} | new champion: max wsl 11, nw 21, score 91
+seed 34 | gen  290 (1.1K grids scored in 3.2 h) | maps{1} | new champion: max wsl 12, nw 15, score 121
+seed 48 | gen  140 (1.1K grids scored in 3.1 h) | maps{1} | new champion: max wsl 13, nw 20, score 101
+seed 55 | gen  159 (926 grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 10, score 123
+seed 43 | gen  230 (1.3K grids scored in 3.2 h) | maps{1} | new champion: max wsl 12, nw 14, score 109
+seed 41 | gen   32 (901 grids scored in 2.7 h) | maps{1} | new champion: max wsl 13, nw 18, score 126
+seed 52 | gen  197 (1.0K grids scored in 3.4 h) | maps{1} | new champion: max wsl 12, nw 18, score 118
+seed 51 | gen   88 (761 grids scored in 2.9 h) | maps{1} | new champion: max wsl 12, nw 16, score 132
+seed 33 | gen  269 (948 grids scored in 3.4 h) | maps{1} | new champion: max wsl 13, nw 19, score 128
+seed 40 | gen   31 (783 grids scored in 2.7 h) | maps{1} | new champion: max wsl 12, nw 15, score 107
+seed 57 | gen   86 (1.3K grids scored in 3.7 h) | maps{1} | new champion: max wsl 11, nw 20, score 115
+seed 48 | gen  142 (1.4K grids scored in 3.6 h) | maps{1} | new champion: max wsl 13, nw 19, score 112
+seed 55 | gen  161 (1.2K grids scored in 3.1 h) | maps{1} | new champion: max wsl 11, nw 11, score 124
+seed 42 | gen   59 (870 grids scored in 3.2 h) | maps{1} | new champion: max wsl 11, nw 17, score 90
+seed 37 | gen   54 (1.4K grids scored in 3.9 h) | maps{1} | new champion: max wsl 11, nw 16, score 139
+seed 54 | gen  120 (1.0K grids scored in 3.7 h) | maps{1} | new champion: max wsl 11, nw 23, score 114
+seed 39 | gen   29 (620 grids scored in 3.8 h) | maps{1} | new champion: max wsl 13, nw 13, score 95
+seed 68 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 68 | gen    8 (1 grids scored in 1.3 m) | maps{1} | new champion: max wsl 11, nw 15, score 69
+seed 51 | gen   90 (1.0K grids scored in 3.5 h) | maps{1} | new champion: max wsl 12, nw 16, score 133
+seed 74 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 64 | gen  307 (1.1K grids scored in 4.1 h) | maps{1} | new champion: max wsl 10, nw 16, score 103
+seed 69 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 69 | gen   54 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 54
+seed 74 | gen  192 (1 grids scored in 5.0 m) | maps{1} | new champion: max wsl 13, nw 18, score 47
+seed 74 | gen  193 (14 grids scored in 5.7 m) | maps{1} | new champion: max wsl 13, nw 18, score 56
+seed 55 | gen  163 (1.4K grids scored in 3.5 h) | maps{1} | new champion: max wsl 11, nw 11, score 132
+seed 74 | gen  194 (34 grids scored in 6.7 m) | maps{1} | new champion: max wsl 13, nw 18, score 66
+seed 68 | gen   10 (72 grids scored in 13.7 m) | maps{1} | new champion: max wsl 11, nw 16, score 83
+seed 35 | gen  341 (902 grids scored in 3.8 h) | maps{1} | new champion: max wsl 11, nw 17, score 102
+seed 63 | gen  112 (960 grids scored in 4.1 h) | maps{1} | new champion: max wsl 11, nw 19, score 107
+seed 69 | gen   56 (37 grids scored in 8.9 m) | maps{1} | new champion: max wsl 13, nw 17, score 60
+seed 57 | gen   88 (1.6K grids scored in 4.2 h) | maps{1} | new champion: max wsl 11, nw 17, score 117
+seed 36 | gen  198 (1.2K grids scored in 4.0 h) | maps{1} | new champion: max wsl 12, nw 19, score 105
+seed 59 | gen   41 (1.7K grids scored in 4.2 h) | maps{1} | new champion: max wsl 12, nw 14, score 126
+seed 77 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 77 | gen   15 (1 grids scored in 2.5 m) | maps{1} | new champion: max wsl 11, nw 14, score 79
+seed 42 | gen   61 (1.1K grids scored in 3.7 h) | maps{1} | new champion: max wsl 12, nw 15, score 94
+seed 73 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 73 | gen   64 (1 grids scored in 3.7 m) | maps{1} | new champion: max wsl 10, nw 13, score 70
+seed 44 | gen  154 (1.3K grids scored in 4.3 h) | maps{1} | new champion: max wsl 13, nw 14, score 125
+seed 83 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 83 | gen   22 (1 grids scored in 3.2 m) | maps{1} | new champion: max wsl 10, nw 12, score 92
+seed 72 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 72 | gen   45 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 13, nw 22, score 32
+seed 82 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 58 | gen  106 (1.4K grids scored in 3.8 h) | maps{1} | new champion: max wsl 12, nw 21, score 114
+seed 38 | gen   49 (1.1K grids scored in 3.3 h) | maps{1} | new champion: max wsl 10, nw 14, score 141
+seed 74 | gen  196 (81 grids scored in 14.2 m) | maps{1} | new champion: max wsl 13, nw 19, score 79
+seed 72 | gen   46 (17 grids scored in 4.3 m) | maps{1} | new champion: max wsl 13, nw 22, score 42
+seed 78 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 66 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 82 | gen   11 (1 grids scored in 1.8 m) | maps{1} | new champion: max wsl 10, nw 16, score 46
+seed 72 | gen   47 (39 grids scored in 5.4 m) | maps{1} | new champion: max wsl 13, nw 21, score 54
+seed 66 | gen    5 (1 grids scored in 45.9 s) | maps{1} | new champion: max wsl 10, nw 20, score 43
+seed 72 | gen   48 (57 grids scored in 6.3 m) | maps{1} | new champion: max wsl 13, nw 22, score 65
+seed 71 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 78 | gen   45 (1 grids scored in 3.4 m) | maps{1} | new champion: max wsl 13, nw 18, score 65
+seed 71 | gen   63 (1 grids scored in 3.7 m) | maps{1} | new champion: max wsl 10, nw 15, score 79
+seed 70 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 70 | gen  427 (1 grids scored in 7.4 m) | maps{1} | new champion: max wsl 13, nw 19, score 51
+seed 71 | gen   64 (13 grids scored in 4.3 m) | maps{1} | new champion: max wsl 10, nw 15, score 82
+seed 67 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 69 | gen   58 (129 grids scored in 21.8 m) | maps{1} | new champion: max wsl 13, nw 17, score 65
+seed 71 | gen   65 (60 grids scored in 6.7 m) | maps{1} | new champion: max wsl 12, nw 14, score 94
+seed 82 | gen   13 (46 grids scored in 9.8 m) | maps{1} | new champion: max wsl 13, nw 18, score 65
+seed 67 | gen   28 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 13, nw 21, score 37
+seed 74 | gen  198 (166 grids scored in 25.3 m) | maps{1} | new champion: max wsl 13, nw 18, score 81
+seed 67 | gen   29 (21 grids scored in 4.3 m) | maps{1} | new champion: max wsl 13, nw 21, score 42
+seed 72 | gen   50 (120 grids scored in 15.8 m) | maps{1} | new champion: max wsl 13, nw 19, score 72
+seed 70 | gen  429 (39 grids scored in 14.0 m) | maps{1} | new champion: max wsl 11, nw 15, score 59
+seed 68 | gen   12 (223 grids scored in 34.1 m) | maps{1} | new champion: max wsl 11, nw 16, score 92
+seed 80 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 81 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 87 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 66 | gen    7 (82 grids scored in 15.7 m) | maps{1} | new champion: max wsl 10, nw 20, score 64
+seed 78 | gen   48 (50 grids scored in 17.1 m) | maps{1} | new champion: max wsl 12, nw 17, score 71
+seed 80 | gen  113 (1 grids scored in 4.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 44
+seed 81 | gen   38 (1 grids scored in 3.4 m) | maps{1} | new champion: max wsl 13, nw 20, score 64
+seed 87 | gen   25 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 13, nw 22, score 56
+seed 62 | gen   33 (1.0K grids scored in 4.1 h) | maps{1} | new champion: max wsl 12, nw 16, score 102
+seed 88 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 88 | gen   61 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 13, nw 19, score 43
+seed 75 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 88 | gen   62 (14 grids scored in 4.3 m) | maps{1} | new champion: max wsl 13, nw 20, score 62
+seed 72 | gen   52 (207 grids scored in 27.7 m) | maps{1} | new champion: max wsl 13, nw 20, score 77
+seed 67 | gen   31 (114 grids scored in 16.8 m) | maps{1} | new champion: max wsl 13, nw 22, score 65
+seed 69 | gen   60 (256 grids scored in 37.9 m) | maps{1} | new champion: max wsl 13, nw 22, score 95
+seed 70 | gen  431 (124 grids scored in 26.7 m) | maps{1} | new champion: max wsl 11, nw 15, score 72
+seed 73 | gen   67 (96 grids scored in 30.7 m) | maps{1} | new champion: max wsl 13, nw 13, score 79
+seed 81 | gen   40 (47 grids scored in 11.2 m) | maps{1} | new champion: max wsl 13, nw 19, score 69
+seed 33 | gen  272 (1.3K grids scored in 4.7 h) | maps{1} | new champion: max wsl 10, nw 22, score 135
+seed 87 | gen   27 (46 grids scored in 11.4 m) | maps{1} | new champion: max wsl 11, nw 21, score 58
+seed 53 | gen  167 (1.0K grids scored in 4.6 h) | maps{1} | new champion: max wsl 11, nw 20, score 126
+seed 93 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 75 | gen  136 (1 grids scored in 4.4 m) | maps{1} | new champion: max wsl 12, nw 16, score 53
+seed 86 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 91 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 80 | gen  115 (63 grids scored in 14.6 m) | maps{1} | new champion: max wsl 11, nw 19, score 90
+seed 71 | gen   67 (196 grids scored in 26.3 m) | maps{1} | new champion: max wsl 12, nw 18, score 104
+seed 58 | gen  108 (1.6K grids scored in 4.3 h) | maps{1} | new champion: max wsl 12, nw 21, score 118
+seed 87 | gen   28 (88 grids scored in 13.5 m) | maps{1} | new champion: max wsl 13, nw 22, score 59
+seed 76 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 76 | gen   55 (1 grids scored in 3.6 m) | maps{1} | new champion: max wsl 11, nw 10, score 75
+seed 79 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 79 | gen   48 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 13, nw 19, score 51
+seed 86 | gen   16 (1 grids scored in 2.7 m) | maps{1} | new champion: max wsl 12, nw 12, score 99
+seed 93 | gen   32 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 11, nw 17, score 71
+seed 61 | gen  196 (1.0K grids scored in 4.2 h) | maps{1} | new champion: max wsl 13, nw 18, score 128
+seed 87 | gen   29 (134 grids scored in 15.8 m) | maps{1} | new champion: max wsl 13, nw 23, score 61
+seed 88 | gen   64 (80 grids scored in 12.5 m) | maps{1} | new champion: max wsl 13, nw 21, score 64
+seed 78 | gen   50 (150 grids scored in 31.5 m) | maps{1} | new champion: max wsl 12, nw 17, score 81
+seed 92 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 92 | gen    5 (1 grids scored in 46.0 s) | maps{1} | new champion: max wsl 10, nw 18, score 49
+seed 91 | gen   82 (1 grids scored in 3.8 m) | maps{1} | new champion: max wsl 13, nw 20, score 52
+seed 75 | gen  138 (32 grids scored in 8.8 m) | maps{1} | new champion: max wsl 12, nw 19, score 61
+seed 89 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 89 | gen  120 (1 grids scored in 4.2 m) | maps{1} | new champion: max wsl 13, nw 20, score 52
+seed 75 | gen  139 (58 grids scored in 10.1 m) | maps{1} | new champion: max wsl 12, nw 14, score 66
+seed 85 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 41 | gen   35 (1.4K grids scored in 4.3 h) | maps{1} | new champion: max wsl 9, nw 18, score 137
+seed 89 | gen  121 (18 grids scored in 5.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 56
+seed 88 | gen   65 (129 grids scored in 15.0 m) | maps{1} | new champion: max wsl 13, nw 18, score 67
+seed 87 | gen   30 (195 grids scored in 18.9 m) | maps{1} | new champion: max wsl 12, nw 22, score 68
+seed 85 | gen   31 (1 grids scored in 3.3 m) | maps{1} | new champion: max wsl 11, nw 10, score 83
+seed 67 | gen   33 (212 grids scored in 30.1 m) | maps{1} | new champion: max wsl 13, nw 22, score 67
+seed 90 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 90 | gen   51 (1 grids scored in 3.5 m) | maps{1} | new champion: max wsl 9, nw 17, score 60
+seed 88 | gen   66 (208 grids scored in 18.9 m) | maps{1} | new champion: max wsl 13, nw 19, score 74
+seed 76 | gen   57 (49 grids scored in 12.0 m) | maps{1} | new champion: max wsl 11, nw 11, score 90
+seed 91 | gen   84 (45 grids scored in 10.8 m) | maps{1} | new champion: max wsl 13, nw 20, score 67
+seed 68 | gen   14 (418 grids scored in 59.4 m) | maps{1} | new champion: max wsl 11, nw 16, score 117
+seed 69 | gen   62 (383 grids scored in 54.2 m) | maps{1} | new champion: max wsl 13, nw 23, score 108
+seed 95 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 79 | gen   50 (73 grids scored in 16.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 58
+seed 94 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 95 | gen   94 (1 grids scored in 4.0 m) | maps{1} | new champion: max wsl 13, nw 20, score 64
+seed 73 | gen   69 (221 grids scored in 49.3 m) | maps{1} | new champion: max wsl 10, nw 14, score 86
+seed 66 | gen    9 (293 grids scored in 44.2 m) | maps{1} | new champion: max wsl 11, nw 17, score 73
+seed 89 | gen  123 (94 grids scored in 16.6 m) | maps{1} | new champion: max wsl 13, nw 20, score 66
+seed 74 | gen  201 (325 grids scored in 59.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 87
+seed 92 | gen    7 (73 grids scored in 14.4 m) | maps{1} | new champion: max wsl 9, nw 17, score 86
+seed 94 | gen   10 (1 grids scored in 1.6 m) | maps{1} | new champion: max wsl 13, nw 20, score 64
+seed 85 | gen   33 (50 grids scored in 12.1 m) | maps{1} | new champion: max wsl 11, nw 11, score 96
+seed 90 | gen   53 (54 grids scored in 13.0 m) | maps{1} | new champion: max wsl 12, nw 16, score 72
+seed 70 | gen  433 (286 grids scored in 48.2 m) | maps{1} | new champion: max wsl 11, nw 16, score 74
+seed 49 | gen   33 (1.3K grids scored in 5.2 h) | maps{1} | new champion: max wsl 9, nw 17, score 131
+seed 65 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 65 | gen    8 (1 grids scored in 1.3 m) | maps{1} | new champion: max wsl 10, nw 16, score 56
+seed 76 | gen   59 (150 grids scored in 24.2 m) | maps{1} | new champion: max wsl 13, nw 9, score 92
+seed 75 | gen  141 (169 grids scored in 27.2 m) | maps{1} | new champion: max wsl 12, nw 14, score 83
+seed 66 | gen   10 (406 grids scored in 49.9 m) | maps{1} | new champion: max wsl 10, nw 20, score 82
+seed 67 | gen   35 (325 grids scored in 45.3 m) | maps{1} | new champion: max wsl 13, nw 22, score 73
+seed 94 | gen   12 (46 grids scored in 8.6 m) | maps{1} | new champion: max wsl 13, nw 20, score 65
+seed 78 | gen   52 (294 grids scored in 52.6 m) | maps{1} | new champion: max wsl 11, nw 16, score 86
+seed 75 | gen  142 (253 grids scored in 31.4 m) | maps{1} | new champion: max wsl 12, nw 14, score 87
+seed 78 | gen   53 (355 grids scored in 55.6 m) | maps{1} | new champion: max wsl 11, nw 17, score 88
+seed 69 | gen   64 (503 grids scored in 1.2 h) | maps{1} | new champion: max wsl 12, nw 23, score 114
+seed 77 | gen   19 (153 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 18, score 82
+seed 95 | gen   97 (65 grids scored in 19.7 m) | maps{1} | new champion: max wsl 13, nw 19, score 69
+seed 87 | gen   32 (358 grids scored in 44.6 m) | maps{1} | new champion: max wsl 11, nw 21, score 74
+seed 65 | gen   10 (67 grids scored in 12.8 m) | maps{1} | new champion: max wsl 10, nw 17, score 69
+seed 94 | gen   14 (125 grids scored in 18.5 m) | maps{1} | new champion: max wsl 13, nw 17, score 68
+seed 73 | gen   71 (353 grids scored in 1.1 h) | maps{1} | new champion: max wsl 10, nw 14, score 88
+seed 86 | gen   19 (118 grids scored in 36.6 m) | maps{1} | new champion: max wsl 11, nw 12, score 107
+seed 89 | gen  125 (233 grids scored in 37.0 m) | maps{1} | new champion: max wsl 13, nw 20, score 67
+seed 72 | gen   55 (402 grids scored in 1.2 h) | maps{1} | new champion: max wsl 12, nw 18, score 104
+seed 76 | gen   61 (282 grids scored in 42.5 m) | maps{1} | new champion: max wsl 13, nw 11, score 104
+seed 79 | gen   52 (237 grids scored in 41.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 73
+seed 67 | gen   37 (441 grids scored in 1.0 h) | maps{1} | new champion: max wsl 13, nw 22, score 76
+seed 89 | gen  126 (308 grids scored in 40.8 m) | maps{1} | new champion: max wsl 13, nw 18, score 68
+seed 56 | gen   60 (1.3K grids scored in 5.2 h) | maps{1} | new champion: max wsl 13, nw 11, score 115
+seed 95 | gen   99 (137 grids scored in 30.1 m) | maps{1} | new champion: max wsl 13, nw 20, score 71
+seed 82 | gen   16 (289 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 17, score 82
+seed 93 | gen   35 (148 grids scored in 43.7 m) | maps{1} | new champion: max wsl 13, nw 17, score 74
+seed 84 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 84 | gen    9 (1 grids scored in 1.5 m) | maps{1} | new champion: max wsl 13, nw 15, score 54
+seed 83 | gen   26 (197 grids scored in 1.3 h) | maps{1} | new champion: max wsl 11, nw 14, score 97
+seed 70 | gen  435 (468 grids scored in 1.2 h) | maps{1} | new champion: max wsl 13, nw 14, score 90
+seed 85 | gen   36 (185 grids scored in 43.2 m) | maps{1} | new champion: max wsl 11, nw 13, score 101
+seed 93 | gen   36 (264 grids scored in 49.6 m) | maps{1} | new champion: max wsl 13, nw 18, score 78
+seed 69 | gen   66 (667 grids scored in 1.5 h) | maps{1} | new champion: max wsl 12, nw 21, score 119
+seed 80 | gen  118 (283 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 95
+seed 81 | gen   43 (255 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 20, score 72
+seed 68 | gen   16 (714 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 17, score 130
+seed 94 | gen   16 (230 grids scored in 34.8 m) | maps{1} | new champion: max wsl 13, nw 16, score 77
+seed 77 | gen   21 (327 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 18, score 87
+seed 84 | gen   11 (58 grids scored in 11.0 m) | maps{1} | new champion: max wsl 13, nw 16, score 57
+seed 78 | gen   55 (550 grids scored in 1.4 h) | maps{1} | new champion: max wsl 12, nw 16, score 94
+seed 92 | gen    9 (347 grids scored in 51.4 m) | maps{1} | new champion: max wsl 9, nw 16, score 92
+seed 93 | gen   37 (379 grids scored in 55.3 m) | maps{1} | new champion: max wsl 13, nw 19, score 82
+seed 73 | gen   73 (488 grids scored in 1.5 h) | maps{1} | new champion: max wsl 10, nw 14, score 90
+seed 74 | gen  204 (490 grids scored in 1.6 h) | maps{1} | new champion: max wsl 13, nw 19, score 92
+seed 96 | gen    0 (0 grids scored in 0.0 s) | maps{1} | new champion: max wsl 13, nw -1, score 0
+seed 87 | gen   34 (543 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 21, score 84
+seed 72 | gen   57 (565 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 18, score 105
+seed 93 | gen   38 (482 grids scored in 1.0 h) | maps{1} | new champion: max wsl 11, nw 17, score 84
+seed 96 | gen  134 (1 grids scored in 4.4 m) | maps{1} | new champion: max wsl 13, nw 20, score 49
+seed 66 | gen   12 (689 grids scored in 1.5 h) | maps{1} | new champion: max wsl 11, nw 21, score 97
+seed 65 | gen   12 (274 grids scored in 41.8 m) | maps{1} | new champion: max wsl 12, nw 17, score 76
+seed 88 | gen   69 (450 grids scored in 1.2 h) | maps{1} | new champion: max wsl 11, nw 15, score 99
+seed 93 | gen   39 (615 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 18, score 88
+seed 79 | gen   54 (435 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 17, score 79
+seed 96 | gen  136 (40 grids scored in 11.4 m) | maps{1} | new champion: max wsl 13, nw 18, score 54
+seed 89 | gen  128 (498 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 71
+seed 94 | gen   18 (365 grids scored in 52.8 m) | maps{1} | new champion: max wsl 13, nw 18, score 80
+seed 85 | gen   38 (341 grids scored in 1.1 h) | maps{1} | new champion: max wsl 11, nw 14, score 126
+seed 82 | gen   18 (503 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 17, score 95
+seed 70 | gen  437 (675 grids scored in 1.7 h) | maps{1} | new champion: max wsl 13, nw 15, score 96
+seed 67 | gen   40 (597 grids scored in 1.6 h) | maps{1} | new champion: max wsl 13, nw 22, score 77
+seed 84 | gen   13 (200 grids scored in 31.3 m) | maps{1} | new champion: max wsl 13, nw 12, score 98
+seed 73 | gen   75 (650 grids scored in 1.8 h) | maps{1} | new champion: max wsl 10, nw 15, score 95
+seed 95 | gen  102 (292 grids scored in 1.1 h) | maps{1} | new champion: max wsl 13, nw 19, score 80
+seed 77 | gen   23 (535 grids scored in 1.9 h) | maps{1} | new champion: max wsl 12, nw 12, score 89
+seed 90 | gen   56 (308 grids scored in 1.2 h) | maps{1} | new champion: max wsl 10, nw 15, score 85
+seed 91 | gen   88 (257 grids scored in 1.4 h) | maps{1} | new champion: max wsl 13, nw 20, score 75
+seed 69 | gen   68 (917 grids scored in 2.2 h) | maps{1} | new champion: max wsl 12, nw 20, score 125
+seed 96 | gen  138 (183 grids scored in 32.2 m) | maps{1} | new champion: max wsl 13, nw 18, score 65
+seed 75 | gen  145 (539 grids scored in 1.6 h) | maps{1} | new champion: max wsl 12, nw 14, score 88
+seed 76 | gen   64 (498 grids scored in 1.5 h) | maps{1} | new champion: max wsl 13, nw 11, score 110
+seed 88 | gen   71 (638 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 16, score 101
+seed 89 | gen  130 (690 grids scored in 1.5 h) | maps{1} | new champion: max wsl 12, nw 21, score 75
+seed 92 | gen   11 (636 grids scored in 1.5 h) | maps{1} | new champion: max wsl 9, nw 16, score 97
+seed 67 | gen   42 (768 grids scored in 2.0 h) | maps{1} | new champion: max wsl 13, nw 22, score 82
+seed 65 | gen   14 (531 grids scored in 1.3 h) | maps{1} | new champion: max wsl 12, nw 16, score 94
+seed 95 | gen  104 (451 grids scored in 1.5 h) | maps{1} | new champion: max wsl 12, nw 19, score 93
+seed 84 | gen   15 (388 grids scored in 58.2 m) | maps{1} | new champion: max wsl 11, nw 16, score 103
+seed 82 | gen   20 (734 grids scored in 2.2 h) | maps{1} | new champion: max wsl 13, nw 17, score 110
+seed 93 | gen   41 (889 grids scored in 1.7 h) | maps{1} | new champion: max wsl 11, nw 17, score 117
+seed 74 | gen  207 (701 grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 20, score 95
+seed 80 | gen  121 (544 grids scored in 2.0 h) | maps{1} | new champion: max wsl 13, nw 16, score 124
+seed 77 | gen   25 (777 grids scored in 2.4 h) | maps{1} | new champion: max wsl 13, nw 19, score 93
+seed 96 | gen  140 (362 grids scored in 57.1 m) | maps{1} | new champion: max wsl 13, nw 21, score 74
+seed 90 | gen   58 (574 grids scored in 1.8 h) | maps{1} | new champion: max wsl 11, nw 19, score 90
+seed 75 | gen  147 (731 grids scored in 2.0 h) | maps{1} | new champion: max wsl 12, nw 14, score 95
+seed 72 | gen   60 (841 grids scored in 2.5 h) | maps{1} | new champion: max wsl 12, nw 18, score 108
+seed 75 | gen  148 (831 grids scored in 2.1 h) | maps{1} | new champion: max wsl 11, nw 18, score 107
+seed 85 | gen   41 (580 grids scored in 1.9 h) | maps{1} | new champion: max wsl 11, nw 14, score 127
+seed 89 | gen  132 (905 grids scored in 2.0 h) | maps{1} | new champion: max wsl 11, nw 14, score 96
+seed 69 | gen   70 (1.2K grids scored in 2.8 h) | maps{1} | new champion: max wsl 12, nw 20, score 130
+seed 75 | gen  149 (940 grids scored in 2.2 h) | maps{1} | new champion: max wsl 11, nw 19, score 110
+seed 87 | gen   37 (847 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 19, score 87
+seed 95 | gen  106 (654 grids scored in 1.9 h) | maps{1} | new champion: max wsl 10, nw 17, score 99
+seed 78 | gen   58 (908 grids scored in 2.7 h) | maps{1} | new champion: max wsl 11, nw 16, score 99
+seed 96 | gen  142 (547 grids scored in 1.3 h) | maps{1} | new champion: max wsl 11, nw 18, score 81
+seed 84 | gen   17 (656 grids scored in 1.6 h) | maps{1} | new champion: max wsl 11, nw 17, score 109
+seed 79 | gen   57 (751 grids scored in 2.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 88
+seed 86 | gen   23 (446 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 14, score 108
+seed 93 | gen   43 (1.2K grids scored in 2.4 h) | maps{1} | new champion: max wsl 11, nw 16, score 120
+seed 76 | gen   67 (745 grids scored in 2.4 h) | maps{1} | new champion: max wsl 13, nw 11, score 118
+seed 70 | gen  440 (997 grids scored in 2.9 h) | maps{1} | new champion: max wsl 13, nw 16, score 97
+seed 72 | gen   62 (1.0K grids scored in 3.0 h) | maps{1} | new champion: max wsl 12, nw 18, score 112
+seed 85 | gen   43 (755 grids scored in 2.3 h) | maps{1} | new champion: max wsl 11, nw 14, score 128
+seed 77 | gen   27 (1.0K grids scored in 3.0 h) | maps{1} | new champion: max wsl 13, nw 20, score 97
+seed 73 | gen   78 (966 grids scored in 3.0 h) | maps{1} | new champion: max wsl 9, nw 13, score 119
+seed 92 | gen   13 (1.0K grids scored in 2.4 h) | maps{1} | new champion: max wsl 9, nw 19, score 119
+seed 66 | gen   15 (1.1K grids scored in 2.9 h) | maps{1} | new champion: max wsl 11, nw 18, score 105
+seed 94 | gen   21 (724 grids scored in 2.2 h) | maps{1} | new champion: max wsl 10, nw 16, score 88
+seed 81 | gen   47 (589 grids scored in 2.7 h) | maps{1} | new champion: max wsl 13, nw 20, score 76
+seed 68 | gen   19 (1.2K grids scored in 3.3 h) | maps{1} | new champion: max wsl 11, nw 15, score 134
+seed 91 | gen   91 (551 grids scored in 2.5 h) | maps{1} | new champion: max wsl 11, nw 18, score 79
+seed 89 | gen  134 (1.1K grids scored in 2.6 h) | maps{1} | new champion: max wsl 11, nw 15, score 97
+seed 95 | gen  108 (859 grids scored in 2.4 h) | maps{1} | new champion: max wsl 10, nw 17, score 129
+seed 71 | gen   71 (667 grids scored in 3.0 h) | maps{1} | new champion: max wsl 12, nw 18, score 106
+seed 86 | gen   25 (624 grids scored in 2.7 h) | maps{1} | new champion: max wsl 12, nw 14, score 109
+seed 90 | gen   60 (898 grids scored in 2.6 h) | maps{1} | new champion: max wsl 13, nw 21, score 92
+seed 78 | gen   60 (1.2K grids scored in 3.3 h) | maps{1} | new champion: max wsl 13, nw 20, score 106
+seed 79 | gen   59 (1.0K grids scored in 2.9 h) | maps{1} | new champion: max wsl 10, nw 16, score 93
+seed 83 | gen   31 (531 grids scored in 3.4 h) | maps{1} | new champion: max wsl 13, nw 14, score 105
+seed 73 | gen   80 (1.2K grids scored in 3.5 h) | maps{1} | new champion: max wsl 9, nw 13, score 130
+seed 91 | gen   93 (745 grids scored in 3.0 h) | maps{1} | new champion: max wsl 11, nw 19, score 87
+seed 89 | gen  136 (1.3K grids scored in 3.0 h) | maps{1} | new champion: max wsl 11, nw 14, score 107
+seed 77 | gen   29 (1.3K grids scored in 3.6 h) | maps{1} | new champion: max wsl 13, nw 19, score 100
+seed 94 | gen   23 (987 grids scored in 2.8 h) | maps{1} | new champion: max wsl 10, nw 16, score 89
+seed 66 | gen   17 (1.4K grids scored in 3.6 h) | maps{1} | new champion: max wsl 13, nw 18, score 108
+seed 71 | gen   73 (938 grids scored in 3.6 h) | maps{1} | new champion: max wsl 10, nw 15, score 110
+seed 95 | gen  110 (1.1K grids scored in 3.0 h) | maps{1} | new champion: max wsl 10, nw 17, score 131
+seed 88 | gen   74 (1.1K grids scored in 3.4 h) | maps{1} | new champion: max wsl 10, nw 16, score 105
+seed 68 | gen   21 (1.5K grids scored in 4.1 h) | maps{1} | new champion: max wsl 11, nw 15, score 140
+seed 78 | gen   62 (1.4K grids scored in 3.8 h) | maps{1} | new champion: max wsl 11, nw 14, score 109
+seed 96 | gen  145 (862 grids scored in 2.4 h) | maps{1} | new champion: max wsl 13, nw 15, score 90
+seed 90 | gen   62 (1.2K grids scored in 3.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 99
+seed 91 | gen   95 (974 grids scored in 3.5 h) | maps{1} | new champion: max wsl 12, nw 23, score 114
+seed 82 | gen   23 (1.2K grids scored in 4.0 h) | maps{1} | new champion: max wsl 11, nw 16, score 116
+seed 75 | gen  152 (1.3K grids scored in 3.7 h) | maps{1} | new champion: max wsl 11, nw 19, score 116
+seed 70 | gen  443 (1.3K grids scored in 4.1 h) | maps{1} | new champion: max wsl 13, nw 15, score 98
+seed 72 | gen   65 (1.4K grids scored in 4.2 h) | maps{1} | new champion: max wsl 13, nw 16, score 117
+seed 77 | gen   31 (1.6K grids scored in 4.3 h) | maps{1} | new champion: max wsl 13, nw 19, score 101
+seed 81 | gen   50 (925 grids scored in 3.9 h) | maps{1} | new champion: max wsl 13, nw 19, score 81
+seed 74 | gen  211 (1.1K grids scored in 4.5 h) | maps{1} | new champion: max wsl 12, nw 22, score 98
+seed 80 | gen  125 (945 grids scored in 4.1 h) | maps{1} | new champion: max wsl 11, nw 15, score 139
+seed 96 | gen  147 (1.1K grids scored in 2.9 h) | maps{1} | new champion: max wsl 13, nw 14, score 101
+seed 83 | gen   34 (797 grids scored in 4.5 h) | maps{1} | new champion: max wsl 13, nw 14, score 110
+seed 67 | gen   46 (1.2K grids scored in 4.3 h) | maps{1} | new champion: max wsl 12, nw 16, score 85
+seed 71 | gen   75 (1.3K grids scored in 4.4 h) | maps{1} | new champion: max wsl 10, nw 14, score 113
+seed 84 | gen   20 (1.1K grids scored in 3.3 h) | maps{1} | new champion: max wsl 11, nw 18, score 120
+seed 75 | gen  154 (1.6K grids scored in 4.3 h) | maps{1} | new champion: max wsl 12, nw 22, score 119
+seed 79 | gen   62 (1.4K grids scored in 4.2 h) | maps{1} | new champion: max wsl 13, nw 15, score 108
+seed 96 | gen  149 (1.3K grids scored in 3.5 h) | maps{1} | new champion: max wsl 13, nw 15, score 107
+seed 89 | gen  139 (1.7K grids scored in 4.4 h) | maps{1} | new champion: max wsl 11, nw 20, score 120
+seed 65 | gen   18 (1.1K grids scored in 4.2 h) | maps{1} | new champion: max wsl 13, nw 17, score 101
+seed 95 | gen  113 (1.5K grids scored in 4.4 h) | maps{1} | new champion: max wsl 10, nw 19, score 136
+seed 87 | gen   41 (1.3K grids scored in 4.8 h) | maps{1} | new champion: max wsl 13, nw 14, score 94
+seed 94 | gen   26 (1.4K grids scored in 4.5 h) | maps{1} | new champion: max wsl 10, nw 16, score 101
+seed 92 | gen   16 (1.6K grids scored in 4.8 h) | maps{1} | new champion: max wsl 9, nw 19, score 125
+
+Max champion score 141 | 14.2 h
+
+seed  1 | 42 data points | 4.2 h | 87
+seed  2 | 142 data points | 4.0 h | 110
+seed  3 | 138 data points | 4.5 h | 132
+seed  4 | 213 data points | 4.3 h | 133
+seed  5 | 163 data points | 4.0 h | 117
+seed  6 | 116 data points | 5.1 h | 125
+seed  7 | 199 data points | 4.2 h | 123
+seed  8 | 50 data points | 5.1 h | 134
+seed  9 | 139 data points | 4.7 h | 102
+seed 10 | 194 data points | 4.7 h | 105
+seed 11 | 60 data points | 4.2 h | 126
+seed 12 | 34 data points | 4.1 h | 140
+seed 13 | 102 data points | 4.2 h | 115
+seed 14 | 175 data points | 5.1 h | 135
+seed 15 | 255 data points | 4.1 h | 98
+seed 16 | 376 data points | 4.1 h | 134
+seed 17 | 71 data points | 4.0 h | 101
+seed 18 | 50 data points | 4.2 h | 102
+seed 19 | 155 data points | 4.6 h | 114
+seed 20 | 66 data points | 4.0 h | 121
+seed 21 | 98 data points | 4.2 h | 117
+seed 22 | 66 data points | 4.3 h | 128
+seed 23 | 40 data points | 4.8 h | 101
+seed 24 | 108 data points | 4.3 h | 83
+seed 25 | 41 data points | 4.1 h | 136
+seed 26 | 113 data points | 4.6 h | 134
+seed 27 | 152 data points | 4.1 h | 102
+seed 28 | 166 data points | 4.5 h | 101
+seed 29 | 196 data points | 4.7 h | 116
+seed 30 | 24 data points | 4.6 h | 101
+seed 31 | 80 data points | 4.2 h | 110
+seed 32 | 228 data points | 4.1 h | 105
+seed 33 | 271 data points | 4.7 h | 135
+seed 34 | 292 data points | 4.4 h | 121
+seed 35 | 342 data points | 4.4 h | 102
+seed 36 | 197 data points | 4.0 h | 105
+seed 37 | 54 data points | 4.0 h | 139
+seed 38 | 50 data points | 4.1 h | 141
+seed 39 | 30 data points | 4.2 h | 95
+seed 40 | 33 data points | 4.0 h | 107
+seed 41 | 34 data points | 4.3 h | 137
+seed 42 | 62 data points | 4.2 h | 94
+seed 43 | 232 data points | 4.6 h | 109
+seed 44 | 153 data points | 4.3 h | 125
+seed 45 | 37 data points | 4.4 h | 121
+seed 46 | 136 data points | 4.7 h | 107
+seed 47 | 129 data points | 4.4 h | 120
+seed 48 | 143 data points | 4.0 h | 112
+seed 49 | 32 data points | 5.2 h | 131
+seed 50 | 33 data points | 4.4 h | 91
+seed 51 | 91 data points | 4.1 h | 133
+seed 52 | 199 data points | 4.5 h | 118
+seed 53 | 166 data points | 4.6 h | 126
+seed 54 | 121 data points | 4.1 h | 114
+seed 55 | 164 data points | 4.1 h | 132
+seed 56 | 59 data points | 5.2 h | 115
+seed 57 | 87 data points | 4.2 h | 117
+seed 58 | 107 data points | 4.3 h | 118
+seed 59 | 40 data points | 4.2 h | 126
+seed 60 | 392 data points | 4.5 h | 122
+seed 61 | 195 data points | 4.2 h | 128
+seed 62 | 32 data points | 4.1 h | 102
+seed 63 | 111 data points | 4.1 h | 107
+seed 64 | 306 data points | 4.1 h | 103
+seed 65 | 17 data points | 4.2 h | 101
+seed 66 | 18 data points | 4.3 h | 108
+seed 67 | 45 data points | 4.3 h | 85
+seed 68 | 20 data points | 4.1 h | 140
+seed 69 | 72 data points | 4.4 h | 130
+seed 70 | 442 data points | 4.1 h | 98
+seed 71 | 74 data points | 4.4 h | 113
+seed 72 | 64 data points | 4.2 h | 117
+seed 73 | 81 data points | 4.1 h | 130
+seed 74 | 210 data points | 4.5 h | 98
+seed 75 | 153 data points | 4.3 h | 119
+seed 76 | 70 data points | 4.9 h | 118
+seed 77 | 30 data points | 4.3 h | 101
+seed 78 | 63 data points | 4.4 h | 109
+seed 79 | 61 data points | 4.2 h | 108
+seed 80 | 124 data points | 4.1 h | 139
+seed 81 | 50 data points | 4.1 h | 81
+seed 82 | 23 data points | 4.1 h | 116
+seed 83 | 33 data points | 4.5 h | 110
+seed 84 | 21 data points | 4.0 h | 120
+seed 85 | 46 data points | 4.4 h | 128
+seed 86 | 27 data points | 4.3 h | 109
+seed 87 | 40 data points | 4.8 h | 94
+seed 88 | 75 data points | 4.1 h | 105
+seed 89 | 138 data points | 4.4 h | 120
+seed 90 | 64 data points | 4.1 h | 99
+seed 91 | 96 data points | 4.0 h | 114
+seed 92 | 15 data points | 4.8 h | 125
+seed 93 | 46 data points | 5.3 h | 120
+seed 94 | 25 data points | 4.5 h | 101
+seed 95 | 112 data points | 4.4 h | 136
+seed 96 | 150 data points | 4.0 h | 107
