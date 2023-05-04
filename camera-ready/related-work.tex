@@ -1,0 +1,54 @@
+\section{Related Work}
+\label{sec::relwork}
+
+A simplified version of The Romanian Crosswords Competition problem was posed
+in the 2018 XCSP Competition~\cite{DBLP:journals/corr/abs-1901-01830}.
+Thirteen instances are featured in the competition, 
+with square grids whose sizes range $3 \times 3$ to $15 \times 15$.
+Eight instances remained unsolved \cite{DBLP:journals/corr/abs-1901-01830}.
+\citeauthor{DBLP:conf/ecai/AudemardLM20}~\shortcite{DBLP:conf/ecai/AudemardLM20}
+use the same representation
+as a testbed for using segmented tables
+to encode constraints.
+
+\citeauthor{DBLP:conf/socs/BoteaB21}~\shortcite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}
+focus on a subproblem inspired from the {\sc RoCo}.
+Specifically, they assume that 
+a good configuration of black cells,
+that would allow a high score,
+is given {\em a priori} as a part of the input.
+When a good configuration of black cells,
+such as a configuration extracted from top human entries,
+is given as input, AI can successfully generate high-quality scores,
+such as reproducing top human scores \cite{DBLP:conf/socs/BoteaB21}.
+
+However, giving the black cell configuration as input is a massive help to an AI system.
+Automatically finding a good configuration of black cells
+has been challenging. 
+\citeauthor{DBLP:conf/cig/BulitkoB21}~\shortcite{DBLP:conf/cig/BulitkoB21}
+present a method to automatically search for black cell configurations.
+In their work scores obtained based on automatically generated
+black cell configurations have been significantly lower than 
+top human scores.
+As mentioned in the introduction, our work in this paper brings scores
+to the vicinity of top human performance for the first time.\vb{reworded}
+
+
+The literature has seen work on additional types crosswords problems,
+such as solving crosswords puzzles.
+A problem instance is defined by a grid with black cells but no letters,
+and a list of clues.
+The task is then to fill the grid with words that match the 
+clues~\cite{DBLP:journals/ai/LittmanKS02,DBLP:conf/aaai/ErnandesAG05,DBLP:journals/jair/Ginsberg11,Chen-icaps22}.
+This is a significantly different problem compared to {\sc RoCo}.
+
+
+\begin{comment}
+The problem of \emph{crosswords grid generation} takes as input
+a list of words and
+a grid with only black cells.
+The task is to fill the grid with words from the
+list~\cite{MAZLACK19761,10.5555/1865499.1865531,botea-modref07,anbulagan-botea-cp08}.
+As mentioned in the introduction and in Section~\ref{sec::background}, {\sc Roco}
+is a significant generalization of the standard crosswords grid generation.
+\end{comment}

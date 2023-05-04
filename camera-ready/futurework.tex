@@ -1,0 +1,9 @@
+\section{Future Work}
+
+Future work includes an automatic selection of a pattern rather than taking a pattern as input.
+We plan to consider additional sizes for a rectangular or square pattern, such as $5 \times 5$ squares, and 
+more general shapes, such as an area bordered by a diagonal wall of black cells on its right side.
+
+Future work will further attempt to synthesize grids with higher scores via increasing the amount of computation as well as handling illegal evolved grids in a more sophisticated fashion. For the former, given more computational resources one can increase the number of seeds ranked and evolved, increase the time limit for estimating each seed's score during ranking, increase the time limit in {\sc Wombat} to get higher scores for a candidate grid, maintain more maps inside MAP-Elites, increase the evolution time limit and simply run more independent ranking + evolution runs on the same seeds. 
+
+For the latter we currently allow illegal grids to be placed on a map. This may help the evolution by storing intermediate steps or missing links towards a legal high-score grid. However, because each such illegal grid automatically gets a score of $-1$ there is no meaningful measure of quality for such infeasible grids~\cite{FI2Pop}. Thus one illegal grid can never replace another one on a map and thus no latent mutations can be accumulated over time. Future work will remedy this by introducing a meaningful measure of quality for illegal grids so that the evolution can improve them over time. One possibility is to consider legal offspring score potential~\cite{Gallotta_2022}.
