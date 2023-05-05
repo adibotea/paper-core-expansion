@@ -25,28 +25,11 @@ We will make our code and data available.
 For each of the three years we generated and expanded cores (lines~\ref{algl:generateCores} and \ref{algl:expandCores} in Algorithm~\ref{algo:core-exp}), generated seeds (line~\ref{algl:generateSeeds}) that were then ranked (line~\ref{algl:rankSeeds}). Top-ranked seeds were then evolved (line~\ref{algl:evolveSeeds}). The number of seeds ranked and top-ranked seeds evolved are listed in Table~\ref{tab:rankingEvolving}.
 
 
-The ranking and evolution steps were repeated four times for the same seed set for each year. Each run used a different random-number generator initialization. As per Section~\ref{sec:evolution}, each ranking + evolution run took about two days on a $32$-core CPU. We used four $32$-core CPU nodes on a grid and thus were able to execute all four runs in parallel. The highest score grids synthesized for each year are shown in Figure~\ref{fig:results}. On the left, we show evolved seeds with the contents of the original seed shown in tinted background. Additional black cells added during the evolution are shown without tinting.\vb{reworded}
+The ranking and evolution steps were repeated four times for the same seed set for each year. Each run used a different random-number generator initialization. As per Section~\ref{sec:evolution}, each ranking + evolution run took about two days on a $32$-core CPU. We used four $32$-core CPU nodes on a grid and thus were able to execute all four runs in parallel. Out of the four runs the highest score grids synthesized for each year are shown in Figure~\ref{fig:results}. On the left we show evolved seeds with the contents of the original seed shown in tinted background. Additional black cells added during the evolution are shown without tinting.
 
-The human competition publishes the top 12 entries every year.
-Years 2013 and 2021 feature in their top-12 entries at least one entry that contains the $6 \times 4$ pattern
-considered in our experiments (Figure \ref{fig:pattern}, left).
-In 2013 scores in the top 12 list ranged from 184 (first place) to 181 (second place) and so on down to 175 on the twelfth place. 
-Our score for that year is 182.
-In 2021 human scores in the top-12 list range from 195 down to 187 whereas our score is 190.
-Two top-12 entries in 2021 feature the perfect-score pattern considered in our work.
-One has 194 points and one has 189 points. 
-Our entry has 190 points and it turns out to be similar to the 194-point entry. In particular, the core has the same letters in both cases, and the same position in the grid.
-In contrast, the 189-point human score differs significantly from our solution.
-In particular, the 6x4 pattern is in a different position, and the letters inside the pattern differ in part.
-2023 human results are not announced yet. We obtained a score of 186.
+The human competition publishes the top 12 entries every year. Years 2013 and 2021 feature in their top-12 entries at least one entry that contains the $6 \times 4$ pattern considered in our experiments (Figure \ref{fig:pattern}, left). In 2013 scores in the top 12 list ranged from $184$ (first place) to $181$ (second place) and so on down to $175$ on the twelfth place. Our best score out of the four runs for that year is $182$. In 2021 human scores in the top-12 list range from $195$ down to $187$ whereas our top score out of the four runs is $190$. Two top-12 entries in 2021 feature the perfect-score pattern considered in our work. One has $194$ points and one has $189$ points. Our best entry from the four runs has $190$ points and turns out to be similar to the $194$-point entry. In particular, the core has the same letters in both cases and the same position in the grid. In contrast, the $189$-point human score differs significantly from our solution. In particular, the $6 \times 4$ pattern is in a different position and the letters inside the pattern differ in part. Year 2023 human results are not announced yet. We obtained a score of $186$ (again, the best of the four runs).
 
-Thus, with additional input as simple as a pattern to use which 
-in our experiments
-is a $6 \times 4$ rectangle with two black cells in its corners,
-our approach can reach scores that are competitive with those from top human performers.
-Part of the previous work utilized much more detailed additional input such as the entire configuration of black cells~\cite{DBLP:conf/socs/BoteaB21}.
-When no such input is utilized, 
-the best results reported were significantly behind top-12 results in the corresponding
+Thus with additional input as simple as a pattern to use which in our experiments is a $6 \times 4$ rectangle with two black cells in its corners, our approach can reach scores that are competitive with those from top human performers. Part of the previous work utilized much more detailed additional input such as the entire configuration of black cells~\cite{DBLP:conf/socs/BoteaB21}. When no such input is utilized, the best results reported were significantly behind top-12 results in the corresponding
 year~\cite{DBLP:conf/cig/BulitkoB21,Botea_Bulitko_2022}.
 
 
