@@ -247,6 +247,42 @@ Number of parent elites per map $B$ & & $256$ \\
 
 Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$ of them with the top score estimates. We then evolved each of the $K$ seeds with a time limit listed in Table~\ref{tab:hyperparameters}. The number $K$ was chosen in a such a way that the total time of the ranking plus evolving would be around two days (Table~\ref{tab:rankingEvolving}). All $K$ evolutions runs were in parallel on a $32$-core CPU.
 
+\begin{table*}[htbp]
+\caption{Generating, ranking and evolving seeds.}
+\label{tab:rankingEvolving}
+%{\scriptsize
+{
+\centering
+\begin{tabular}{c|r|r|r|r|r|r|r}
+\toprule
+{\bf year} & {\bf cores} & {\bf expanded} & {\bf seeds} & {\bf seeds} & {\bf ranking} & {\bf seeds} & {\bf evolving}\\
+           & & {\bf cores} & {\bf before} & {\bf ranked} & {\bf time} & {\bf evolved} & {\bf time} \\
+           & & & {\bf postprocessing} & {\bf ($N$)} & & {\bf ($K$)} & \\
+\midrule
+2013 & $12560$ & $2754$ & $1259$ & $932$ & $30$ minutes & $352$ & $1.9$ days \\ 
+2021 & $332062$ & $1005114$ & $122579$ & $38035$ & $21$ hours & $224$ & $1.2$ days \\ 
+2023 & $123218$ & $1042$ & $1087$ & $446$ & $16$ minutes & $352$ & $2.0$ days \\ 
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+\begin{comment}
+\begin{table}[htbp]
+\caption{Key statistics on core, expanded core, and seed generation by year.\ab{Vadim, please correct the number of seeds for years 2013 and 2021 with the actual value after you apply your validation step.}}
+\label{tab:key-stats}
+\centering
+{ \begin{tabular}{r|r|r|r}
+\toprule
+{\bf Year} & {\bf Cores} & {\bf Expanded cores} & {\bf Seeds} \\
+\midrule
+2013 & $12,560$ & $2,754$ & $1,259$ \\
+2021 & $332,062$ & $1,005,114$ & $122,579$ \\
+2023 & $123,218$ & $1,042$ & $446$ 
+\bottomrule
+\end{tabular}}
+\end{table}
+
 \begin{table}[htbp]
 \caption{Ranking and evolving seeds.}
 \label{tab:rankingEvolving}
@@ -266,6 +302,7 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 \end{tabular}
 }
 \end{table}
+\end{comment}
 
 After experimenting with plain evolution we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the chances of leaving the local maximum are low. 
 

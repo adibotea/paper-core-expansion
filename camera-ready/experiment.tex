@@ -22,10 +22,14 @@ We applied the approach presented above to synthesize grids for three years of t
 We will make our code and data available.
 
 
-For each of the three years we generated and expanded cores (lines~\ref{algl:generateCores} and \ref{algl:expandCores} in Algorithm~\ref{algo:core-exp}), generated seeds (line~\ref{algl:generateSeeds}) that were then ranked (line~\ref{algl:rankSeeds}). Top-ranked seeds were then evolved (line~\ref{algl:evolveSeeds}). The number of seeds ranked and top-ranked seeds evolved are listed in Table~\ref{tab:rankingEvolving}.
+For each of the three years we generated and expanded cores (lines~\ref{algl:generateCores} and \ref{algl:expandCores} in Algorithm~\ref{algo:core-exp}), generated seeds (line~\ref{algl:generateSeeds}) that were 
+post-processed and then ranked (line~\ref{algl:rankSeeds}). Top-ranked seeds were then evolved (line~\ref{algl:evolveSeeds}). The number of seeds ranked and top-ranked seeds evolved are listed in Table~\ref{tab:rankingEvolving}.
 
+\begin{comment}
 For year 2023, we obtain 123,218 cores. These further generate 1,042 expanded cores alive (not proven deadlocked) which further generate 1,087 seeds alive. Static seed analysis proves additional deadlocks, resulting in 446 seeds alive. Our subsequent ranking does not necessarily expand them all into full valid solutions, but we conjecture that most allow such an expansion. Of course, their best possible score will vary.
-For year 2013, we obtain 12,560 cores, 2,754 expanded cores alive, and 1,259 (???) seeds alive.\ab{Vadim, please correct the number of seeds for year 2013 with the actual value after you apply your validation step.}
+For year 2021, we generate 332,062, 1,005,114 expanded cores and 122,579 seeds alive (???).
+For year 2013, we obtain 12,560 cores, 2,754 expanded cores alive, and 1,259 (???) seeds alive.\ab{Vadim, please correct the number of seeds for years 2013 and 2021 with the actual value after you apply your validation step.}
+\end{comment}
 
 The ranking and evolution steps were repeated four times for the same seed set for each year. Each run used a different random-number generator initialization. As per Section~\ref{sec:evolution}, each ranking + evolution run took about two days on a $32$-core CPU. We used four $32$-core CPU nodes on a grid and thus were able to execute all four runs in parallel. Out of the four runs the highest score grids synthesized for each year are shown in Figure~\ref{fig:results}. On the left we show evolved seeds with the contents of the original seed shown in tinted background. Additional black cells added during the evolution are shown without tinting.
 
