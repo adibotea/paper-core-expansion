@@ -100,13 +100,13 @@ In Figure \ref{fig:exp-core}, the inner size is $10 \times 11$.
 Observe that the border can only contain black cells and empty cells.
 The inner part can contain letters, black cells and empty cells.
 
-As shown later in this section, the inner part of an extended core will be fit inside a full solution.
+As shown later in this section, the inner part of an expanded core will be fit inside a full solution.
 All or part of the border may or may not be included in a full solution, as explained later on.
 
 More than one expanded core can exist for a given core (e.g., a substring such as {\sf\small ESCU} can be expanded into multiple thematic words such as {\sf\small IONESCU} and {\sf\small POPESCU}).
 We generate expanded cores with a depth-first search.
 
-We say that an extended core is a deadend (or, equivalently, it is dead) if no full valid solution can contain the extended core at hand. We label an extended core as dead, and filter it away, if any of the
+We say that an expanded core is a deadend (or, equivalently, it is dead) if no full valid solution can contain the expanded core at hand. We label an expanded core as dead, and filter it away, if any of the
 following conditions is met:
 it contains a word repetition; it contains a sequence of letters that cannot
 possibly be expanded into a full word; or it contains adjacent black cells within the inner part.
@@ -124,18 +124,18 @@ border, if any, will be kept in a full-size solution. We detail this later in th
 \includegraphics[width=.32\textwidth]{_plots/alive-0-puzzle-72-2975-1488--1-1.pdf} & 
 \includegraphics[width=.32\textwidth]{_plots/alive-0-puzzle-72-2975-1488--1-2.pdf}
 \end{tabular}
-\caption{Seeds generated from the extended core shown in Figure \ref{fig:exp-core}.}
+\caption{Seeds generated from the expanded core shown in Figure \ref{fig:exp-core}.}
 \label{fig:seeds}
 \end{figure*}
 
-When the inner size of an extended core $e$ is $13 \times 13$, it fits inside a full $13 \times 13$ grid in a unique way. However,
+When the inner size of an expanded core $e$ is $13 \times 13$, it fits inside a full $13 \times 13$ grid in a unique way. However,
 if the inner height and/or width are below $13$, $e$ can fit inside a full grid in multiple positions,
 obtained by shifting it inside the full grid vertically and/or horizontally.
 
-Each fitting of an extended core inside a full grid is called a \emph{seed}.
+Each fitting of an expanded core inside a full grid is called a \emph{seed}.
 As such, a seed is a full-size $13 \times 13$ grid, with 
 letters, black cells and empty cells.
-Figure \ref{fig:seeds} shows three seeds generated from an extended core.
+Figure \ref{fig:seeds} shows three seeds generated from an expanded core.
 
 When the first column of the inner part of $e$ coincides 
 with the first column of the seed, the leftmost column of $e$'s border
@@ -164,7 +164,7 @@ the black cell or letter at hand on the corresponding position.
 Algorithm \ref{algo:fixpoint} shows seed post-processing in pseudocode.
 Deadend detection includes checking for closures and semi-closures;
 adjacent black cells;\footnote{As this test is applied to the full
-grid, it covers the part of the extended seed border, if any, that was
+grid, it covers the part of the expanded core border, if any, that was
 kept in the seed.}
 word repetitions; and
 sequences of letters that do not match with any word from the dictionaries.
@@ -225,8 +225,7 @@ The ranking process worked as follows. We took $N$ seeds from the previous step\
 \caption{Hyperparameters used for ranking/evolving seeds.}
 \label{tab:hyperparameters}
 \centering
-%{\scriptsize
-{ \begin{tabular}{l|r|r}
+\begin{tabular}{l|r|r}
 \toprule
 {\bf Hyperparameter} & {\bf Ranking} & {\bf Evolving} \\
 \midrule
@@ -237,7 +236,7 @@ Time limit per seed & $1$ minute & $4$ hours \\
 Number of maps $m$ & & $3$ \\
 Number of parent elites per map $B$ & & $256$ \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,7 +250,6 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 \caption{Generating, ranking and evolving seeds.}
 \label{tab:rankingEvolving}
 %{\scriptsize
-{
 \centering
 \begin{tabular}{c|r|r|r|r|r|r|r}
 \toprule
@@ -264,7 +262,6 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 2023 & $123218$ & $1042$ & $1087$ & $446$ & $16$ minutes & $352$ & $2.0$ days \\ 
 \bottomrule
 \end{tabular}
-}
 \end{table*}
 
 \begin{comment}
