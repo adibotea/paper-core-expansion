@@ -51,7 +51,7 @@ Figure \ref{fig:pattern} (right) shows an example of a core.
 
 We require that in a full solution returned by Algorithm~\ref{algo:core-exp}, 
 the sub-area corresponding to the pattern will have a perfect score.
-That is each white cell in the pattern must contribute two points.\vb{reworded}
+That is each white cell in the pattern must contribute two points.
 
 To achieve this we construct a small crosswords puzzle instance
 and solve it with 
@@ -60,7 +60,7 @@ a freely available C++  solver for crosswords optimization.
 {\sc Wombat} takes as input up to two dictionaries (one thematic and one regular),
 and a grid with the black cells in place, and zero or more letters.
 The program is very effective at computing high scores when such input 
-is provided, including all black cells~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}. \vb{added ``all black cells''}
+is provided, including all black cells~\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}. 
 
 In the small instance we build,
 the grid is the pattern $p$. There is only one dictionary, which contains 
@@ -76,7 +76,7 @@ the substrings generated are {\sf\small IONE}, {\sf\small ONES}, {\sf\small NESC
 Duplicates such as {\sf\small ESCU} are kept only once.
 
 We then run {\sc Wombat} to enumerate all solutions to the small instance, which are precisely the 
-cores computed at step 1 in Algorithm \ref{algo:core-exp}.\vb{Changed ``set'' to ``run''. Should we mention that it is possible to run Wombat to find {\em all} solutions instead of just one?}
+cores computed at step 1 in Algorithm~\ref{algo:core-exp}.
 
 
 
@@ -112,7 +112,7 @@ it contains a word repetition; it contains a sequence of letters that cannot
 possibly be expanded into a full word; or it contains adjacent black cells within the inner part.
 Note that, at this stage, we do not check for adjacent black cells on the border.
 Such a test will be performed later, after it is decided which part of the
-border, if any, will be kept in a full-size solution. We detail this later in this section.\vb{reworded}
+border, if any, will be kept in a full-size solution. We detail this later in this section.
 
 
 \subsection{Generating Seeds}
@@ -227,7 +227,7 @@ The ranking process worked as follows. We took $N$ seeds from the previous step\
 \centering
 \begin{tabular}{l|r|r}
 \toprule
-{\bf Hyperparameter} & {\bf Ranking} & {\bf Evolving} \\
+{\bf hyperparameter} & {\bf ranking} & {\bf evolving} \\
 \midrule
 {\sc Wombat} target score & $0$ & $0$ \\
 {\sc Wombat} time limit & $1$ minute & $3$ seconds to $3$ minutes \\

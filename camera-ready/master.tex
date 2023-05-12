@@ -67,8 +67,8 @@
 \newcommand{\ab}[1]{{\small\sf \color{red} [AB]: #1}}
 \newcommand{\vb}[1]{{\small\sf \color{blue} [VB]: #1}}
 % Uncomment the following to switch comments OFF
-\renewcommand{\ab}[1]{}
-\renewcommand{\vb}[1]{}
+%\renewcommand{\ab}[1]{}
+%\renewcommand{\vb}[1]{}
 
 \newcommand{\inlinecite}[1]{\citet{#1}}
 \newcommand{\egcite}[1]{\cite[e.g.,][]{#1}}
@@ -114,6 +114,7 @@
 \newcommand{\score}{\operatorname{score}}
 %\DeclareMathOperator\erf{erf}
 
+
 % simplify the use of \left\lceil and \right\rceil
 \def\lc{\left\lceil}   
 \def\rc{\right\rceil}
@@ -133,9 +134,8 @@ Adi Botea,\textsuperscript{\rm 1}
 Vadim Bulitko\textsuperscript{\rm 2}\\
 }
 \affiliations{
-\textsuperscript{\rm 1}Eaton\\
-\textsuperscript{\rm 2}Department of Computing Science, University of Alberta, Edmonton, AB, Canada\\
-%%adibotea@eaton.com, bulitko@ualberta.ca
+\textsuperscript{\rm 1}Eaton (adibotea@eaton.com)\\
+\textsuperscript{\rm 2}Department of Computing Science, University of Alberta (bulitko@ualberta.ca)
 }
 
 
@@ -155,7 +155,7 @@ Vadim Bulitko\textsuperscript{\rm 2}\\
 \input experiment
 \input futurework
 \input conclusion
-%\input acknowledgments
+\input acknowledgments
 
 
 \bibliographystyle{aaai22}
