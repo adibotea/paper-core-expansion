@@ -221,7 +221,7 @@ After some experimentation we adopted the second approach, as detailed in Sectio
 
 The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (with the hyperparameters found in Table~\ref{tab:hyperparameters}). The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \caption{Hyperparameters used for ranking/evolving seeds.}
 \label{tab:hyperparameters}
 \centering
@@ -230,14 +230,14 @@ The ranking process worked as follows. We took $N$ seeds from the previous step\
 {\bf hyperparameter} & {\bf ranking} & {\bf evolving} \\
 \midrule
 {\sc Wombat} target score & $0$ & $0$ \\
-{\sc Wombat} time limit & $1$ minute & $3$ seconds to $3$ minutes \\
+{\sc Wombat} time limit & $1$ minute & $3$ sec to $3$ min \\
 {\sc Wombat} weight & $0.64$ & $0.5$ to $0.7$ \\
 Time limit per seed & $1$ minute & $4$ hours \\
 Number of maps $m$ & & $3$ \\
-Number of parent elites per map $B$ & & $256$ \\
+Parent elites per map $B$ & & $256$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -303,7 +303,7 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 
 After experimenting with plain evolution (i.e., the simple genetic algorithms) we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the evolution tends to stall. 
 
-\vb{Adi: I significantly expanded the text below. Please proof-read}
+%\vb{Adi: I significantly expanded the text below. Please proof-read} Done.
 
 Thus we adapted MAP-Elites algorithm~\cite{mapElites} that explicitly maintains diversity of the population via the use of {\em maps} -- tables whose rows and columns are labeled with feature values and whose cells can be empty or can contain a single individual (i.e., a crossword grid). An individual in a cell is called an {\em elite}. Grids compete only within a map cell to become an elite. Elites from different map cells co-exist without competition.
 
@@ -366,7 +366,7 @@ We start by creating $m$ maps in line~\ref{algl:createMaps}. As we have two feat
 Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this point. So its $\score(s)$ is computed merely from the letters already in the seed.
 
 \begin{table}[htbp]
-\caption{Feature values used for our multi-map MAP-Elites algorithm.}
+\caption{Feature values in our multi-map MAP-Elites algorithm.}
 \label{tab:mrme}
 {\small\centering
 \begin{tabular}{c|c|c|c}
