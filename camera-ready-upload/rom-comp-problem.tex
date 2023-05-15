@@ -1,0 +1,58 @@
+\section{Romanian Crosswords Competition}
+\label{sec::roco}
+
+%\ab{Still an almost verbatim copy of the last paper. Todo: edit.}
+
+In this section we describe the application domain in detail,
+for a self-contained paper.
+The Competition is an annual contest with human participants, started in 1965.
+%Until 2021, it has been organized by {\em Rebus}, a central Romanian publication
+%dedicated to crosswords.
+The task is to create a $13\times13$ grid filled with words and
+at most $26$ black cells.
+The input includes two lists of words (dictionaries), called the \emph{thematic list}
+and the \emph{regular list}.
+The thematic list changes every year and is on the order of a few hundred words.
+The regular list contains approximately $135$ thousand Romanian words.
+If the two lists overlap, the common words 
+are considered to be thematic, and removed from the regular list.
+Black cells cannot have common edges but they are allowed to have common corners. 
+White cells have to form a cardinally connected region. Black cells cannot create semiclosures --- configurations of black cells such that
+adding one more black cell would partition the open/white area of the grid into two or more
+areas with the disconnected areas having more than one open cell each.
+
+%\begin{definition}
+Recall that a {word slot}
+is a set of contiguous white cells in a row or a column
+where each end of the slot is adjacent to either the 
+border of the grid or a black cell.
+%\end{definition}
+%
+Slots of length $1$ can be filled with any letter.
+Slots of length $2$ can be filled with any combination of two letters
+but no two-letter combination can be repeated in the grid.
+Slots of length $3$ or higher can be filled with words from the two lists.
+For simplicity we say that singleton letters are words
+of length $1$ and two-letter combinations are words of length $2$.
+We treat them as regular words unless such a combination is in the thematic list.% which is uncommon.
+
+Words of length $2$ or higher cannot be repeated in a grid.
+So-called families of words are forbidden (e.g., 
+{\sf\small WRITER} and {\sf\small WRITING} cannot both be placed on the same grid).\footnote{We do not observe the family-of-words constraint as no mapping of words into their families is available to us.
+We manually inspected our 
+solutions reported in this paper, confirming that our solutions satisfy this constraint as well.}
+All cells in a (full) solution must contain a letter or a black cell.
+%Two intersecting slots must agree on the letter placed in the common cell.
+
+The score of a grid is the sum of the lengths of all thematic words included in the solution. 
+This is equivalent to saying that, in a solution each cell at the intersection of two
+thematic words contributes two points. A cell at the intersection of one thematic word
+and one regular word contributes one point. A cell at the intersection of two 
+regular points contributes zero points, and so does every black cell.
+
+%For example, in the nine-year dataset that we use in our study in this work,
+%the thematic dictionary varies from $278$ to $481$ words,
+%with the median size being $387$. 
+%Using a word from the thematic dictionary gives a point for every letter.
+%Thus, every cell in the grid can give at most two points, when it lies at the
+%intersection of two thematic words.

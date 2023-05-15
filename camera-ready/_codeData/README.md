@@ -6,10 +6,6 @@ This folder contains code and data for the paper ``Core Expansion in Optimizatio
 
 The contents of the folder is the following:
 
-- Folder `wombat` is the `cpp` code of a solver for crosswords optimization. It takes as input a grid with the black cells placed on the grid, one thematic list and one regular list. It fills out the grid with words.
-
-- Folder `dyn-bc-wombat` is the `cpp` code of a variant of `wombat` that can dynamically place new black cells on the grid.
-
 - Folder `core-expansion`. This contains the following sub-folders:
 
   - `core-expansion/src` is python code that generates expanded cores and seeds;
