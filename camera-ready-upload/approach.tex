@@ -221,9 +221,7 @@ After some experimentation we adopted the second approach, as detailed in Sectio
 
 The ranking process worked as follows. We took $N$ seeds from the previous step\footnote{Each of them was checked to be a legal grid. Illegal seeds were discarded.} and completed each seed multiple times to a full grid by placing $26-n$ back cells randomly in the empty space of the seed. Here $n$ is the number of black cells already present in the seed. We made sure each completion produced a legal grid which passes all constraints. Each such completion was scored with {\sc Wombat} (with the hyperparameters found in Table~\ref{tab:hyperparameters}). The process continued until a certain time limit. The maximum of the resulting {\sc Wombat} scores was returned as the score estimate of the seed. All $N$ seeds were processed in parallel on a $32$-core CPU.
 
-\begin{table}[htbp]
-\caption{Hyperparameters used for ranking/evolving seeds.}
-\label{tab:hyperparameters}
+\begin{table}[t]
 \centering
 \begin{tabular}{l|r|r}
 \toprule
@@ -237,6 +235,8 @@ Number of maps $m$ & & $3$ \\
 Parent elites per map $B$ & & $256$ \\
 \bottomrule
 \end{tabular}
+\caption{Hyperparameters used for ranking/evolving seeds.}
+\label{tab:hyperparameters}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -247,8 +247,6 @@ Parent elites per map $B$ & & $256$ \\
 Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$ of them with the top score estimates. We then evolved each of the $K$ seeds with a time limit listed in Table~\ref{tab:hyperparameters}. The number $K$ was chosen in a such a way that the total time of the ranking plus evolving would be around two days (Table~\ref{tab:rankingEvolving}). All $K$ evolutions runs were in parallel on a $32$-core CPU.
 
 \begin{table*}[htbp]
-\caption{Generating, ranking and evolving seeds.}
-\label{tab:rankingEvolving}
 %{\scriptsize
 \centering
 \begin{tabular}{c|r|r|r|r|r|r|r}
@@ -262,6 +260,8 @@ Given the $N$ seeds ranked as described in Section~\ref{sec:ranking} we took $K$
 2023 & $123218$ & $1042$ & $1087$ & $446$ & $16$ minutes & $352$ & $2.0$ days \\ 
 \bottomrule
 \end{tabular}
+\caption{Generating, ranking and evolving seeds.}
+\label{tab:rankingEvolving}
 \end{table*}
 
 After experimenting with plain evolution (i.e., the simple genetic algorithms) we felt that the risk of population collapsing to a local maximum is too high. Once a population collapses to variants of a single individual (i.e., the local maximum) the evolution tends to stall. 
@@ -326,9 +326,7 @@ We start by creating $m$ maps in line~\ref{algl:createMaps}. As we have two feat
 
 Note that the input seed grid $s$ has not been evaluated by {\sc Wombat} at this point. So its $\score(s)$ is computed merely from the letters already in the seed.
 
-\begin{table}[htbp]
-\caption{Feature values in our multi-map MAP-Elites algorithm.}
-\label{tab:mrme}
+\begin{table}
 {\small\centering
 \begin{tabular}{c|c|c|c}
 \toprule
@@ -340,6 +338,8 @@ $2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
 $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 \bottomrule
 \end{tabular}}
+\caption{Feature values in our multi-map MAP-Elites algorithm.}
+\label{tab:mrme}
 \end{table}
 
 In lines~\ref{algl:updateChampionB} -- \ref{algl:updateChampionE} we update the global champion $c$: the grid with the highest $\score(c)$ seen so far by comparing its score to that of the highest-score elite $e^{\max}$ from each map. Lines~\ref{algl:pickParentsB} -- \ref{algl:pickParentsE} pick $B$ random elites from each map (with replacement) and add it to the set of all parents $P$. We then mutate each parent $\left.P\right|_j$ by adding, removing or moving around its black cells in lines~\ref{algl:mutateB} -- \ref{algl:mutateE}. We make sure that the initial seed's black cells and letters are unaffected and that the total number of black cells is $26$. The resulting mutated grids, offspring, are put in the set $C$ with duplicates removed.
