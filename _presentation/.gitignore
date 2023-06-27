@@ -1,0 +1,12 @@
+*.log
+*.aux
+*.bbl
+*.blg
+*.gz
+*.xml
+*.out
+*.nav
+*.snm
+*.toc
+*blx.bib
+2023-07-14.pdf
