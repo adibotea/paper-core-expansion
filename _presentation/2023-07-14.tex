@@ -211,7 +211,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Main Contribution}
+\begin{frame}{Primary Contribution}
 
 \bei
 
@@ -241,6 +241,43 @@
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Our Approach: Intuition}
+
+\bei
+
+\ie \tcb{naive approach} 
+\bei 
+\ie try different combinations of $26$ black cells on a $13 \times 13$ grid
+\ie fill in each with words via {\sc Wombat}
+\ie compute the score
+\ie select the best
+\eei
+
+\bigskip
+
+\ie \tcm{problems}
+\bei
+\ie filling a configuration of $26$ black cells with words takes minutes
+\ie thus, only a small number of such combinations can be filled in
+\ie needle in a hay stack...
+\eei
+
+\bigskip
+
+\ie \tcg{proposed solution}
+\bei
+\ie start with a cluster of thematic words $\to$ guaranteed score points
+\ie build the rest of the grid around it
+\eei
+
+\eei
+
+\end{frame}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -250,7 +287,7 @@
 \begin{columns}
 \column{0.7\linewidth}
 
-\ben
+\bei
 \ie build cores from a pattern (human input)
 
 \medskip
@@ -264,11 +301,11 @@
 \medskip
 
 \ie develop seeds into full solutions
-\ben
+\bei
 \ie select promising seeds 
 \ie complete them to full grids filled with words
-\een
-\een
+\eei
+\eei
 
 \column{.3\linewidth}
 
@@ -285,7 +322,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}{Cores}
+\begin{frame}{Patterns $\to$ Cores}
 
 \begin{columns}
 \column{0.7\linewidth}
@@ -321,20 +358,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}{Expanded Cores}
+\begin{frame}{Cores $\to$ Expanded Cores}
 
 \begin{columns}
 \column{0.5\linewidth}
 
 \bei
 \ie match full thematic words to strings in the core
+
+\medskip
+
 \ie depth first search \tcm{Adi: need more here}
 \eei
 
 \column{.5\linewidth}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
+\includegraphics[width=0.9\columnwidth]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
 %\vspace{-0.15cm}
 \caption{{\bf expanded core}: a rectangular grid with white cells, black cells and white cells with letters. Contains full thematic words bookended with black cells}
 \end{figure}
@@ -345,26 +385,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\begin{frame}{Seeds}
+\begin{frame}{Expanded Cores $\to$ Seeds}
 
 \begin{columns}
 \column{0.5\linewidth}
 
-\begin{block}{Definition}
-A \emph{seed} is a full-size $13\times13$ grid with white cells, black cells, and white cells with letters.
-\end{block}
-\begin{block}{Building seeds from an expanded core}
 \bei
-\ie Place the expanded core inside the $13\times13$ grid
-\ie Shift horizontally and vertically to obtain multiple seeds
-\ie Prune away seeds proven illegal
+\ie place an expanded core inside a $13\times13$ grid
+
+\medskip
+
+\ie shift horizontally and vertically to obtain multiple seeds
+
+\medskip
+
+\ie prune away seeds proven illegal \tcm{Adi: dead seeds? Illegal seeds?}
 \eei
-\end{block}
 
 \column{.5\linewidth}
-\centering
-\includegraphics[height=6cm]{_plots/alive-0-puzzle-72-2975-1488--1--1.png} \hspace{1cm}
+
+\begin{figure}
+\includegraphics[width=0.9\columnwidth]{_plots/alive-0-puzzle-72-2975-1488--1--1.png}
+\vspace{-0.25cm}
+\caption{{\bf seed}: a $13\times13$ grid with white cells, black cells and white cells with letters}
+\end{figure}
+
 \end{columns}
 
 \end{frame}
@@ -372,19 +417,89 @@ A \emph{seed} is a full-size $13\times13$ grid with white cells, black cells, an
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}{Example with Building a Seed}
+\begin{frame}{Full Sequence: Pattern $\rightarrow$ Core $\rightarrow$ Expanded core $\rightarrow$ Seed}
 
 \begin{figure}
-\centering
 \includegraphics[width=\textwidth]{figs/4part.pdf}
-\caption{Gradually building a seed: pattern $\rightarrow$ core $\rightarrow$ expanded core $\rightarrow$ seed. The different stages of the build are aligned vertically to illustrate how the expansion and build happen. Note, for instance, how the partial word ``NOL'' becomes ``NOLLET''. }
+\caption{the stages are aligned vertically to illustrate how the expansion and build happen. Note, for instance, how the partial word ``NOL'' becomes ``NOLLET''. }
 \label{fig:pattern}
 \end{figure}
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Selecting Promising Seeds}
+
+\bei
+
+\ie 
+
+\bigskip
+
+\eei
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Evolving Promising Seeds Into Full Solutions}
+
+\bei
+
+\ie 
+
+\bigskip
+
+\eei
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Results}
+
+\bei
+
+\ie 
+
+\bigskip
+
+\eei
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Future Work}
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Conclusions}
+
+\bei
+
+\ie First human-competition-level AI performance in {\sc Roco}
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\ie \tcb{We appreciate support from NSERC, CC, SoCS reviewers and J. Schaeffer}
+
+\eei
 
 
 \end{frame}
