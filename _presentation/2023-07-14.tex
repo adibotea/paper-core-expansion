@@ -173,31 +173,40 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Romanian Crosswords Competition}
+\begin{frame}{Romanian Crosswords Competition ({\sc Roco})}
 
 \begin{columns}
 \column{0.6\linewidth}
 \bei
-\ie Traditional annual competition from 1965
-\ie AI used to lag significantly behind top humans
+\ie Annual competition: 1965 to present
+\bei 
+\ie top 12 human-submitted grids published
+\eei
+\ie AI used to lag behind
+
+\bigskip
+
+\ie Input: word lists
+\bei
+\ie regular Romanian words (about $134$K)
+\ie thematic words, vary per year (e.g., $387$)
 \eei
 
-\begin{block}{Input}
-\bei 
-\ie Regular list of words
-\ie Thematic list of words changing every year
-\eei
-\end{block}
+\bigskip
 
-\begin{block}{Task}
+\ie Task:
 \bei 
-\ie Build a $13\times13$ grid with criss-crossing words and no more than 26 black cells
-\ie Each thematic words gives points equal to its length
+\ie build a $13\times13$ grid filled with words
+\bei
+\ie some constraints
 \eei
-\end{block}
+\ie score = sum of lengths of all thematic words
+\eei
+
+\eei
 
 \column{0.4\linewidth}
-\includegraphics[height=5cm]{2013b.png}
+\includegraphics[width=\columnwidth]{2013b.png}
 \end{columns}
 \end{frame}
 
