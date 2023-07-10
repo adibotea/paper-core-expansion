@@ -589,15 +589,74 @@ $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Experiments}
+
+\begin{table}[htbp]
+{\footnotesize\centering
+\begin{tabular}{c|r|r|r|r|r|r|r}
+\toprule
+{\bf year} & {\bf cores} & {\bf expanded} & {\bf seeds} & {\bf seeds} & {\bf ranking} & {\bf seeds} & {\bf evolving}\\
+           & & {\bf cores} & {\bf before} & {\bf ranked} & {\bf time} & {\bf evolved} & {\bf time} \\
+           & & & {\bf postprocessing} & {\bf ($N$)} & & {\bf ($K$)} & \\
+\midrule
+2013 & $12,\!560$ & $2,\!754$ & $1,\!259$ & $932$ & $30$ minutes & $352$ & $1.9$ days \\ 
+2021 & $332,\!062$ & $1,\!005,\!114$ & $122,\!579$ & $38,\!035$ & $21$ hours & $224$ & $1.2$ days \\ 
+2023 & $123,\!218$ & $1,\!042$ & $1,\!087$ & $446$ & $16$ minutes & $352$ & $2.0$ days \\ 
+\bottomrule
+\end{tabular}}
+\end{table}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Results}
 
-\bei
+\begin{figure}
+\includegraphics[height=3.1cm]{figs/2013a.png}
+%
+\hspace{1cm}
+%
+\includegraphics[height=3.1cm]{figs/2021a.png}
+%
+\hspace{1cm}
+%
+\includegraphics[height=3.1cm]{figs/2023a.png}
 
-\ie 
+\vspace{0.25cm}
 
-\bigskip
+\includegraphics[height=3.1cm]{figs/2013b.png}
+%
+\hspace{1cm}
+%
+\includegraphics[height=3.1cm]{figs/2021b.png}
+%
+\hspace{1cm}
+%
+\includegraphics[height=3.1cm]{figs/2023b.png}
 
-\eei
+\caption{Our top results for years 2013 (left column), 2021 (middle column) and 2023 (right column). Top: seeds after placing additional black cells. Bottom: {\sc Wombat} solutions.}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Scores}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c|r|r|r}
+\toprule
+{\bf year} & {\bf human top-12 min} & {\bf human top-12 max} & {\bf our AI score} \\
+\midrule
+2013 & $175$ & $184$ & \tcg{$182$} \\ 
+2021 & $187$ & $195$ & \tcg{$190$} \\ 
+2023 & $183$ & $193$ & \tcg{$186$} \\ 
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 \end{frame}
@@ -630,15 +689,38 @@ $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 
 \bei
 
-\ie First human-competition-level AI performance in {\sc Roco}
+\ie {\sc Roco} is a difficult constraint optimization problem
+\bei
+\ie humans have been competing nationally from 1965
+\ie AI was lagging behind
+\eei
+
+\medskip
+
+\ie first human-competition-level AI performance in {\sc Roco}
+\bei
+\ie since then: super-human performance
+\eei
+
+\medskip
+
+\ie our approach
+\bei
+\ie incrementally build and solve a constraint optimization problem
+\ie start with a dense point-bearing cluster, build it up to a full solution
+\ie pattern $\rightarrow$ core $\rightarrow$ expanded core $\rightarrow$ seed
+\ie seed $\to$ solution
+\bei
+\ie one-shot completion for seed pre-selection
+\ie incremental completion via stochastic search with explicit diversity 
+\eei
+\eei
+
+\medskip
+\medskip
 
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-
-\ie \tcb{We appreciate support from NSERC, CC, SoCS reviewers and J. Schaeffer}
+\ie \tcb{acknowledgments: NSERC, CC, SoCS reviewers and J. Schaeffer}
 
 \eei
 
