@@ -365,14 +365,18 @@
 \begin{frame}{Cores $\to$ Expanded Cores}
 
 \begin{columns}
-\column{0.5\linewidth}
+\column{0.5\linewidth} 
 
 \bei
 \ie match full thematic words to strings in the core
 
 \medskip
 
-\ie depth first search \tcm{Adi: need more here}
+\ie depth first search
+\bei
+\ie branch when multiple thematic words match a string in the core
+\ie e.g., ISA\textcolor{red}{CESC}U and ONI\textcolor{red}{CESC}U match string \textcolor{red}{CESC}
+\eei
 \eei
 
 \column{.5\linewidth}
@@ -403,7 +407,10 @@
 
 \medskip
 
-\ie prune away seeds proven illegal \tcm{Adi: dead seeds? Illegal seeds?}
+\ie prune seeds proven illegal (dead)
+\bei
+\ie word repetitions, letter sequences not matching any dictionary word, violations of black-cell rules
+\eei
 \eei
 
 \column{.5\linewidth}
