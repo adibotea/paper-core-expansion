@@ -433,13 +433,55 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Selecting Promising Seeds}
+\begin{frame}{What is Next?}
 
 \bei
 
-\ie 
+\ie seeds themselves have very low scores due to empty spaces
 
 \bigskip
+\bigskip
+
+\ie need to complete them
+\bei
+\ie place the remaining black cells (up to $26$)
+\ie fill words in the resulting slots
+\ie do not disturb the score-yielding part
+\eei
+
+
+\eei
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Selecting Promising Seeds to Complete}
+
+\bei
+
+\ie trying to complete each seed is too expensive
+
+\bigskip
+\bigskip
+
+\ie select promising seeds via Monte Carlo
+\bei
+\ie for each seed place additional black cells in the empty area
+\ie quickly run {\sc Wombat} on it 
+\ie repeat until per-seed time budget is exhausted
+\ie the maximum score of each rollout is the seed's MC score
+\eei
+
+\bigskip
+\bigskip
+
+\ie could use such MC seed completions as the final solution
+\bei
+\ie MC rollouts do not allow incremental improvements
+\ie insufficiently high scores
+\eei
 
 \eei
 
@@ -452,12 +494,95 @@
 
 \bei
 
-\ie 
+\ie sort all seeds by their MC scores
 
 \bigskip
+\bigskip
+
+\ie complete the top $N$ seeds via incremental improvements
+\bei
+\ie can use various search techniques
+\ie the space is large so stochastic searches are promising
+\ie standard genetic algorithms risk a population collapse
+\ie we use a version of MAP-Elites~[\cite{mapElites}]
+\bei
+\ie maintains diversity explicitly
+\ie via the use of maps
+\eei
+\eei
 
 \eei
 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{MAP-Elites}
+
+\bei
+
+\ie MAP-Elites stores its population in a map
+\bei
+\ie a map is a 2D table
+\ie each row and column correspond to feature values
+\bei
+\ie maximum word slot length ($f_1$)
+\ie number of walls ($f_2$)
+\eei
+\ie elites from different cells do not compete
+\eei
+\ie on each generation a few elites are randomly picked from each map
+\ie each elite is mutated (seed area protected)
+\ie each offspring is run through {\sc Wombat} (higher time limit)
+\ie a scored offspring replaces an existing elite if its score is higher
+\eei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Multi-map MAP-Elites}
+
+\bei
+
+\ie how large should the maps/tables be?
+\bei
+\ie too many cells $\to$ little competition
+\bei
+\ie every one is a champion in its own niche
+\eei
+
+\ie too few cells $\to$ too much competition
+\bei
+\ie danger of collapsing to a single individual
+\eei
+\eei
+
+\bigskip
+
+\ie we used three maps
+\bei
+\ie by using different resolution of feature ranges
+\eei
+
+\eei
+
+\begin{table}
+{\small\centering
+\begin{tabular}{c|c|c|c}
+\toprule
+{\bf map} & {\bf $f_1$ values} & {\bf $f_2$ values} & {\bf map size} \\
+\midrule
+$1$ & $\{6,9.5,13\}$ & $\{0,13,26\}$ & $3 \times 3$ \\
+$2$ & $\{6,8.3333,10.667,13\}$ & $\{0,2,4,\dots,26\}$ & $4 \times 14$\\
+$3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
+\bottomrule
+\end{tabular}}
+\caption{Feature values in our multi-map MAP-Elites algorithm}
+\label{tab:mrme}
+\end{table}
 
 \end{frame}
 
