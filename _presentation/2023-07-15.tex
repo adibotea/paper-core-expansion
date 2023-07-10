@@ -32,6 +32,7 @@
 % bibliography
 \usepackage[backend=bibtex,style=authoryear]{biblatex}
 \addbibresource{references.bib}
+\addbibresource{bibliography0.bib}
 
 % define slide theme
 %\usetheme{Boadilla}
@@ -169,7 +170,7 @@
 
 \bigskip
 
-\ie Conclusions
+\ie Future Work and Conclusions
 
 \eei
 
@@ -239,18 +240,24 @@
 
 \bei
 
-\ie Simplified problem with black cells given \emph{a priori} 
+\ie simplified problem with black cell configurations given \emph{a priori} 
 \bei
-\ie \cite{DBLP:conf/socs/BoteaB21}
-\ie \cite{Botea_Bulitko_2022}
+\ie~[\cite{DBLP:conf/socs/BoteaB21,Botea_Bulitko_2022}]
 \eei
 
 \bigskip
 
-\ie Automatically synthetize black-cell configurations
+\ie automatically synthesize black-cell configurations
 \bei
-\ie \cite{DBLP:conf/cig/BulitkoB21}
+\ie~[\cite{DBLP:conf/cig/BulitkoB21}]
 \eei
+
+\bigskip
+\bigskip
+
+\ie procedural content generation in games~[\cite{togelius2013procedural,risi2017neuroevolution,exag2017,exag2018,9231576,darwinDemons,8718565}]
+
+
 \eei
 
 \end{frame}
@@ -380,12 +387,14 @@
 \bei
 \ie match full thematic words to strings in the core
 
-\medskip
+\bigskip
 
-\ie depth first search
+\ie depth-first search
 \bei
 \ie branch when multiple thematic words match a string in the core
-\ie e.g., ISA\textcolor{red}{CESC}U and ONI\textcolor{red}{CESC}U match string \textcolor{red}{CESC}
+\bei
+\ie ISA\tco{CESC}U and ONI\tco{CESC}U match the string \tco{CESC}
+\eei
 \eei
 \eei
 
@@ -686,15 +695,27 @@ $3$ & $\{6,7,\dots,13\}$ & $\{0,1,\dots,26\}$ & $8 \times 27$\\
 
 \bei
 
-\ie Objective: exceed champion scores on multiple years
-
-\ie Multiple patterns
-
-\ie Systematic search that adds black cells and words on top of seeds
+\ie super-human performance (each year)
+\bei
+\ie multiple patterns
+\ie systematic (heuristic) search to complete seeds
+\ie faster-than-MC seed pre-selection (e.g., deep ANNs as score predictors)
+\eei
 
 \bigskip
+\bigskip
 
-\ie \tcm{Adi: should we hit the conference attendees with our COG (6 out of 11 years) and post-COG (super-human performance) results here?} \tcm{Yes}
+\ie post-SoCS results
+\bei
+\ie entered top-12 human score range
+\bei
+\ie six out of eleven years~[\cite{boteaCOGshort2023}]
+\eei
+\ie \tco{super-human performance for year 2013}
+\bei
+\ie top-12 humans $175$ to $184$; our AI approach $185$
+\eei
+\eei
 
 \bigskip
 
