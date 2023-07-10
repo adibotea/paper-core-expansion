@@ -235,7 +235,7 @@
 
 \bei
 
-\ie Adi: please write, use {\tt [$\backslash$cite]} for citations
+\ie \tcm{Adi: please write, use {\tt [$\backslash$cite]} for citations}
 
 \eei
 
@@ -275,7 +275,7 @@
 \begin{figure}
 \includegraphics[width=0.7\columnwidth]{_plots/6x4-puzzle.png}
 \vspace{-0.25cm}
-\caption{pattern: a rectangular grid with no letters}
+\caption{{\bf pattern}: a rectangular grid with no letters}
 \end{figure}
 
 \end{columns}
@@ -291,12 +291,19 @@
 \column{0.7\linewidth}
 
 \bei
-\ie Construct a small puzzle
+\ie construct a small puzzle
 \bei 
 \ie the grid is the pattern
-\ie the dictionary contains substrings of thematic words
 \eei
-\ie Feed the puzzle into {\sc Wombat} and generate multiple solutions
+
+\bigskip
+
+\ie feed the puzzle into {\sc Wombat}~[\cite{DBLP:conf/socs/BoteaB21}]
+\bei 
+\ie the dictionary contains substrings of thematic words
+\ie generate multiple solutions 
+\ie each solution is the core
+\eei
 \eei
 
 \column{.3\linewidth}
@@ -304,7 +311,7 @@
 \begin{figure}
 \includegraphics[width=0.7\columnwidth]{_plots/core-6x4-puzzle.png}
 %\vspace{-0.15cm}
-\caption{core: a pattern filled with letters. Each word is a substring of a thematic word}
+\caption{{\bf core}: a pattern filled with letters. Each word is a substring of a thematic word}
 \end{figure}
 
 \end{columns}
@@ -319,20 +326,19 @@
 \begin{columns}
 \column{0.5\linewidth}
 
-\begin{block}{Definition}
-An \emph{expanded core} is a rectangular grid with white cells, black cells, and white cells with letters.
-It contains full thematic words, with black cells by each endpoint.
-\end{block}
-\begin{block}{Building expanded cores from a core}
 \bei
-\ie Match full thematic words over strings in the core
-\ie Depth first search
+\ie match full thematic words to strings in the core
+\ie depth first search \tcm{Adi: need more here}
 \eei
-\end{block}
 
 \column{.5\linewidth}
-\centering
-\includegraphics[height=6cm]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
+%\vspace{-0.15cm}
+\caption{{\bf expanded core}: a rectangular grid with white cells, black cells and white cells with letters. Contains full thematic words bookended with black cells}
+\end{figure}
+
 \end{columns}
 
 \end{frame}
