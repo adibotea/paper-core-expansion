@@ -31,7 +31,7 @@
 
 % bibliography
 \usepackage[backend=bibtex,style=authoryear]{biblatex}
-\addbibresource{bibliography0.bib}
+\addbibresource{references.bib}
 
 % define slide theme
 %\usetheme{Boadilla}
@@ -182,7 +182,6 @@
 \bei 
 \ie top 12 human-submitted grids published
 \eei
-\ie AI used to lag behind
 
 \bigskip
 
@@ -206,63 +205,120 @@
 \eei
 
 \column{0.4\linewidth}
-\includegraphics[width=\columnwidth]{2013b.png}
+\includegraphics[width=\columnwidth]{figs/2013b.png}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Main Contribution}
 
-Breakthrough in bringing the AI performance in the vicinity of human champions
+\bei
+
+\ie \tcm{AI used to lag behind the top-12 scores~[\cite{DBLP:conf/cig/BulitkoB21}]}
+
+\bigskip
+
+\bigskip
+
+
+\ie \tcg{Our approach entered top-12 range in each of the three years tried}
+
+\eei
 
 \end{frame}
 
-\begin{frame}{Main Steps}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Related Work}
+
+\bei
+
+\ie Adi: please write, use {\tt [$\backslash$cite]} for citations
+
+\eei
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Our Approach: Overview}
 
 \begin{columns}
 \column{0.7\linewidth}
-\bei
-\ie Build cores from a \emph{pattern} taken as input
-\ie Build expanded cores
-\ie Build seeds
-\ie Evolve seeds into full solutions
-\eei
+
+\ben
+\ie build cores from a pattern (human input)
+
+\medskip
+
+\ie build expanded cores
+
+\medskip
+
+\ie build seeds
+
+\medskip
+
+\ie develop seeds into full solutions
+\ben
+\ie select promising seeds 
+\ie complete them to full grids filled with words
+\een
+\een
+
 \column{.3\linewidth}
-\centering
-\includegraphics[height=3cm]{_plots/6x4-puzzle.png}\\
-A pattern is a rectangular grid with no letters.
+
+\begin{figure}
+\includegraphics[width=0.7\columnwidth]{_plots/6x4-puzzle.png}
+\vspace{-0.25cm}
+\caption{pattern: a rectangular grid with no letters}
+\end{figure}
+
 \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame}{Cores}
 
 \begin{columns}
 \column{0.7\linewidth}
-\begin{block}{Definition}
-A \emph{core} is a pattern filled with letters. We require that each ``word'' in a core is a substring of a thematic word.
-\end{block}
-\begin{block}{Building cores from a pattern}
+
 \bei
 \ie Construct a small puzzle
 \bei 
-\ie The grid is the pattern
-\ie The dictionary contains substrings of thematic words
+\ie the grid is the pattern
+\ie the dictionary contains substrings of thematic words
 \eei
-\ie Feed puzzle into {\sc Wombat} and generate multiple solutions
+\ie Feed the puzzle into {\sc Wombat} and generate multiple solutions
 \eei
-\end{block}
+
 \column{.3\linewidth}
-\centering
-\includegraphics[height=3cm]{_plots/core-6x4-puzzle.png}
+
+\begin{figure}
+\includegraphics[width=0.7\columnwidth]{_plots/core-6x4-puzzle.png}
+%\vspace{-0.15cm}
+\caption{core: a pattern filled with letters. Each word is a substring of a thematic word}
+\end{figure}
+
 \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{frame}{Expanded Cores}
 
 \begin{columns}
 \column{0.5\linewidth}
+
 \begin{block}{Definition}
 An \emph{expanded core} is a rectangular grid with white cells, black cells, and white cells with letters.
 It contains full thematic words, with black cells by each endpoint.
@@ -273,6 +329,7 @@ It contains full thematic words, with black cells by each endpoint.
 \ie Depth first search
 \eei
 \end{block}
+
 \column{.5\linewidth}
 \centering
 \includegraphics[height=6cm]{_plots/extcore-alive-0-puzzle-72-2975-1488--1--1.pdf}
@@ -280,11 +337,14 @@ It contains full thematic words, with black cells by each endpoint.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{frame}{Seeds}
 
 \begin{columns}
 \column{0.5\linewidth}
+
 \begin{block}{Definition}
 A \emph{seed} is a full-size $13\times13$ grid with white cells, black cells, and white cells with letters.
 \end{block}
@@ -295,12 +355,16 @@ A \emph{seed} is a full-size $13\times13$ grid with white cells, black cells, an
 \ie Prune away seeds proven illegal
 \eei
 \end{block}
+
 \column{.5\linewidth}
 \centering
 \includegraphics[height=6cm]{_plots/alive-0-puzzle-72-2975-1488--1--1.png} \hspace{1cm}
 \end{columns}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{frame}{Example with Building a Seed}
 
@@ -314,22 +378,12 @@ A \emph{seed} is a full-size $13\times13$ grid with white cells, black cells, an
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{frame}{Conclusions}
 
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 \begin{frame}[allowframebreaks]{Bibliography}
 \renewcommand*{\bibfont}{\footnotesize}
